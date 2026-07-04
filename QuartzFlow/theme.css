@@ -1,0 +1,2271 @@
+/*
+Theme name: QuartzFlow
+Author: MinBit
+Description: A macOS-inspired Obsidian theme with polished light and high-contrast dark modes.
+Version: 1.0.0
+*/
+
+/* @settings
+name: QuartzFlow
+id: quartzflow
+settings:
+  - id: quartzflow-colors-heading
+    title: Colors
+    title.zh: 颜色
+    type: heading
+    level: 2
+  - id: quartzflow-accent
+    title: Accent color
+    title.zh: 强调色
+    description: Used for active UI states and primary highlights.
+    description.zh: 用于激活状态元素和主要高亮的颜色。
+    type: variable-color
+    default: '#ca9b52'
+    format: hex
+  - id: quartzflow-link
+    title: Link color
+    title.zh: 链接颜色
+    type: variable-color
+    default: '#ca9b52'
+    format: hex
+  - id: quartzflow-light-bg
+    title: Light background
+    title.zh: 浅色模式背景
+    type: variable-color
+    default: '#ffffff'
+    format: hex
+  - id: quartzflow-dark-bg
+    title: Dark background
+    title.zh: 深色模式背景
+    type: variable-color
+    default: '#000000'
+    format: hex
+  - id: quartzflow-code-accent
+    title: Code accent color
+    title.zh: 代码强调色
+    type: variable-color
+    default: '#e96900'
+    format: hex
+  - id: quartzflow-blockquote-accent
+    title: Blockquote accent color
+    title.zh: 引用块强调色
+    description: Overrides the color used for the blockquote left border. Defaults to matching the main accent color.
+    description.zh: 单独设置引用块左侧竖线的颜色，默认跟随强调色。
+    type: variable-color
+    default: '#ca9b52'
+    format: hex
+  - id: quartzflow-highlight-color
+    title: Highlight background color
+    title.zh: 高亮背景色
+    description: Background color for ==highlighted== text and search match highlighting.
+    description.zh: 用于 ==高亮== 文本和搜索匹配高亮的背景色。
+    type: variable-color
+    default: '#ebffeb'
+    format: hex
+  - id: quartzflow-typography-heading
+    title: Typography
+    title.zh: 排版
+    type: heading
+    level: 2
+  - id: quartzflow-font-text
+    title: Text font
+    title.zh: 正文字体
+    type: variable-text
+    default: 'Gilroy, Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif'
+  - id: quartzflow-font-interface
+    title: Interface font
+    title.zh: 界面字体
+    type: variable-text
+    default: 'Gilroy, Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif'
+  - id: quartzflow-font-code
+    title: Code font
+    title.zh: 代码字体
+    type: variable-text
+    default: 'Roboto Mono, Source Code Pro, Consolas, monospace'
+  - id: quartzflow-text-size
+    title: Text size
+    title.zh: 字号大小
+    type: variable-number
+    default: 16
+    format: px
+  - id: quartzflow-line-height
+    title: Line height
+    title.zh: 行高
+    type: variable-number
+    default: 1.6
+  - id: quartzflow-readable-width
+    title: Reading width
+    title.zh: 正文宽度
+    type: variable-number
+    default: 1100
+    format: px
+  - id: quartzflow-headings-heading
+    title: Heading Decoration
+    title.zh: 标题装饰
+    type: heading
+    level: 2
+  - id: quartzflow-no-heading-underline
+    title: Disable heading underlines
+    title.zh: 禁用标题下划线
+    type: class-toggle
+    default: false
+  - id: quartzflow-code-heading
+    title: Code Blocks
+    title.zh: 代码块
+    type: heading
+    level: 2
+  - id: quartzflow-no-code-dots
+    title: Disable macOS code block dots
+    title.zh: 禁用代码块 macOS 圆点
+    type: class-toggle
+    default: false
+  - id: quartzflow-code-radius
+    title: Code block radius
+    title.zh: 代码块圆角
+    type: variable-number
+    default: 6
+    format: px
+  - id: quartzflow-density-heading
+    title: Layout Density
+    title.zh: 布局密度
+    type: heading
+    level: 2
+  - id: quartzflow-density
+    title: Sidebar density
+    title.zh: 侧边栏密度
+    type: class-select
+    allowEmpty: false
+    default: quartzflow-density-comfortable
+    options:
+      - label: Comfortable 舒适
+        value: quartzflow-density-comfortable
+      - label: Compact 紧凑
+        value: quartzflow-density-compact
+  - id: quartzflow-components-heading
+    title: Components
+    title.zh: 组件
+    type: heading
+    level: 2
+  - id: quartzflow-radius
+    title: Global radius
+    title.zh: 全局圆角
+    type: variable-number
+    default: 8
+    format: px
+  - id: quartzflow-shadow-strength
+    title: Global shadow strength
+    title.zh: 全局阴影强度
+    type: variable-number
+    default: 0.12
+  - id: quartzflow-table-style-strength
+    title: Table style strength
+    title.zh: 表格样式强度
+    type: variable-number
+    default: 1
+  - id: quartzflow-blockquote-style
+    title: Blockquote style
+    title.zh: 引用块样式
+    type: class-select
+    allowEmpty: false
+    default: quartzflow-blockquote-filled
+    options:
+      - label: Filled 填充
+        value: quartzflow-blockquote-filled
+      - label: Minimal 极简
+        value: quartzflow-blockquote-minimal
+  - id: quartzflow-image-radius
+    title: Image radius
+    title.zh: 图片圆角
+    type: variable-number
+    default: 8
+    format: px
+*/
+
+/* ============================================================
+   FONT FACES
+   ============================================================ */
+/* cyrillic-ext */
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Roboto Mono"), local("RobotoMono-Regular"),
+    url("./fonts/L0x5DF4xlVMF-BfR8bXMIjhGq3-cXbKDO1w.woff2") format("woff2");
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F,
+    U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Roboto Mono"), local("RobotoMono-Regular"),
+    url("./fonts/L0x5DF4xlVMF-BfR8bXMIjhPq3-cXbKDO1w.woff2") format("woff2");
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Roboto Mono"), local("RobotoMono-Regular"),
+    url("./fonts/L0x5DF4xlVMF-BfR8bXMIjhHq3-cXbKDO1w.woff2") format("woff2");
+  unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Roboto Mono"), local("RobotoMono-Regular"),
+    url("./fonts/L0x5DF4xlVMF-BfR8bXMIjhIq3-cXbKDO1w.woff2") format("woff2");
+  unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Roboto Mono"), local("RobotoMono-Regular"),
+    url("./fonts/L0x5DF4xlVMF-BfR8bXMIjhEq3-cXbKDO1w.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Roboto Mono"), local("RobotoMono-Regular"),
+    url("./fonts/L0x5DF4xlVMF-BfR8bXMIjhFq3-cXbKDO1w.woff2") format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Roboto Mono"), local("RobotoMono-Regular"),
+    url("./fonts/L0x5DF4xlVMF-BfR8bXMIjhLq3-cXbKD.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Source Sans Pro Light"), local("SourceSansPro-Light"),
+    url("./fonts/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmhduz8A.woff2") format("woff2");
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F,
+    U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Source Sans Pro Light"), local("SourceSansPro-Light"),
+    url("./fonts/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwkxduz8A.woff2") format("woff2");
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Source Sans Pro Light"), local("SourceSansPro-Light"),
+    url("./fonts/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmxduz8A.woff2") format("woff2");
+  unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Source Sans Pro Light"), local("SourceSansPro-Light"),
+    url("./fonts/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlBduz8A.woff2") format("woff2");
+  unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Source Sans Pro Light"), local("SourceSansPro-Light"),
+    url("./fonts/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmBduz8A.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Source Sans Pro Light"), local("SourceSansPro-Light"),
+    url("./fonts/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmRduz8A.woff2") format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Source Sans Pro Light"), local("SourceSansPro-Light"),
+    url("./fonts/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdu.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
+    url("./fonts/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNa7lqDY.woff2") format("woff2");
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F,
+    U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
+    url("./fonts/6xK3dSBYKcSV-LCoeQqfX1RYOo3qPK7lqDY.woff2") format("woff2");
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
+    url("./fonts/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNK7lqDY.woff2") format("woff2");
+  unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
+    url("./fonts/6xK3dSBYKcSV-LCoeQqfX1RYOo3qO67lqDY.woff2") format("woff2");
+  unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
+    url("./fonts/6xK3dSBYKcSV-LCoeQqfX1RYOo3qN67lqDY.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
+    url("./fonts/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNq7lqDY.woff2") format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
+    url("./fonts/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7l.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Source Sans Pro SemiBold"), local("SourceSansPro-SemiBold"),
+    url("./fonts/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmhduz8A.woff2") format("woff2");
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F,
+    U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Source Sans Pro SemiBold"), local("SourceSansPro-SemiBold"),
+    url("./fonts/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwkxduz8A.woff2") format("woff2");
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* greek-ext */
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Source Sans Pro SemiBold"), local("SourceSansPro-SemiBold"),
+    url("./fonts/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmxduz8A.woff2") format("woff2");
+  unicode-range: U+1F00-1FFF;
+}
+
+/* greek */
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Source Sans Pro SemiBold"), local("SourceSansPro-SemiBold"),
+    url("./fonts/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlBduz8A.woff2") format("woff2");
+  unicode-range: U+0370-03FF;
+}
+
+/* vietnamese */
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Source Sans Pro SemiBold"), local("SourceSansPro-SemiBold"),
+    url("./fonts/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmBduz8A.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Source Sans Pro SemiBold"), local("SourceSansPro-SemiBold"),
+    url("./fonts/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmRduz8A.woff2") format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Source Sans Pro SemiBold"), local("SourceSansPro-SemiBold"),
+    url("./fonts/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Gilroy"), url("./fonts/Gilroy-Medium.woff2") format("woff2");
+}
+
+/* ============================================================
+   QuartzFlow DESIGN TOKENS
+   ============================================================ */
+
+body {
+  --quartzflow-blue: #23a9f2;
+  --quartzflow-yellow: #ffbd2e;
+  --quartzflow-green: #27c93f;
+  --quartzflow-red: #ff5f56;
+  --quartzflow-gold: var(--quartzflow-accent, #ca9b52);
+  --quartzflow-link-color: var(--quartzflow-link, #ca9b52);
+  --quartzflow-code-orange: var(--quartzflow-code-accent, #e96900);
+  --quartzflow-code-link: #22a2c9;
+  --quartzflow-heading-1-decoration: var(--quartzflow-blue);
+  --quartzflow-heading-2-decoration: var(--quartzflow-yellow);
+  --quartzflow-heading-3-decoration: var(--quartzflow-green);
+  --quartzflow-heading-4-decoration: var(--quartzflow-red);
+  --quartzflow-heading-5-decoration: var(--quartzflow-gold);
+  --quartzflow-heading-6-decoration: #777777;
+  --quartzflow-decoration-thick: var(--quartzflow-heading-underline-thickness, 0.6em);
+  --quartzflow-decoration-line: underline;
+  --quartzflow-decoration-style: solid;
+  --quartzflow-decoration-skip-ink: none;
+  --quartzflow-underline-offset: var(--quartzflow-heading-underline-offset, -0.4em);
+  --quartzflow-radius-base: var(--quartzflow-radius, 8px);
+  --quartzflow-radius-small: max(3px, calc(var(--quartzflow-radius-base) - 4px));
+  --quartzflow-radius-code: var(--quartzflow-code-radius, 6px);
+  --quartzflow-shadow-alpha: var(--quartzflow-shadow-strength, 0.12);
+  --quartzflow-modal-shadow-alpha: var(--quartzflow-modal-shadow-strength, 0.18);
+  --quartzflow-heading-shadow-alpha: var(--quartzflow-heading-shadow-strength, 0.2);
+  --quartzflow-code-shadow-alpha: var(--quartzflow-code-shadow-strength, 0.12);
+  --quartzflow-reading-width: var(--quartzflow-readable-width, 1100px);
+  --quartzflow-content-padding-x: 30px;
+  --quartzflow-content-padding-y: 20px;
+  --quartzflow-font-text-stack: var(--quartzflow-font-text, Gilroy, Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif);
+  --quartzflow-font-interface-stack: var(--quartzflow-font-interface, Gilroy, Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif);
+  --quartzflow-font-code-stack: var(--quartzflow-font-code, Roboto Mono, Source Code Pro, Consolas, monospace);
+  --quartzflow-list-item-height-effective: var(--quartzflow-list-item-height, 28px);
+  --quartzflow-tab-height-effective: var(--quartzflow-tab-height, 36px);
+  --quartzflow-panel-spacing-effective: var(--quartzflow-panel-spacing, 8px);
+}
+
+body.theme-light {
+  color-scheme: light;
+  --quartzflow-bg-primary: var(--quartzflow-light-bg, #ffffff);
+  --quartzflow-bg-primary-alt: #f8f8f8;
+  --quartzflow-bg-secondary: var(--quartzflow-bg-primary);
+  --quartzflow-bg-secondary-alt: #f2f2f2;
+  --quartzflow-bg-tertiary: #efefef;
+  --quartzflow-text-normal: #000000;
+  --quartzflow-text-muted: #777777;
+  --quartzflow-text-faint: #999999;
+  --quartzflow-text-on-accent: #ffffff;
+  --quartzflow-border: #dfe2e5;
+  --quartzflow-border-subtle: #eeeeee;
+  --quartzflow-highlight-bg: var(--quartzflow-highlight-color, #ebffeb);
+  --quartzflow-code-bg: color-mix(in srgb, #f8f8f8 calc(var(--quartzflow-code-bg-strength, 1) * 100%), #ffffff);
+  --quartzflow-blockquote-accent-color: var(--quartzflow-blockquote-accent, #ca9b52);
+  --quartzflow-blockquote-bg: #efefef;
+  --quartzflow-table-alt-bg: #fafafa;
+  --quartzflow-table-header-bg: #f2f2f2;
+  --quartzflow-menu-bg: #ffffff;
+  --quartzflow-modal-bg: #ffffff;
+  --quartzflow-input-bg: #f8f8f8;
+  --quartzflow-hover-bg: #f2f2f2;
+  --quartzflow-active-bg: #eee8dc;
+  --quartzflow-shadow-color: 0, 0, 0;
+}
+
+body.theme-dark {
+  color-scheme: dark;
+  --quartzflow-blue: #4cc9ff;
+  --quartzflow-yellow: #ffd25a;
+  --quartzflow-green: #42e85f;
+  --quartzflow-red: #ff6f67;
+  --quartzflow-gold: var(--quartzflow-accent, #e0b665);
+  --quartzflow-link-color: var(--quartzflow-link, #e0b665);
+  --quartzflow-code-orange: var(--quartzflow-code-accent, #ff9a3d);
+  --quartzflow-code-link: #66d9ff;
+  --quartzflow-heading-6-decoration: #888888;
+  --quartzflow-bg-primary: var(--quartzflow-dark-bg, #000000);
+  --quartzflow-bg-primary-alt: #08090b;
+  --quartzflow-bg-secondary: var(--quartzflow-bg-primary);
+  --quartzflow-bg-secondary-alt: #15181d;
+  --quartzflow-bg-tertiary: #1c2026;
+  --quartzflow-text-normal: #f2f2f2;
+  --quartzflow-text-muted: #b8bcc3;
+  --quartzflow-text-faint: #858b94;
+  --quartzflow-text-on-accent: #000000;
+  --quartzflow-border: #2b3038;
+  --quartzflow-border-subtle: #1d2229;
+  --quartzflow-highlight-bg: var(--quartzflow-highlight-color, #16351f);
+  --quartzflow-code-bg: color-mix(in srgb, #090b0e calc(var(--quartzflow-code-bg-strength, 1) * 100%), #000000);
+  --quartzflow-blockquote-accent-color: var(--quartzflow-blockquote-accent, #e0b665);
+  --quartzflow-blockquote-bg: #0d0f12;
+  --quartzflow-table-alt-bg: #08090b;
+  --quartzflow-table-header-bg: #11151a;
+  --quartzflow-menu-bg: #090b0e;
+  --quartzflow-modal-bg: #0b0d10;
+  --quartzflow-input-bg: #08090b;
+  --quartzflow-hover-bg: #15181d;
+  --quartzflow-active-bg: #241d12;
+  --quartzflow-shadow-color: 0, 0, 0;
+}
+
+/* ============================================================
+   OBSIDIAN CORE VARIABLE MAPPING
+   ============================================================ */
+
+body {
+  --font-text: var(--quartzflow-font-text-stack);
+  --font-interface: var(--quartzflow-font-interface-stack);
+  --font-monospace: var(--quartzflow-font-code-stack);
+  --font-text-size: var(--quartzflow-text-size, 16px);
+  --line-height-normal: var(--quartzflow-line-height, 1.6);
+  --line-height-tight: 1.35;
+  --background-primary: var(--quartzflow-bg-primary);
+  --background-primary-alt: var(--quartzflow-bg-primary-alt);
+  --background-secondary: var(--quartzflow-bg-secondary);
+  --background-secondary-alt: var(--quartzflow-bg-secondary-alt);
+  --background-modifier-border: var(--quartzflow-border);
+  --background-modifier-border-hover: color-mix(in srgb, var(--quartzflow-border) 75%, var(--quartzflow-gold));
+  --background-modifier-border-focus: var(--quartzflow-gold);
+  --background-modifier-form-field: var(--quartzflow-input-bg);
+  --background-modifier-form-field-highlighted: var(--quartzflow-bg-secondary-alt);
+  --background-modifier-hover: var(--quartzflow-hover-bg);
+  --background-modifier-active-hover: var(--quartzflow-active-bg);
+  --background-modifier-selected: var(--quartzflow-active-bg);
+  --text-normal: var(--quartzflow-text-normal);
+  --text-muted: var(--quartzflow-text-muted);
+  --text-faint: var(--quartzflow-text-faint);
+  --text-on-accent: var(--quartzflow-text-on-accent);
+  --text-accent: var(--quartzflow-link-color);
+  --text-accent-hover: color-mix(in srgb, var(--quartzflow-link-color) 80%, var(--quartzflow-blue));
+  --interactive-normal: var(--quartzflow-bg-secondary-alt);
+  --interactive-hover: var(--quartzflow-hover-bg);
+  --interactive-accent: var(--quartzflow-gold);
+  --interactive-accent-hover: color-mix(in srgb, var(--quartzflow-gold) 84%, var(--quartzflow-yellow));
+  --link-color: var(--quartzflow-link-color);
+  --link-color-hover: color-mix(in srgb, var(--quartzflow-link-color) 85%, var(--quartzflow-blue));
+  --link-external-color: var(--quartzflow-code-link);
+  --link-external-color-hover: color-mix(in srgb, var(--quartzflow-code-link) 85%, var(--quartzflow-yellow));
+  --tag-color: var(--quartzflow-code-link);
+  --tag-background: color-mix(in srgb, var(--quartzflow-code-link) 12%, transparent);
+  --tag-background-hover: color-mix(in srgb, var(--quartzflow-code-link) 20%, transparent);
+  --code-normal: var(--quartzflow-code-orange);
+  --code-background: var(--quartzflow-code-bg);
+  --code-comment: var(--quartzflow-text-muted);
+  --code-function: var(--quartzflow-blue);
+  --code-important: var(--quartzflow-red);
+  --code-keyword: var(--quartzflow-red);
+  --code-operator: var(--quartzflow-text-muted);
+  --code-property: var(--quartzflow-green);
+  --code-punctuation: var(--quartzflow-text-muted);
+  --code-string: var(--quartzflow-code-link);
+  --code-tag: var(--quartzflow-red);
+  --code-value: var(--quartzflow-yellow);
+  --blockquote-border-color: var(--quartzflow-blockquote-accent-color);
+  --blockquote-background-color: var(--quartzflow-blockquote-bg);
+  --table-border-color: var(--quartzflow-border);
+  --table-header-background: var(--quartzflow-table-header-bg);
+  --table-row-alt-background: var(--quartzflow-table-alt-bg);
+  --divider-color: var(--quartzflow-border-subtle);
+  --tab-container-background: var(--quartzflow-bg-secondary);
+  --tab-text-color: var(--quartzflow-text-muted);
+  --tab-text-color-active: var(--quartzflow-text-normal);
+  --titlebar-background: var(--quartzflow-bg-secondary);
+  --titlebar-background-focused: var(--quartzflow-bg-secondary);
+  --ribbon-background: var(--quartzflow-bg-secondary);
+  --status-bar-background: var(--quartzflow-bg-secondary);
+  --modal-background: var(--quartzflow-modal-bg);
+  --modal-border-color: var(--quartzflow-border);
+  --prompt-border-color: var(--quartzflow-border);
+  --background-modifier-box-shadow: rgba(var(--quartzflow-shadow-color), var(--quartzflow-shadow-alpha));
+  --radius-s: var(--quartzflow-radius-small);
+  --radius-m: var(--quartzflow-radius-base);
+  --radius-l: calc(var(--quartzflow-radius-base) + 4px);
+  --input-radius: var(--quartzflow-radius-small);
+  --button-radius: var(--quartzflow-radius-small);
+  --tab-radius-active: var(--quartzflow-radius-small);
+}
+
+/* ============================================================
+   MARKDOWN CONTENT
+   ============================================================ */
+
+.markdown-reading-view,
+.markdown-source-view,
+.markdown-preview-view,
+.markdown-rendered,
+.cm-editor {
+  font-family: var(--font-text);
+  color: var(--text-normal);
+  -webkit-font-smoothing: antialiased;
+}
+
+.markdown-preview-sizer,
+.markdown-source-view.mod-cm6 .cm-contentContainer,
+.markdown-source-view.mod-cm6 .cm-content {
+  max-width: var(--quartzflow-reading-width);
+}
+
+.markdown-preview-sizer {
+  margin: 0 auto;
+  padding: var(--quartzflow-content-padding-y) var(--quartzflow-content-padding-x) 100px;
+}
+
+.markdown-source-view.mod-cm6 .cm-scroller {
+  font-family: var(--font-text);
+  line-height: var(--line-height-normal);
+}
+
+.markdown-source-view.mod-cm6 .cm-content {
+  margin: 0 auto;
+  padding: var(--quartzflow-content-padding-y) var(--quartzflow-content-padding-x) 100px;
+}
+
+.markdown-rendered p,
+.markdown-rendered ul,
+.markdown-rendered ol,
+.markdown-rendered dl,
+.markdown-rendered table,
+.markdown-rendered blockquote,
+.markdown-source-view.mod-cm6 .cm-line {
+  line-height: var(--line-height-normal);
+}
+
+.markdown-rendered p {
+  word-spacing: 0.05rem;
+}
+
+.markdown-rendered ul,
+.markdown-rendered ol {
+  padding-inline-start: 30px;
+}
+
+.markdown-rendered li > ul,
+.markdown-rendered li > ol {
+  margin-block: 0;
+}
+
+.markdown-rendered strong,
+.markdown-source-view .cm-strong {
+  font-weight: 700;
+  padding-inline: 1px;
+}
+
+.markdown-rendered em,
+.markdown-source-view .cm-em {
+  padding-inline: 2px 5px;
+}
+
+.markdown-rendered h1,
+.markdown-rendered h2,
+.markdown-rendered h3,
+.markdown-rendered h4,
+.markdown-rendered h5,
+.markdown-rendered h6,
+.markdown-source-view .cm-header-1,
+.markdown-source-view .cm-header-2,
+.markdown-source-view .cm-header-3,
+.markdown-source-view .cm-header-4,
+.markdown-source-view .cm-header-5,
+.markdown-source-view .cm-header-6 {
+  position: relative;
+  font-weight: 700;
+  line-height: 1.4;
+  cursor: text;
+  text-shadow: 1px 1px 2px rgba(var(--quartzflow-shadow-color), var(--quartzflow-heading-shadow-alpha));
+}
+
+.markdown-rendered h1,
+.markdown-source-view .cm-header-1 {
+  font-size: 2.2rem;
+  line-height: 1.3;
+  margin-block: 1.5rem 1rem;
+  padding-bottom: 0.4rem;
+  color: var(--h1-color);
+  text-decoration-color: var(--quartzflow-heading-1-decoration);
+}
+
+.markdown-rendered h2,
+.markdown-source-view .cm-header-2 {
+  font-size: 1.75rem;
+  line-height: 1.225;
+  margin-block: 35px 15px;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid var(--quartzflow-border);
+  color: var(--h2-color);
+  text-decoration-color: var(--quartzflow-heading-2-decoration);
+}
+
+.markdown-rendered h3,
+.markdown-source-view .cm-header-3 {
+  font-size: 1.4rem;
+  line-height: 1.43;
+  margin-block: 20px 7px;
+  color: var(--h3-color);
+  text-decoration-color: var(--quartzflow-heading-3-decoration);
+}
+
+.markdown-rendered h4,
+.markdown-source-view .cm-header-4 {
+  font-size: 1.2rem;
+  color: var(--h4-color);
+  text-decoration-color: var(--quartzflow-heading-4-decoration);
+}
+
+.markdown-rendered h5,
+.markdown-source-view .cm-header-5 {
+  font-size: 1rem;
+  color: var(--h5-color);
+  text-decoration-color: var(--quartzflow-heading-5-decoration);
+}
+
+.markdown-rendered h6,
+.markdown-source-view .cm-header-6 {
+  font-size: 1rem;
+  color: var(--text-muted);
+  text-decoration-color: var(--quartzflow-heading-6-decoration);
+}
+
+.markdown-rendered h1,
+.markdown-rendered h2,
+.markdown-rendered h3,
+.markdown-rendered h4,
+.markdown-source-view .cm-header-1,
+.markdown-source-view .cm-header-2,
+.markdown-source-view .cm-header-3,
+.markdown-source-view .cm-header-4 {
+  text-decoration-line: var(--quartzflow-decoration-line);
+  text-decoration-style: var(--quartzflow-decoration-style);
+  text-decoration-thickness: var(--quartzflow-decoration-thick);
+  text-decoration-skip-ink: var(--quartzflow-decoration-skip-ink);
+  text-underline-offset: var(--quartzflow-underline-offset);
+}
+
+body.quartzflow-no-heading-underline .markdown-rendered h1,
+body.quartzflow-no-heading-underline .markdown-rendered h2,
+body.quartzflow-no-heading-underline .markdown-rendered h3,
+body.quartzflow-no-heading-underline .markdown-rendered h4,
+body.quartzflow-no-heading-underline .markdown-source-view .cm-header-1,
+body.quartzflow-no-heading-underline .markdown-source-view .cm-header-2,
+body.quartzflow-no-heading-underline .markdown-source-view .cm-header-3,
+body.quartzflow-no-heading-underline .markdown-source-view .cm-header-4 {
+  text-decoration-line: none;
+}
+
+.markdown-rendered a,
+.markdown-rendered .internal-link,
+.markdown-source-view .cm-link,
+.markdown-source-view .cm-hmd-internal-link,
+.markdown-source-view .cm-url {
+  color: var(--link-color);
+  text-decoration: none;
+  padding-inline: 2px;
+}
+
+.markdown-rendered a:hover,
+.markdown-rendered .internal-link:hover,
+.markdown-source-view .cm-link:hover,
+.markdown-source-view .cm-hmd-internal-link:hover {
+  color: var(--link-color-hover);
+  text-decoration: underline;
+}
+
+.markdown-rendered .tag,
+.markdown-source-view .cm-hashtag {
+  color: var(--tag-color);
+  background: var(--tag-background);
+  border-radius: var(--radius-s);
+  padding: 1px 6px;
+  text-decoration: none;
+}
+
+.markdown-rendered .tag:hover {
+  background: var(--tag-background-hover);
+}
+
+.markdown-rendered hr,
+.markdown-source-view .hr.cm-line hr {
+  height: 2px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: var(--divider-color);
+  border: 0 none;
+}
+
+.markdown-rendered mark,
+.markdown-source-view .cm-highlight {
+  color: var(--quartzflow-text-normal);
+  background-color: var(--quartzflow-highlight-bg);
+  border-radius: var(--radius-s);
+  padding: 2px 4px;
+  margin-inline: 2px;
+  font-weight: 500;
+}
+
+.markdown-rendered del,
+.markdown-source-view .cm-strikethrough {
+  padding-inline: 1px 2px;
+}
+
+.markdown-rendered img {
+  border-radius: var(--quartzflow-image-radius, 8px);
+  border: 1px dashed var(--quartzflow-border-subtle);
+}
+
+.markdown-rendered .task-list-item-checkbox,
+.markdown-source-view .task-list-item-checkbox {
+  border-color: var(--quartzflow-border);
+  border-radius: 4px;
+}
+
+.markdown-rendered .task-list-item-checkbox:checked,
+.markdown-source-view .task-list-item-checkbox:checked {
+  background-color: var(--interactive-accent);
+  border-color: var(--interactive-accent);
+}
+
+.metadata-container,
+.metadata-properties,
+.metadata-property {
+  border-color: var(--quartzflow-border-subtle);
+}
+
+.metadata-container {
+  background: color-mix(in srgb, var(--quartzflow-bg-secondary) 55%, transparent);
+  border-radius: var(--radius-m);
+  padding: 8px 10px;
+}
+
+.metadata-property-key,
+.metadata-property-value {
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   RICH MARKDOWN COMPONENTS
+   ============================================================ */
+
+.markdown-rendered code,
+.markdown-source-view .cm-inline-code,
+.markdown-source-view .cm-hmd-codeblock,
+.cm-s-obsidian span.cm-inline-code {
+  margin-inline: 2px;
+  padding: 2px 4px;
+  border-radius: var(--radius-s);
+  font-family: var(--font-monospace);
+  font-size: 0.9em;
+  color: var(--code-normal);
+  background-color: var(--code-background);
+}
+
+.markdown-rendered pre,
+.markdown-source-view.mod-cm6 .HyperMD-codeblock,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
+  font-family: var(--font-monospace);
+  font-size: 0.9em;
+  line-height: 2;
+  color: var(--code-normal);
+  background-color: var(--code-background);
+}
+
+.markdown-rendered pre {
+  position: relative;
+  margin: 0.8rem 0;
+  padding: 2.4rem 1rem 1rem;
+  border: 1px solid var(--quartzflow-border-subtle);
+  border-radius: var(--quartzflow-radius-code);
+  box-shadow: 0 0 8px rgba(var(--quartzflow-shadow-color), var(--quartzflow-code-shadow-alpha));
+  overflow: auto;
+}
+
+.markdown-rendered pre::before,
+.markdown-rendered pre::after,
+.markdown-rendered pre code::before {
+  content: "";
+  position: absolute;
+  top: 0.8rem;
+  display: block;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(var(--quartzflow-shadow-color), 0.24);
+}
+
+.markdown-rendered pre::before {
+  left: 1rem;
+  background-color: var(--quartzflow-red);
+}
+
+.markdown-rendered pre::after {
+  left: 2.2rem;
+  background-color: var(--quartzflow-yellow);
+}
+
+.markdown-rendered pre code::before {
+  left: 3.4rem;
+  background-color: var(--quartzflow-green);
+}
+
+body.quartzflow-no-code-dots .markdown-rendered pre {
+  padding-top: 1rem;
+}
+
+body.quartzflow-no-code-dots .markdown-rendered pre::before,
+body.quartzflow-no-code-dots .markdown-rendered pre::after,
+body.quartzflow-no-code-dots .markdown-rendered pre code::before {
+  display: none;
+}
+
+.markdown-rendered pre code {
+  display: block;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+  border-top-left-radius: var(--quartzflow-radius-code);
+  border-top-right-radius: var(--quartzflow-radius-code);
+  padding-top: 0.8rem;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
+  border-bottom-left-radius: var(--quartzflow-radius-code);
+  border-bottom-right-radius: var(--quartzflow-radius-code);
+  padding-bottom: 0.8rem;
+}
+
+.markdown-rendered blockquote,
+.markdown-source-view.mod-cm6 .HyperMD-quote {
+  border-left: 3px solid var(--blockquote-border-color);
+  color: var(--text-normal);
+  background-color: var(--blockquote-background-color);
+  border-radius: var(--radius-s);
+}
+
+.markdown-rendered blockquote {
+  margin: 0.8em 0;
+  padding: 10px 15px;
+  font-size: 0.9em;
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-quote {
+  padding-inline-start: 15px;
+}
+
+body.quartzflow-blockquote-minimal .markdown-rendered blockquote,
+body.quartzflow-blockquote-minimal .markdown-source-view.mod-cm6 .HyperMD-quote {
+  background: transparent;
+}
+
+.callout {
+  border-radius: var(--radius-m);
+  border: 1px solid color-mix(in srgb, var(--callout-color) 36%, var(--quartzflow-border));
+  background-color: color-mix(in srgb, rgb(var(--callout-color)) 9%, var(--quartzflow-bg-secondary));
+  box-shadow: 0 2px 10px rgba(var(--quartzflow-shadow-color), calc(var(--quartzflow-shadow-alpha) * 0.65));
+}
+
+.callout-title {
+  font-family: var(--font-interface);
+  font-weight: 700;
+}
+
+.callout-content {
+  color: var(--text-normal);
+}
+
+.markdown-rendered table {
+  width: 100%;
+  margin: 0.8em 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  word-break: initial;
+  border: 1px solid var(--table-border-color);
+  border-radius: var(--quartzflow-radius-small);
+  overflow: hidden;
+}
+
+.markdown-rendered table tr {
+  transition: background-color 0.15s ease;
+}
+
+.markdown-rendered table tr:nth-child(2n) {
+  background-color: color-mix(in srgb, var(--table-row-alt-background) calc(var(--quartzflow-table-style-strength, 1) * 100%), transparent);
+}
+
+.markdown-rendered table tbody tr:hover {
+  background-color: var(--background-modifier-hover);
+}
+
+.markdown-rendered table th,
+.markdown-rendered table td {
+  border-bottom: 1px solid var(--table-border-color);
+  text-align: left;
+  padding: 6px 13px;
+}
+
+.markdown-rendered table tbody tr:last-child th,
+.markdown-rendered table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.markdown-rendered table th {
+  font-weight: 700;
+  background-color: color-mix(in srgb, var(--table-header-background) calc(var(--quartzflow-table-style-strength, 1) * 100%), transparent);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.markdown-rendered .footnotes,
+.markdown-rendered .footnote-ref,
+.markdown-rendered .footnote-backref {
+  color: var(--text-muted);
+}
+
+.markdown-rendered .footnote-ref,
+.markdown-rendered sup {
+  background-color: var(--code-background);
+  color: var(--code-normal);
+  border-radius: var(--radius-s);
+  padding-inline: 3px;
+}
+
+.markdown-embed,
+.file-embed,
+.internal-embed {
+  border-color: var(--quartzflow-border-subtle);
+  border-radius: var(--radius-m);
+  background-color: color-mix(in srgb, var(--quartzflow-bg-secondary) 55%, transparent);
+}
+
+.markdown-embed-title,
+.file-embed-title {
+  color: var(--text-muted);
+  font-family: var(--font-interface);
+}
+
+/* ============================================================
+   OBSIDIAN APPLICATION SHELL
+   ============================================================ */
+
+body {
+  font-family: var(--font-interface);
+  background-color: var(--background-primary);
+}
+
+.workspace,
+.workspace-split,
+.workspace-tabs,
+.workspace-leaf,
+.workspace-leaf-content {
+  background-color: var(--background-primary);
+  color: var(--text-normal);
+}
+
+.workspace-ribbon,
+.side-dock-ribbon,
+.mod-left-split,
+.mod-right-split {
+  background-color: var(--background-secondary);
+  border-color: var(--background-modifier-border);
+}
+
+.workspace-ribbon.mod-left,
+.workspace-ribbon.mod-right {
+  border-color: var(--background-modifier-border);
+}
+
+.side-dock-ribbon-action,
+.workspace-ribbon-collapse-btn,
+.clickable-icon {
+  color: var(--text-muted);
+  border-radius: var(--radius-s);
+}
+
+.side-dock-ribbon-action:hover,
+.workspace-ribbon-collapse-btn:hover,
+.clickable-icon:hover {
+  color: var(--text-normal);
+  background-color: var(--background-modifier-hover);
+}
+
+.workspace-tab-header-container {
+  height: var(--quartzflow-tab-height-effective);
+  background-color: var(--tab-container-background);
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.workspace-tab-header {
+  height: var(--quartzflow-tab-height-effective);
+  color: var(--tab-text-color);
+  border-radius: var(--tab-radius-active) var(--tab-radius-active) 0 0;
+}
+
+.workspace-tab-header:hover {
+  color: var(--text-normal);
+  background-color: var(--background-modifier-hover);
+}
+
+.workspace-tab-header.is-active {
+  color: var(--tab-text-color-active);
+  background-color: var(--background-primary);
+  box-shadow: inset 0 -2px 0 var(--interactive-accent);
+}
+
+.workspace-tab-header-inner-title {
+  font-family: var(--font-interface);
+}
+
+.view-header {
+  background-color: var(--background-primary);
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.view-header-title,
+.view-header-breadcrumb,
+.view-header-breadcrumb-separator {
+  color: var(--text-muted);
+}
+
+.view-header-title:hover,
+.view-header-breadcrumb:hover {
+  color: var(--text-normal);
+}
+
+.nav-header,
+.search-input-container,
+.workspace-sidedock-vault-profile {
+  background-color: var(--background-secondary);
+}
+
+.nav-files-container,
+.tree-item,
+.search-result-container,
+.backlink-pane,
+.outgoing-link-pane,
+.tag-container {
+  font-family: var(--font-interface);
+  color: var(--text-normal);
+}
+
+.nav-file-title,
+.nav-folder-title,
+.tree-item-self,
+.search-result-file-title {
+  min-height: var(--quartzflow-list-item-height-effective);
+  border-radius: var(--radius-s);
+  color: var(--text-muted);
+}
+
+.nav-file-title:hover,
+.nav-folder-title:hover,
+.tree-item-self:hover,
+.search-result-file-title:hover {
+  color: var(--text-normal);
+  background-color: var(--background-modifier-hover);
+}
+
+.nav-file-title.is-active,
+.nav-folder-title.is-active,
+.tree-item-self.is-active {
+  color: var(--text-normal);
+  background-color: var(--background-modifier-selected);
+  box-shadow: inset 3px 0 0 var(--interactive-accent);
+}
+
+.nav-folder-collapse-indicator,
+.tree-item-icon,
+.search-result-collapse-indicator {
+  color: var(--text-faint);
+}
+
+.nav-file-tag,
+.nav-folder-tag {
+  color: var(--text-faint);
+  background-color: var(--background-secondary-alt);
+  border-radius: 999px;
+}
+
+.search-result-file-matched-text,
+.suggestion-highlight {
+  color: var(--quartzflow-text-normal);
+  background-color: var(--quartzflow-highlight-bg);
+  border-radius: var(--radius-s);
+  padding-inline: 2px;
+}
+
+.status-bar {
+  color: var(--text-muted);
+  background-color: var(--status-bar-background);
+  border-color: var(--background-modifier-border);
+  font-family: var(--font-interface);
+}
+
+.status-bar-item:hover {
+  color: var(--text-normal);
+}
+
+.workspace-leaf-resize-handle,
+.workspace-split.mod-horizontal > * > .workspace-leaf-resize-handle,
+.workspace-split.mod-vertical > * > .workspace-leaf-resize-handle {
+  background-color: var(--divider-color);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, var(--text-faint) 40%, transparent);
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: color-mix(in srgb, var(--text-muted) 55%, transparent);
+}
+
+body.quartzflow-density-compact {
+  --quartzflow-list-item-height-effective: 24px;
+  --quartzflow-tab-height-effective: 32px;
+  --quartzflow-panel-spacing-effective: 4px;
+}
+
+body.quartzflow-density-comfortable {
+  --quartzflow-list-item-height-effective: var(--quartzflow-list-item-height, 28px);
+  --quartzflow-tab-height-effective: var(--quartzflow-tab-height, 36px);
+  --quartzflow-panel-spacing-effective: var(--quartzflow-panel-spacing, 8px);
+}
+
+/* ============================================================
+   FLOATING SURFACES AND SETTINGS
+   ============================================================ */
+
+.modal,
+.prompt,
+.suggestion-container,
+.menu,
+.popover,
+.tooltip,
+.notice {
+  font-family: var(--font-interface);
+  color: var(--text-normal);
+  background-color: var(--quartzflow-menu-bg);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+  box-shadow: 0 16px 48px rgba(var(--quartzflow-shadow-color), var(--quartzflow-modal-shadow-alpha));
+}
+
+.modal {
+  background-color: var(--modal-background);
+}
+
+.modal-title,
+.prompt-title,
+.setting-item-name {
+  color: var(--text-normal);
+  font-weight: 700;
+}
+
+.modal-close-button,
+.prompt-close-button {
+  color: var(--text-muted);
+  border-radius: var(--radius-s);
+}
+
+.modal-close-button:hover,
+.prompt-close-button:hover {
+  color: var(--text-normal);
+  background-color: var(--background-modifier-hover);
+}
+
+.prompt-input,
+input[type='text'],
+input[type='search'],
+input[type='email'],
+input[type='password'],
+input[type='number'],
+textarea,
+select,
+.dropdown {
+  color: var(--text-normal);
+  background-color: var(--background-modifier-form-field);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--input-radius);
+  font-family: var(--font-interface);
+}
+
+.prompt-input:focus,
+input[type='text']:focus,
+input[type='search']:focus,
+input[type='email']:focus,
+input[type='password']:focus,
+input[type='number']:focus,
+textarea:focus,
+select:focus,
+.dropdown:focus {
+  border-color: var(--background-modifier-border-focus);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--interactive-accent) 22%, transparent);
+}
+
+.suggestion-item,
+.menu-item,
+.prompt-results .suggestion-item {
+  color: var(--text-muted);
+  border-radius: var(--radius-s);
+}
+
+.suggestion-item.is-selected,
+.suggestion-item:hover,
+.menu-item.selected,
+.menu-item:hover,
+.prompt-results .suggestion-item.is-selected {
+  color: var(--text-normal);
+  background-color: var(--background-modifier-hover);
+}
+
+.menu-separator {
+  border-color: var(--divider-color);
+}
+
+.menu-item-icon,
+.menu-item-flair,
+.suggestion-flair {
+  color: var(--text-faint);
+}
+
+.notice {
+  background-color: var(--quartzflow-bg-secondary-alt);
+  border-color: var(--quartzflow-border);
+}
+
+.tooltip {
+  color: var(--text-normal);
+  background-color: var(--quartzflow-menu-bg);
+  border: 1px solid var(--background-modifier-border);
+  border-left: 3px solid var(--quartzflow-gold);
+  border-radius: var(--radius-s);
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  box-shadow: 0 6px 20px rgba(var(--quartzflow-shadow-color), var(--quartzflow-modal-shadow-alpha));
+  max-width: 280px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  backdrop-filter: blur(8px);
+}
+
+.popover.hover-popover,
+.popover.hover-popover .markdown-embed {
+  background-color: var(--modal-background);
+}
+
+.vertical-tab-header,
+.vertical-tab-content,
+.horizontal-tab-content,
+.setting-item,
+.setting-item-control,
+.community-modal-info,
+.community-modal-details {
+  color: var(--text-normal);
+  border-color: var(--background-modifier-border);
+}
+
+.vertical-tab-header {
+  background-color: var(--background-secondary);
+}
+
+.vertical-tab-nav-item {
+  color: var(--text-muted);
+  border-radius: var(--radius-s);
+}
+
+.vertical-tab-nav-item:hover {
+  color: var(--text-normal);
+  background-color: var(--background-modifier-hover);
+}
+
+.vertical-tab-nav-item.is-active {
+  color: var(--text-normal);
+  background-color: var(--background-modifier-selected);
+  box-shadow: inset 3px 0 0 var(--interactive-accent);
+}
+
+.setting-item {
+  padding-block: 14px;
+}
+
+.setting-item-description {
+  color: var(--text-muted);
+}
+
+button,
+.mod-cta,
+.mod-warning,
+.checkbox-container,
+.slider,
+input[type='range'] {
+  font-family: var(--font-interface);
+}
+
+button,
+.mod-cta {
+  border-radius: var(--button-radius);
+}
+
+button:not(.clickable-icon) {
+  color: var(--text-normal);
+  background-color: var(--interactive-normal);
+  border: 1px solid var(--background-modifier-border);
+}
+
+button:not(.clickable-icon):hover {
+  background-color: var(--interactive-hover);
+  border-color: var(--background-modifier-border-hover);
+}
+
+button.mod-cta {
+  color: var(--text-on-accent);
+  background-color: var(--interactive-accent);
+  border-color: var(--interactive-accent);
+}
+
+button.mod-cta:hover {
+  background-color: var(--interactive-accent-hover);
+}
+
+.checkbox-container {
+  background-color: var(--background-modifier-form-field);
+  border: 1px solid var(--background-modifier-border);
+}
+
+.checkbox-container.is-enabled {
+  background-color: var(--interactive-accent);
+  border-color: var(--interactive-accent);
+}
+
+input[type='range'] {
+  accent-color: var(--interactive-accent);
+}
+
+input[type='checkbox'] {
+  accent-color: var(--interactive-accent);
+}
+
+.color-picker-container,
+.pickr,
+.pickr button {
+  border-radius: var(--radius-s);
+}
+
+/* ============================================================
+   GENERIC PLUGIN COMPATIBILITY
+   ============================================================ */
+
+.workspace-leaf-content[data-type],
+.workspace-leaf-content .view-content,
+.dataview,
+.block-language-dataview,
+.block-language-dataviewjs,
+.tasks-layout,
+.calendar,
+.kanban-plugin,
+.excalidraw,
+.style-settings-container {
+  color: var(--text-normal);
+}
+
+.workspace-leaf-content[data-type] .view-content,
+.dataview.table-view-table,
+.block-language-dataview table,
+.tasks-layout,
+.calendar,
+.kanban-plugin__lane,
+.kanban-plugin__item,
+.excalidraw .Island,
+.style-settings-container .setting-item {
+  border-color: var(--background-modifier-border);
+}
+
+.dataview.table-view-table,
+.block-language-dataview table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dataview.table-view-table th,
+.dataview.table-view-table td,
+.block-language-dataview th,
+.block-language-dataview td {
+  border: 1px solid var(--table-border-color);
+  padding: 6px 13px;
+}
+
+.dataview.table-view-table th,
+.block-language-dataview th {
+  background-color: var(--table-header-background);
+}
+
+.kanban-plugin__lane,
+.kanban-plugin__item {
+  background-color: var(--background-secondary);
+  border-radius: var(--radius-m);
+}
+
+.kanban-plugin__item:hover {
+  background-color: var(--background-modifier-hover);
+}
+
+.calendar .day,
+.calendar .week-num,
+.calendar .month {
+  color: var(--text-muted);
+}
+
+.calendar .day:hover,
+.calendar .day.today {
+  color: var(--text-normal);
+  background-color: var(--background-modifier-hover);
+  border-radius: var(--radius-s);
+}
+
+.excalidraw .Island,
+.excalidraw .ToolIcon,
+.excalidraw .dropdown-menu {
+  background-color: var(--background-secondary);
+  color: var(--text-normal);
+  border-radius: var(--radius-m);
+}
+
+.style-settings-container .setting-item-name,
+.style-settings-container .setting-item-description {
+  font-family: var(--font-interface);
+}
+
+/* ============================================================
+   FINAL SAFEGUARDS
+   ============================================================ */
+
+body.theme-light {
+  --h1-color: #000000;
+  --h2-color: #000000;
+  --h3-color: #000000;
+  --h4-color: #000000;
+  --h5-color: #000000;
+  --h6-color: #777777;
+}
+
+body.theme-dark {
+  --h1-color: #e4e4e6;
+  --h2-color: #e4e4e6;
+  --h3-color: #e4e4e6;
+  --h4-color: #e4e4e6;
+  --h5-color: #e4e4e6;
+  --h6-color: #b8bcc3;
+}
+
+.is-flashing,
+.nav-file-title.is-being-dragged,
+.nav-folder-title.is-being-dragged {
+  background-color: color-mix(in srgb, var(--interactive-accent) 22%, transparent);
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--interactive-accent) 32%, transparent);
+}
+
+.print .markdown-rendered,
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer,
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-content {
+  max-width: var(--quartzflow-reading-width);
+}
+
+/* ============================================================
+   QuartzFlow GRID BACKGROUND
+   ============================================================ */
+
+body {
+  --quartzflow-grid-size: 20px;
+}
+
+body.theme-light {
+  --quartzflow-grid-color: 60, 10, 30;
+  --quartzflow-grid-opacity: 0.04;
+}
+
+body.theme-dark {
+  --quartzflow-grid-color: 255, 255, 255;
+  --quartzflow-grid-opacity: 0.055;
+}
+
+.workspace-leaf-content[data-type="markdown"] .view-content,
+.markdown-reading-view,
+.markdown-source-view.mod-cm6 .cm-scroller {
+  background-image: linear-gradient(
+      90deg,
+      rgba(var(--quartzflow-grid-color), var(--quartzflow-grid-opacity)) 3%,
+      transparent 0
+    ),
+    linear-gradient(
+      1turn,
+      rgba(var(--quartzflow-grid-color), var(--quartzflow-grid-opacity)) 3%,
+      transparent 0
+    );
+  background-size: var(--quartzflow-grid-size) var(--quartzflow-grid-size);
+  background-position: 50% 30%;
+}
+
+/* ============================================================
+   QuartzFlow SIDEBAR GRID BACKGROUND
+   ============================================================ */
+
+body.theme-light {
+  --quartzflow-sidebar-grid-opacity: var(--quartzflow-grid-opacity);
+}
+
+body.theme-dark {
+  --quartzflow-sidebar-grid-opacity: var(--quartzflow-grid-opacity);
+}
+
+.mod-left-split,
+.mod-right-split,
+.workspace-ribbon,
+.mod-left-split .workspace-tabs,
+.mod-right-split .workspace-tabs,
+.mod-left-split .workspace-leaf,
+.mod-right-split .workspace-leaf,
+.mod-left-split .workspace-leaf-content,
+.mod-right-split .workspace-leaf-content,
+.mod-left-split .view-content,
+.mod-right-split .view-content,
+.nav-files-container,
+.search-result-container,
+.outline,
+.outline .tree-item,
+.backlink-pane,
+.outgoing-link-pane,
+.tag-container {
+  background-image: linear-gradient(
+      90deg,
+      rgba(var(--quartzflow-grid-color), var(--quartzflow-sidebar-grid-opacity)) 3%,
+      transparent 0
+    ),
+    linear-gradient(
+      1turn,
+      rgba(var(--quartzflow-grid-color), var(--quartzflow-sidebar-grid-opacity)) 3%,
+      transparent 0
+    );
+  background-size: var(--quartzflow-grid-size) var(--quartzflow-grid-size);
+  background-position: 50% 30%;
+}
+
+/* ============================================================
+   QuartzFlow RAINBOW FOLDER CARDS
+   Each top-level folder = independent rounded card with a
+   colored left border and matching title color.
+   10-color rainbow cycle: red → orange → yellow → green →
+   cyan → blue → indigo → purple → gray → slate
+   ============================================================ */
+
+/* --- Hide collapse arrow for ALL folders and subfolders --- */
+.nav-folder-collapse-indicator,
+.nav-folder-collapse-indicator svg,
+.tree-item-inner .collapse-icon,
+.collapse-indicator,
+.nav-folder-children .collapse-icon {
+  display: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  opacity: 0 !important;
+}
+
+/* Extra rules to ensure subfolder arrows are hidden */
+.nav-folder-children .tree-item-self .tree-item-inner .collapse-icon,
+.nav-folder-children .nav-folder .collapse-icon,
+.nav-folder-children .nav-folder-title .collapse-icon {
+  display: none !important;
+}
+
+/* Hide default folder icon */
+.nav-folder-title .nav-folder-title-content::before {
+  display: none !important;
+}
+
+/* But show icon for nested folders */
+.nav-folder-children .nav-folder-title .nav-folder-title-content::before {
+  display: inline-block !important;
+}
+
+/* Ensure all nested folder collapse indicators are hidden */
+.nav-folder-children .nav-folder-collapse-indicator,
+.nav-folder-children .collapse-indicator,
+.tree-item.nav-folder .nav-folder-collapse-indicator {
+  display: none !important;
+}
+
+/* Replace subfolder collapse arrow with folder icon */
+.nav-folder-children .nav-folder > .nav-folder-title .tree-item-icon {
+  display: flex !important;
+  color: var(--quartzflow-folder-accent, #95a5a6);
+  opacity: 0.8;
+}
+
+/* Force show folder icon for nested folders */
+.nav-folder-children .nav-folder .tree-item-icon svg {
+  display: block !important;
+}
+
+/* Add folder icon using ::before pseudo-element for nested folders */
+.nav-folder-children .nav-folder-title-content::before {
+  content: "";
+  display: inline-block !important;
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  background-color: var(--quartzflow-folder-accent, #95a5a6);
+  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.165 19.551c.186.28.499.449.835.449h15c.4 0 .762-.238.919-.606l3-7A.998.998 0 0 0 21 11h-1V8c0-1.103-.897-2-2-2h-6.655L8.789 4H4c-1.103 0-2 .897-2 2v13h.007a1 1 0 0 0 .158.551zM18 8v3H6c-.4 0-.762.238-.919.606L4 14.129V8h14z"></path></svg>');
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.165 19.551c.186.28.499.449.835.449h15c.4 0 .762-.238.919-.606l3-7A.998.998 0 0 0 21 11h-1V8c0-1.103-.897-2-2-2h-6.655L8.789 4H4c-1.103 0-2 .897-2 2v13h.007a1 1 0 0 0 .158.551zM18 8v3H6c-.4 0-.762.238-.919.606L4 14.129V8h14z"></path></svg>');
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  opacity: 0.7;
+}
+
+/* Unified font family for sidebar */
+.nav-files-container,
+.nav-folder-title,
+.nav-file-title,
+.tree-item-self {
+  font-family: var(--font-interface);
+  font-weight: 600;
+}
+
+/* Adjust font size for better readability */
+.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title {
+  font-size: 13px;
+}
+
+.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-file-title,
+.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-folder-title {
+  font-size: 12px;
+}
+
+/* --- 8-color rainbow palette (slightly softer tones) --- */
+/* Obsidian inserts a leading placeholder before the first nav-folder inside the
+   virtualized scroller, so we index from nth-child(2) onward to hit the first
+   visible folder. Cycles: red → orange → yellow → green → teal → blue → purple → slate. */
+.nav-files-container > div > .tree-item.nav-folder:nth-child(2) { --quartzflow-folder-accent: #e74c3c; }
+.nav-files-container > div > .tree-item.nav-folder:nth-child(3) { --quartzflow-folder-accent: #e67e22; }
+.nav-files-container > div > .tree-item.nav-folder:nth-child(4) { --quartzflow-folder-accent: #f1c40f; }
+.nav-files-container > div > .tree-item.nav-folder:nth-child(5) { --quartzflow-folder-accent: #2ecc71; }
+.nav-files-container > div > .tree-item.nav-folder:nth-child(6) { --quartzflow-folder-accent: #1abc9c; }
+.nav-files-container > div > .tree-item.nav-folder:nth-child(7) { --quartzflow-folder-accent: #3498db; }
+.nav-files-container > div > .tree-item.nav-folder:nth-child(8) { --quartzflow-folder-accent: #8e44ad; }
+.nav-files-container > div > .tree-item.nav-folder:nth-child(9) { --quartzflow-folder-accent: #607d8b; }
+.nav-files-container > div > .tree-item.nav-folder:nth-child(10) { --quartzflow-folder-accent: #e74c3c; }
+.nav-files-container > div > .tree-item.nav-folder:nth-child(11) { --quartzflow-folder-accent: #e67e22; }
+.nav-files-container > div > .tree-item.nav-folder:nth-child(12) { --quartzflow-folder-accent: #f1c40f; }
+.nav-files-container > div > .tree-item.nav-folder:nth-child(13) { --quartzflow-folder-accent: #2ecc71; }
+.nav-files-container > div > .tree-item.nav-folder:nth-child(14) { --quartzflow-folder-accent: #1abc9c; }
+.nav-files-container > div > .tree-item.nav-folder:nth-child(15) { --quartzflow-folder-accent: #3498db; }
+.nav-files-container > div > .tree-item.nav-folder:nth-child(16) { --quartzflow-folder-accent: #8e44ad; }
+.nav-files-container > div > .tree-item.nav-folder:nth-child(17) { --quartzflow-folder-accent: #607d8b; }
+
+/* --- Card wrapper (the .tree-item.nav-folder itself) --- */
+.nav-files-container > div > .tree-item.nav-folder {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-left: 2px solid var(--quartzflow-folder-accent, #95a5a6);
+  border-radius: 6px;
+  margin: 7px 4px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.nav-files-container > div > .tree-item.nav-folder:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Folder title row --- */
+.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--quartzflow-folder-accent, #5d6d7e);
+  background: transparent;
+  padding: 7px 10px 7px 12px;
+  margin: 0;
+  border-radius: 0;
+  border: none;
+  line-height: 1.4;
+}
+
+.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title:hover {
+  background: rgba(0, 0, 0, 0.025);
+}
+
+.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title.is-active {
+  background: color-mix(in srgb, var(--quartzflow-folder-accent) 8%, transparent);
+}
+
+/* --- Children area (inside the card) --- */
+.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children {
+  padding: 2px 6px 6px 20px;
+  margin: 0;
+  border: none;
+  background: transparent;
+}
+
+/* --- Child file titles --- */
+.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-file-title {
+  color: #4a4a4a;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+  line-height: 1.4;
+}
+
+.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-file-title:hover {
+  background: rgba(0, 0, 0, 0.04);
+  color: #222;
+}
+
+.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-file-title.is-active {
+  background: color-mix(in srgb, var(--quartzflow-folder-accent) 12%, transparent);
+  color: #222;
+  box-shadow: none;
+}
+
+/* --- Child sub-folder titles --- */
+.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-folder-title {
+  color: color-mix(in srgb, var(--quartzflow-folder-accent) 70%, #444);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-folder-title:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* --- File icon tint (柔和的粉绿色/浅青，跟图片一致) --- */
+.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .tree-item-icon {
+  color: #a5d6a7;
+  opacity: 0.85;
+}
+
+/* --- Nested sub-folders: no extra card styling, just indent --- */
+.nav-files-container > div > .tree-item.nav-folder .nav-folder .nav-folder-title {
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+}
+
+/* --- Dark theme overrides --- */
+body.theme-dark .nav-files-container > div > .tree-item.nav-folder {
+  background: color-mix(in srgb, var(--quartzflow-folder-accent, #95a5a6) 12%, var(--quartzflow-bg-tertiary));
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+body.theme-dark .nav-files-container > div > .tree-item.nav-folder:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+body.theme-dark .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+body.theme-dark .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title.is-active {
+  background: color-mix(in srgb, var(--quartzflow-folder-accent) 14%, transparent);
+}
+
+body.theme-dark .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-file-title {
+  color: #c8c8c8;
+}
+
+body.theme-dark .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-file-title:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #eee;
+}
+
+body.theme-dark .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-file-title.is-active {
+  color: #eee;
+}
+
+body.theme-dark .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .tree-item-icon {
+  color: #6fc985;
+  opacity: 0.8;
+}
+
+/* ============================================================
+   QuartzFlow FILE ICONS
+   ============================================================ */
+
+.nav-file-title .nav-file-title-content::before,
+.nav-folder-title .nav-folder-title-content::before {
+  content: "";
+  display: inline-block;
+  position: relative;
+  top: 0.12rem;
+  width: 0.92rem;
+  height: 0.92rem;
+  margin-right: 6px;
+  background-color: color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 68%, var(--text-faint));
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.nav-folder-title .nav-folder-title-content::before {
+  top: 0.14rem;
+  width: 0.96rem;
+  height: 0.96rem;
+  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.165 19.551c.186.28.499.449.835.449h15c.4 0 .762-.238.919-.606l3-7A.998.998 0 0 0 21 11h-1V8c0-1.103-.897-2-2-2h-6.655L8.789 4H4c-1.103 0-2 .897-2 2v13h.007a1 1 0 0 0 .158.551zM18 8v3H6c-.4 0-.762.238-.919.606L4 14.129V8h14z"></path></svg>');
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.165 19.551c.186.28.499.449.835.449h15c.4 0 .762-.238.919-.606l3-7A.998.998 0 0 0 21 11h-1V8c0-1.103-.897-2-2-2h-6.655L8.789 4H4c-1.103 0-2 .897-2 2v13h.007a1 1 0 0 0 .158.551zM18 8v3H6c-.4 0-.762.238-.919.606L4 14.129V8h14z"></path></svg>');
+}
+
+.nav-folder.is-collapsed > .nav-folder-title .nav-folder-title-content::before {
+  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5h-8.586L9.707 3.293A.997.997 0 0 0 9 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2zM4 19V7h16l.002 12H4z"></path></svg>');
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5h-8.586L9.707 3.293A.997.997 0 0 0 9 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2zM4 19V7h16l.002 12H4z"></path></svg>');
+}
+
+.nav-file-title .nav-file-title-content::before {
+  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>');
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>');
+}
+
+.nav-file-title[data-path$=".pdf"] .nav-file-title-content::before {
+  background-color: color-mix(in srgb, var(--quartzflow-red) 70%, var(--text-faint));
+}
+
+.nav-file-title[data-path$=".jpg"] .nav-file-title-content::before,
+.nav-file-title[data-path$=".jpeg"] .nav-file-title-content::before,
+.nav-file-title[data-path$=".png"] .nav-file-title-content::before,
+.nav-file-title[data-path$=".gif"] .nav-file-title-content::before,
+.nav-file-title[data-path$=".svg"] .nav-file-title-content::before,
+.nav-file-title[data-path$=".webp"] .nav-file-title-content::before {
+  background-color: color-mix(in srgb, var(--quartzflow-green) 70%, var(--text-faint));
+}
+
+.nav-file-title[data-path$=".mp3"] .nav-file-title-content::before,
+.nav-file-title[data-path$=".wav"] .nav-file-title-content::before,
+.nav-file-title[data-path$=".flac"] .nav-file-title-content::before,
+.nav-file-title[data-path$=".mp4"] .nav-file-title-content::before,
+.nav-file-title[data-path$=".mov"] .nav-file-title-content::before,
+.nav-file-title[data-path$=".mkv"] .nav-file-title-content::before {
+  background-color: color-mix(in srgb, var(--quartzflow-blue) 70%, var(--text-faint));
+}
+
+/* ============================================================
+   HIDDEN — folder title leading icon (looks like a small triangle/arrow
+   next to the folder name). Keep file icons visible for child files.
+   ============================================================ */
+.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title .nav-folder-title-content::before,
+.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title .nav-folder-title-content::after,
+.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title .tree-item-icon {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  visibility: hidden !important;
+  content: none !important;
+}
+
+/* Also hide the native Obsidian collapse triangle on top-level folders
+   so the cards look clean like the reference image. */
+.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title .nav-folder-collapse-indicator,
+.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title .collapse-indicator,
+.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title > .nav-folder-collapse-indicator,
+.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title > .collapse-indicator {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  visibility: hidden !important;
+  content: none !important;
+}
+
+/* Slim down the leading padding now that the icon is gone, so the title
+   sits closer to the colored left border like the reference. */
+.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title {
+  padding: 7px 10px 7px 10px;
+}
+
+/* ============================================================
+   FILE NAME SCROLLING ANIMATION (Reference: Blue Topaz)
+   只在文件名过长时触发，从右往左滚动显示被遮住的内容
+   ============================================================ */
+
+/* Horizontal scroll animation keyframes - 从右往左（只对长文件名生效）*/
+@keyframes filemove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    /* 使用 min() 确保短文件名不移动（保持0），长文件名向左移动 */
+    /* 如果文件名宽度 < 180px: calc(-100% + 180px) > 0，min(正值, 0) = 0 (不移动) */
+    /* 如果文件名宽度 > 180px: calc(-100% + 180px) < 0，min(负值, 0) = 负值 (向左移动) */
+    transform: translate(min(calc(-100% + 180px), 0px), 0);
+  }
+}
+
+/* Parent containers: hidden overflow to clip long names */
+.nav-file-title,
+.nav-folder-title {
+  position: relative;
+  overflow: hidden !important;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+/* File/folder content containers - must be able to exceed parent width */
+.nav-file-title-content,
+.nav-folder-title-content {
+  display: inline-block;
+  white-space: nowrap;
+  min-width: max-content; /* Allow content to be wider than parent */
+  transition: transform 0.3s ease; /* Smooth return when hover ends */
+}
+
+/* Apply animation on hover - remove 'forwards' so it resets after hover */
+.nav-file-title:hover .nav-file-title-content:not(.is-being-renamed),
+.nav-folder-title:hover .nav-folder-title-content:not(.is-being-renamed) {
+  animation: filemove 1.5s 1 normal linear;
+  /* No 'forwards' = animation resets when hover ends */
+}
+
+/* Ensure the animation has space to work */
+.tree-item-self {
+  overflow: hidden;
+}
+
+.nav-folder-children .tree-item-self {
+  overflow: hidden;
+}
+
+/* Inherit folder accent color for child items - nth-child(2) through nth-child(17) */
+.nav-files-container > div > .tree-item.nav-folder:nth-child(2) .nav-file-title,
+.nav-files-container > div > .tree-item.nav-folder:nth-child(2) .nav-folder-children .nav-folder-title {
+  --quartzflow-folder-accent: #e74c3c;
+}
+
+.nav-files-container > div > .tree-item.nav-folder:nth-child(3) .nav-file-title,
+.nav-files-container > div > .tree-item.nav-folder:nth-child(3) .nav-folder-children .nav-folder-title {
+  --quartzflow-folder-accent: #e67e22;
+}
+
+.nav-files-container > div > .tree-item.nav-folder:nth-child(4) .nav-file-title,
+.nav-files-container > div > .tree-item.nav-folder:nth-child(4) .nav-folder-children .nav-folder-title {
+  --quartzflow-folder-accent: #f1c40f;
+}
+
+.nav-files-container > div > .tree-item.nav-folder:nth-child(5) .nav-file-title,
+.nav-files-container > div > .tree-item.nav-folder:nth-child(5) .nav-folder-children .nav-folder-title {
+  --quartzflow-folder-accent: #2ecc71;
+}
+
+.nav-files-container > div > .tree-item.nav-folder:nth-child(6) .nav-file-title,
+.nav-files-container > div > .tree-item.nav-folder:nth-child(6) .nav-folder-children .nav-folder-title {
+  --quartzflow-folder-accent: #1abc9c;
+}
+
+.nav-files-container > div > .tree-item.nav-folder:nth-child(7) .nav-file-title,
+.nav-files-container > div > .tree-item.nav-folder:nth-child(7) .nav-folder-children .nav-folder-title {
+  --quartzflow-folder-accent: #3498db;
+}
+
+.nav-files-container > div > .tree-item.nav-folder:nth-child(8) .nav-file-title,
+.nav-files-container > div > .tree-item.nav-folder:nth-child(8) .nav-folder-children .nav-folder-title {
+  --quartzflow-folder-accent: #8e44ad;
+}
+
+.nav-files-container > div > .tree-item.nav-folder:nth-child(9) .nav-file-title,
+.nav-files-container > div > .tree-item.nav-folder:nth-child(9) .nav-folder-children .nav-folder-title {
+  --quartzflow-folder-accent: #607d8b;
+}
+
+.nav-files-container > div > .tree-item.nav-folder:nth-child(10) .nav-file-title,
+.nav-files-container > div > .tree-item.nav-folder:nth-child(10) .nav-folder-children .nav-folder-title {
+  --quartzflow-folder-accent: #e74c3c;
+}
+
+.nav-files-container > div > .tree-item.nav-folder:nth-child(11) .nav-file-title,
+.nav-files-container > div > .tree-item.nav-folder:nth-child(11) .nav-folder-children .nav-folder-title {
+  --quartzflow-folder-accent: #e67e22;
+}
+
+.nav-files-container > div > .tree-item.nav-folder:nth-child(12) .nav-file-title,
+.nav-files-container > div > .tree-item.nav-folder:nth-child(12) .nav-folder-children .nav-folder-title {
+  --quartzflow-folder-accent: #f1c40f;
+}
+
+.nav-files-container > div > .tree-item.nav-folder:nth-child(13) .nav-file-title,
+.nav-files-container > div > .tree-item.nav-folder:nth-child(13) .nav-folder-children .nav-folder-title {
+  --quartzflow-folder-accent: #2ecc71;
+}
+
+.nav-files-container > div > .tree-item.nav-folder:nth-child(14) .nav-file-title,
+.nav-files-container > div > .tree-item.nav-folder:nth-child(14) .nav-folder-children .nav-folder-title {
+  --quartzflow-folder-accent: #1abc9c;
+}
+
+.nav-files-container > div > .tree-item.nav-folder:nth-child(15) .nav-file-title,
+.nav-files-container > div > .tree-item.nav-folder:nth-child(15) .nav-folder-children .nav-folder-title {
+  --quartzflow-folder-accent: #3498db;
+}
+
+.nav-files-container > div > .tree-item.nav-folder:nth-child(16) .nav-file-title,
+.nav-files-container > div > .tree-item.nav-folder:nth-child(16) .nav-folder-children .nav-folder-title {
+  --quartzflow-folder-accent: #8e44ad;
+}
+
+.nav-files-container > div > .tree-item.nav-folder:nth-child(17) .nav-file-title,
+.nav-files-container > div > .tree-item.nav-folder:nth-child(17) .nav-folder-children .nav-folder-title {
+  --quartzflow-folder-accent: #607d8b;
+}
+
+/* ============================================================
+   QuartzFlow STYLE SETTINGS CATEGORIES
+   Give this theme's own Style Settings section headings a
+   stronger visual identity (colored left bar + tinted background)
+   so they read as clear category dividers when scrolling the
+   Style Settings panel. Scoped to this theme's own heading ids
+   only, so other plugins' Style Settings sections are untouched.
+   ============================================================ */
+
+.style-settings-heading[data-id="quartzflow-colors-heading"],
+.style-settings-heading[data-id="quartzflow-typography-heading"],
+.style-settings-heading[data-id="quartzflow-headings-heading"],
+.style-settings-heading[data-id="quartzflow-code-heading"],
+.style-settings-heading[data-id="quartzflow-density-heading"],
+.style-settings-heading[data-id="quartzflow-components-heading"] {
+  margin-top: 18px;
+  padding: 6px 10px 6px 12px;
+  border-bottom: none;
+  border-left: 3px solid var(--quartzflow-gold);
+  border-radius: var(--quartzflow-radius-small);
+  background-color: color-mix(in srgb, var(--quartzflow-gold) 8%, transparent);
+}
+
+.style-settings-heading[data-id="quartzflow-colors-heading"] .setting-item-name,
+.style-settings-heading[data-id="quartzflow-typography-heading"] .setting-item-name,
+.style-settings-heading[data-id="quartzflow-headings-heading"] .setting-item-name,
+.style-settings-heading[data-id="quartzflow-code-heading"] .setting-item-name,
+.style-settings-heading[data-id="quartzflow-density-heading"] .setting-item-name,
+.style-settings-heading[data-id="quartzflow-components-heading"] .setting-item-name {
+  font-size: 1.05em;
+  font-weight: 700;
+  color: var(--quartzflow-gold);
+}
+
+.style-settings-heading[data-id="quartzflow-colors-heading"] .style-settings-collapse-indicator,
+.style-settings-heading[data-id="quartzflow-typography-heading"] .style-settings-collapse-indicator,
+.style-settings-heading[data-id="quartzflow-headings-heading"] .style-settings-collapse-indicator,
+.style-settings-heading[data-id="quartzflow-code-heading"] .style-settings-collapse-indicator,
+.style-settings-heading[data-id="quartzflow-density-heading"] .style-settings-collapse-indicator,
+.style-settings-heading[data-id="quartzflow-components-heading"] .style-settings-collapse-indicator {
+  color: var(--quartzflow-gold);
+}

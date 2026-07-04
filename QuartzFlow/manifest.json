@@ -1,0 +1,8 @@
+{
+  "name": "QuartzFlow",
+  "version": "1.0.0",
+  "minAppVersion": "1.12.0",
+  "author": "MinBit",
+  "authorUrl": "https://github.com/huangcancan-xbc/QuartzFlow",
+  "description": "A macOS-inspired Obsidian theme with polished light and high-contrast dark modes."
+}
