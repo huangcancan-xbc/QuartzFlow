@@ -16,11 +16,14 @@
   }
 }
 
-/* Parent containers: hidden overflow to clip long names */
+/* Parent containers: hidden overflow to clip long names.
+   overflow needs no !important: neither core app.css (1.12.4) nor the
+   theme sets overflow on .nav-file-title/.nav-folder-title itself
+   (core only clips the -content children). */
 .nav-file-title,
 .nav-folder-title {
   position: relative;
-  overflow: hidden !important;
+  overflow: hidden;
   white-space: nowrap;
   max-width: 100%;
 }

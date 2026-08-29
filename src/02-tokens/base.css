@@ -11,6 +11,10 @@ body {
   --quartzflow-link-color: var(--quartzflow-link, #ca9b52);
   --quartzflow-code-orange: var(--quartzflow-code-accent, #e96900);
   --quartzflow-code-link: #22a2c9;
+  /* Derived surface alias (mode value comes from dark.css/light.css);
+     moved here from 03-core/variables.css — it is a QuartzFlow token,
+     not an Obsidian core variable mapping. */
+  --quartzflow-selected-bg: var(--quartzflow-active-bg);
   --quartzflow-heading-1-decoration: var(--quartzflow-blue);
   --quartzflow-heading-2-decoration: var(--quartzflow-yellow);
   --quartzflow-heading-3-decoration: var(--quartzflow-green);

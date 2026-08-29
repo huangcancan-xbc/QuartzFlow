@@ -140,35 +140,38 @@
   color: color-mix(in srgb, var(--quartzflow-gold) 80%, var(--text-normal));
 }
 
-/* --- Active file: icon tint stays stable (no color flip on click/hover) --- */
-
 /* ============================================================
    HIDDEN — folder title leading icon (looks like a small triangle/arrow
    next to the folder name). Keep file icons visible for child files.
+   No !important needed: these selectors are (0,5,2), which already
+   outranks every opponent — the theme's own icon cascade rules top out
+   at (0,3,1) and core ".tree-item-self .tree-item-icon" is (0,2,0).
    ============================================================ */
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title .nav-folder-title-content::before,
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title .nav-folder-title-content::after,
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title .tree-item-icon {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  visibility: hidden !important;
-  content: none !important;
+  display: none;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  visibility: hidden;
+  content: none;
 }
 
 /* Also hide the native Obsidian collapse triangle on top-level folders
-   so the cards look clean like the reference image. */
+   so the cards look clean like the reference image.
+   No !important needed: (0,5,2) outranks the only display opponent,
+   core ".collapse-icon { display: flex }" (0,1,0). */
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title .collapse-indicator,
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title > .collapse-indicator {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  visibility: hidden !important;
-  content: none !important;
+  display: none;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  visibility: hidden;
+  content: none;
 }
 
 /* Slim down the leading padding now that the icon is gone, so the title
