@@ -51,8 +51,11 @@ function build() {
     files.map((f) => banner(f) + readFileSync(f, "utf8").trim()).join("\n") +
     "\n";
   const final = inlineFonts(css);
+  if (/url\(\s*["']?(\.\/)?fonts\//.test(final)) {
+    throw new Error("产物中残留未内嵌的字体引用（检查 01-fonts.css 的 url() 写法）");
+  }
   writeFileSync(OUT, final, "utf8");
-  console.log(`[build] ${files.length} modules -> ${relative(ROOT, OUT)} (${final.length} bytes)`);
+  console.log(`[build] ${files.length} modules -> ${relative(ROOT, OUT)} (${Buffer.byteLength(final, "utf8")} bytes)`);
 }
 
 const vaultArg = process.argv.find((a) => a.startsWith("--vault="))?.slice(8)

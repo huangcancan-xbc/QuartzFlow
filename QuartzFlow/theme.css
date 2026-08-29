@@ -199,6 +199,9 @@ settings:
    build time, so the shipped theme.css is fully self-contained and
    works no matter where the theme folder is installed or what it
    is named. Re-run node build.mjs after adding or removing fonts.
+   Note: the inliner matches font url() references anywhere in this
+   file, comments included — so never spell one out inside a comment;
+   describe it in words instead.
    ============================================================ */
 /* cyrillic-ext */
 @font-face {
