@@ -1,0 +1,182 @@
+/*
+Theme name: QuartzFlow
+Author: MinBit
+Description: A macOS-inspired Obsidian theme with polished light and high-contrast dark modes.
+Version: 1.0.0
+*/
+
+/* @settings
+name: QuartzFlow
+id: quartzflow
+settings:
+  - id: quartzflow-colors-heading
+    title: Colors
+    title.zh: 颜色
+    type: heading
+    level: 2
+  - id: quartzflow-accent
+    title: Accent color
+    title.zh: 强调色
+    description: Used for active UI states and primary highlights.
+    description.zh: 用于激活状态元素和主要高亮的颜色。
+    type: variable-color
+    default: '#ca9b52'
+    format: hex
+  - id: quartzflow-link
+    title: Link color
+    title.zh: 链接颜色
+    type: variable-color
+    default: '#ca9b52'
+    format: hex
+  - id: quartzflow-light-bg
+    title: Light background
+    title.zh: 浅色模式背景
+    type: variable-color
+    default: '#ffffff'
+    format: hex
+  - id: quartzflow-dark-bg
+    title: Dark background
+    title.zh: 深色模式背景
+    type: variable-color
+    default: '#000000'
+    format: hex
+  - id: quartzflow-code-accent
+    title: Code accent color
+    title.zh: 代码强调色
+    type: variable-color
+    default: '#e96900'
+    format: hex
+  - id: quartzflow-blockquote-accent
+    title: Blockquote accent color
+    title.zh: 引用块强调色
+    description: Overrides the color used for the blockquote left border. Defaults to matching the main accent color.
+    description.zh: 单独设置引用块左侧竖线的颜色，默认跟随强调色。
+    type: variable-color
+    default: '#ca9b52'
+    format: hex
+  - id: quartzflow-highlight-color
+    title: Highlight background color
+    title.zh: 高亮背景色
+    description: Background color for ==highlighted== text and search match highlighting.
+    description.zh: 用于 ==高亮== 文本和搜索匹配高亮的背景色。
+    type: variable-color
+    default: '#ebffeb'
+    format: hex
+  - id: quartzflow-typography-heading
+    title: Typography
+    title.zh: 排版
+    type: heading
+    level: 2
+  - id: quartzflow-font-text
+    title: Text font
+    title.zh: 正文字体
+    type: variable-text
+    default: 'Gilroy, Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif'
+  - id: quartzflow-font-interface
+    title: Interface font
+    title.zh: 界面字体
+    type: variable-text
+    default: 'Gilroy, Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif'
+  - id: quartzflow-font-code
+    title: Code font
+    title.zh: 代码字体
+    type: variable-text
+    default: 'Roboto Mono, Source Code Pro, Consolas, monospace'
+  - id: quartzflow-text-size
+    title: Text size
+    title.zh: 字号大小
+    type: variable-number
+    default: 16
+    format: px
+  - id: quartzflow-line-height
+    title: Line height
+    title.zh: 行高
+    type: variable-number
+    default: 1.6
+  - id: quartzflow-readable-width
+    title: Reading width
+    title.zh: 正文宽度
+    type: variable-number
+    default: 1100
+    format: px
+  - id: quartzflow-headings-heading
+    title: Heading Decoration
+    title.zh: 标题装饰
+    type: heading
+    level: 2
+  - id: quartzflow-no-heading-underline
+    title: Disable heading underlines
+    title.zh: 禁用标题下划线
+    type: class-toggle
+    default: false
+  - id: quartzflow-code-heading
+    title: Code Blocks
+    title.zh: 代码块
+    type: heading
+    level: 2
+  - id: quartzflow-no-code-dots
+    title: Disable macOS code block dots
+    title.zh: 禁用代码块 macOS 圆点
+    type: class-toggle
+    default: false
+  - id: quartzflow-code-radius
+    title: Code block radius
+    title.zh: 代码块圆角
+    type: variable-number
+    default: 6
+    format: px
+  - id: quartzflow-density-heading
+    title: Layout Density
+    title.zh: 布局密度
+    type: heading
+    level: 2
+  - id: quartzflow-density
+    title: Sidebar density
+    title.zh: 侧边栏密度
+    type: class-select
+    allowEmpty: false
+    default: quartzflow-density-comfortable
+    options:
+      - label: Comfortable 舒适
+        value: quartzflow-density-comfortable
+      - label: Compact 紧凑
+        value: quartzflow-density-compact
+  - id: quartzflow-components-heading
+    title: Components
+    title.zh: 组件
+    type: heading
+    level: 2
+  - id: quartzflow-radius
+    title: Global radius
+    title.zh: 全局圆角
+    type: variable-number
+    default: 8
+    format: px
+  - id: quartzflow-shadow-strength
+    title: Global shadow strength
+    title.zh: 全局阴影强度
+    type: variable-number
+    default: 0.12
+  - id: quartzflow-table-style-strength
+    title: Table style strength
+    title.zh: 表格样式强度
+    type: variable-number
+    default: 1
+  - id: quartzflow-blockquote-style
+    title: Blockquote style
+    title.zh: 引用块样式
+    type: class-select
+    allowEmpty: false
+    default: quartzflow-blockquote-filled
+    options:
+      - label: Filled 填充
+        value: quartzflow-blockquote-filled
+      - label: Minimal 极简
+        value: quartzflow-blockquote-minimal
+  - id: quartzflow-image-radius
+    title: Image radius
+    title.zh: 图片圆角
+    type: variable-number
+    default: 8
+    format: px
+*/

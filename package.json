@@ -1,0 +1,13 @@
+{
+  "name": "quartzflow",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A macOS-inspired Obsidian theme with polished light and high-contrast dark modes.",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs --watch",
+    "deploy": "node build.mjs --deploy",
+    "watch-deploy": "node build.mjs --deploy --watch",
+    "verify": "node scripts/verify.mjs"
+  }
+}

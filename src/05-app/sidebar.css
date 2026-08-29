@@ -1,0 +1,61 @@
+.nav-header,
+.search-input-container,
+.workspace-sidedock-vault-profile {
+  background-color: var(--background-secondary);
+}
+
+.nav-files-container,
+.tree-item,
+.search-result-container,
+.backlink-pane,
+.outgoing-link-pane,
+.tag-container {
+  font-family: var(--font-interface);
+  color: var(--text-normal);
+}
+
+.nav-file-title,
+.nav-folder-title,
+.tree-item-self,
+.search-result-file-title {
+  min-height: var(--quartzflow-list-item-height-effective);
+  border-radius: var(--radius-s);
+  color: var(--text-muted);
+}
+
+.nav-file-title:hover,
+.nav-folder-title:hover,
+.tree-item-self:hover,
+.search-result-file-title:hover {
+  color: var(--text-normal);
+  background-color: var(--background-modifier-hover);
+}
+
+.nav-file-title.is-active,
+.nav-folder-title.is-active,
+.tree-item-self.is-active {
+  color: var(--text-normal);
+  background-color: var(--background-modifier-selected);
+  box-shadow: inset 3px 0 0 var(--interactive-accent);
+}
+
+.nav-folder-collapse-indicator,
+.tree-item-icon,
+.search-result-collapse-indicator {
+  color: var(--text-faint);
+}
+
+.nav-file-tag,
+.nav-folder-tag {
+  color: var(--text-faint);
+  background-color: var(--background-secondary-alt);
+  border-radius: 999px;
+}
+
+.search-result-file-matched-text,
+.suggestion-highlight {
+  color: var(--quartzflow-text-normal);
+  background-color: var(--quartzflow-highlight-bg);
+  border-radius: var(--radius-s);
+  padding-inline: 2px;
+}

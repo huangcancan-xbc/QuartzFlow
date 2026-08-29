@@ -1,0 +1,10 @@
+.status-bar {
+  color: var(--text-muted);
+  background-color: var(--status-bar-background);
+  border-color: var(--background-modifier-border);
+  font-family: var(--font-interface);
+}
+
+.status-bar-item:hover {
+  color: var(--text-normal);
+}

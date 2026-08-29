@@ -1,0 +1,81 @@
+.vertical-tab-header,
+.vertical-tab-content,
+.horizontal-tab-content,
+.setting-item,
+.setting-item-control,
+.community-modal-info,
+.community-modal-details {
+  color: var(--text-normal);
+  border-color: var(--background-modifier-border);
+}
+
+.vertical-tab-header {
+  background-color: var(--background-secondary);
+}
+
+.vertical-tab-nav-item {
+  color: var(--text-muted);
+  border-radius: var(--radius-s);
+}
+
+.vertical-tab-nav-item:hover {
+  color: var(--text-normal);
+  background-color: var(--background-modifier-hover);
+}
+
+.vertical-tab-nav-item.is-active {
+  color: var(--text-normal);
+  background-color: var(--background-modifier-selected);
+  box-shadow: inset 3px 0 0 var(--interactive-accent);
+}
+
+.setting-item {
+  padding-block: 14px;
+}
+
+.setting-item-description {
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   QuartzFlow STYLE SETTINGS CATEGORIES
+   Give this theme's own Style Settings section headings a
+   stronger visual identity (colored left bar + tinted background)
+   so they read as clear category dividers when scrolling the
+   Style Settings panel. Scoped to this theme's own heading ids
+   only, so other plugins' Style Settings sections are untouched.
+   ============================================================ */
+
+.style-settings-heading[data-id="quartzflow-colors-heading"],
+.style-settings-heading[data-id="quartzflow-typography-heading"],
+.style-settings-heading[data-id="quartzflow-headings-heading"],
+.style-settings-heading[data-id="quartzflow-code-heading"],
+.style-settings-heading[data-id="quartzflow-density-heading"],
+.style-settings-heading[data-id="quartzflow-components-heading"] {
+  margin-top: 18px;
+  padding: 6px 10px 6px 12px;
+  border-bottom: none;
+  border-left: 3px solid var(--quartzflow-gold);
+  border-radius: var(--quartzflow-radius-small);
+  background-color: color-mix(in srgb, var(--quartzflow-gold) 8%, transparent);
+}
+
+.style-settings-heading[data-id="quartzflow-colors-heading"] .setting-item-name,
+.style-settings-heading[data-id="quartzflow-typography-heading"] .setting-item-name,
+.style-settings-heading[data-id="quartzflow-headings-heading"] .setting-item-name,
+.style-settings-heading[data-id="quartzflow-code-heading"] .setting-item-name,
+.style-settings-heading[data-id="quartzflow-density-heading"] .setting-item-name,
+.style-settings-heading[data-id="quartzflow-components-heading"] .setting-item-name {
+  font-size: 1.05em;
+  font-weight: 700;
+  color: var(--quartzflow-gold);
+}
+
+.style-settings-heading[data-id="quartzflow-colors-heading"] .style-settings-collapse-indicator,
+.style-settings-heading[data-id="quartzflow-typography-heading"] .style-settings-collapse-indicator,
+.style-settings-heading[data-id="quartzflow-headings-heading"] .style-settings-collapse-indicator,
+.style-settings-heading[data-id="quartzflow-code-heading"] .style-settings-collapse-indicator,
+.style-settings-heading[data-id="quartzflow-density-heading"] .style-settings-collapse-indicator,
+.style-settings-heading[data-id="quartzflow-components-heading"] .style-settings-collapse-indicator {
+  color: var(--quartzflow-gold);
+}

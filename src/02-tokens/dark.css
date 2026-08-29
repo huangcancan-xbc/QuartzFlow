@@ -1,0 +1,37 @@
+body.theme-dark {
+  color-scheme: dark;
+  --quartzflow-blue: #4cc9ff;
+  --quartzflow-yellow: #ffd25a;
+  --quartzflow-green: #42e85f;
+  --quartzflow-red: #ff6f67;
+  --quartzflow-gold: var(--quartzflow-accent, #e0b665);
+  --quartzflow-link-color: var(--quartzflow-link, #e0b665);
+  --quartzflow-code-orange: var(--quartzflow-code-accent, #ff9a3d);
+  --quartzflow-code-link: #66d9ff;
+  --quartzflow-heading-6-decoration: #888888;
+  --quartzflow-bg-primary: var(--quartzflow-dark-bg, #000000);
+  --quartzflow-bg-primary-alt: #08090b;
+  --quartzflow-bg-secondary: var(--quartzflow-bg-primary);
+  --quartzflow-bg-secondary-alt: #15181d;
+  --quartzflow-bg-tertiary: #1c2026;
+  --quartzflow-text-normal: #f2f2f2;
+  --quartzflow-text-muted: #b8bcc3;
+  --quartzflow-text-faint: #858b94;
+  --quartzflow-text-on-accent: #000000;
+  --quartzflow-border: #2b3038;
+  --quartzflow-border-subtle: #1d2229;
+  --quartzflow-highlight-bg: var(--quartzflow-highlight-color, #16351f);
+  --quartzflow-code-bg: color-mix(in srgb, #090b0e calc(var(--quartzflow-code-bg-strength, 1) * 100%), #000000);
+  --quartzflow-blockquote-accent-color: var(--quartzflow-blockquote-accent, #e0b665);
+  --quartzflow-blockquote-bg: #0d0f12;
+  --quartzflow-table-alt-bg: #08090b;
+  --quartzflow-table-header-bg: #11151a;
+  --quartzflow-table-hover-bg: #22262d;
+  --quartzflow-table-header-hover-bg: #191e25;
+  --quartzflow-menu-bg: #090b0e;
+  --quartzflow-modal-bg: #0b0d10;
+  --quartzflow-input-bg: #08090b;
+  --quartzflow-hover-bg: #15181d;
+  --quartzflow-active-bg: #241d12;
+  --quartzflow-shadow-color: 0, 0, 0;
+}

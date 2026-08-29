@@ -150,13 +150,40 @@ A：请提交 issue 时附上插件名称、Obsidian 版本、截图以及你当
 
 ## 9. 开发与维护
 
-### 9.1 本地调试
+### 9.1 源码结构与构建
 
-1. 将 `QuartzFlow` 文件夹放到测试仓库的 `.obsidian/themes/QuartzFlow/` 目录。
+`QuartzFlow/theme.css` 是**构建产物**，请勿直接编辑。源码位于 `src/` 目录，按职责拆分为多个模块：
+
+```text
+src/
+  00-settings.css        Style Settings 配置块
+  01-fonts.css           @font-face 字体声明
+  02-tokens/             设计变量（base / light / dark）
+  03-core/               Obsidian 官方 CSS 变量映射
+  04-editor/             编辑与阅读区（标题、链接、代码、引用、表格等）
+  05-app/                应用外壳（布局、标签页、ribbon、侧边栏、状态栏）
+  06-components/         浮层与控件（弹窗、菜单、表单、设置页等）
+  07-plugins.css         社区插件通用兼容
+  08-features/           特色功能（网格背景、彩虹文件夹、文件图标、滚动动画）
+  99-safeguards.css      兜底规则（固定最后加载）
+```
+
+构建命令（需要 Node.js，无其他依赖）：
+
+```bash
+npm run build   # 拼合 src/ 所有模块，输出 QuartzFlow/theme.css
+npm run dev     # 监听 src/ 变化，自动重新构建
+```
+
+构建按文件名排序拼合，文件夹的数字前缀即加载顺序。新增模块只需放入对应目录，无需修改构建脚本。
+
+### 9.2 本地调试
+
+1. 将 `QuartzFlow` 文件夹放到测试仓库的 `.obsidian/themes/QuartzFlow/` 目录（或用符号链接指向本仓库的 `QuartzFlow/`）。
 2. 在 Obsidian 中启用该主题。
-3. 修改 `theme.css` 后，切换一次主题或按 `Ctrl/Cmd + P` 运行 **重新加载应用** 以查看效果。
+3. 运行 `npm run dev`，修改 `src/` 下任意模块后自动重建；在 Obsidian 中切换一次主题或按 `Ctrl/Cmd + P` 运行 **重新加载应用** 以查看效果。
 
-### 9.2 发布前检查
+### 9.3 发布前检查
 
 在提交到社区主题市场或发布 GitHub Release 前，建议确认：
 

@@ -1,0 +1,51 @@
+/* ============================================================
+   FILE NAME SCROLLING ANIMATION (Reference: Blue Topaz)
+   只在文件名过长时触发，从右往左滚动显示被遮住的内容
+   ============================================================ */
+
+/* Horizontal scroll animation keyframes - 从右往左（只对长文件名生效）*/
+@keyframes filemove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    /* 使用 min() 确保短文件名不移动（保持0），长文件名向左移动 */
+    /* 如果文件名宽度 < 180px: calc(-100% + 180px) > 0，min(正值, 0) = 0 (不移动) */
+    /* 如果文件名宽度 > 180px: calc(-100% + 180px) < 0，min(负值, 0) = 负值 (向左移动) */
+    transform: translate(min(calc(-100% + 180px), 0px), 0);
+  }
+}
+
+/* Parent containers: hidden overflow to clip long names */
+.nav-file-title,
+.nav-folder-title {
+  position: relative;
+  overflow: hidden !important;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+/* File/folder content containers - must be able to exceed parent width */
+.nav-file-title-content,
+.nav-folder-title-content {
+  display: inline-block;
+  white-space: nowrap;
+  min-width: max-content; /* Allow content to be wider than parent */
+  transition: transform 0.3s ease; /* Smooth return when hover ends */
+}
+
+/* Apply animation on hover - remove 'forwards' so it resets after hover */
+.nav-file-title:hover .nav-file-title-content:not(.is-being-renamed),
+.nav-folder-title:hover .nav-folder-title-content:not(.is-being-renamed) {
+  animation: filemove 1.5s 1 normal linear;
+  /* No 'forwards' = animation resets when hover ends */
+}
+
+/* Ensure the animation has space to work */
+.tree-item-self {
+  overflow: hidden;
+}
+
+.nav-folder-children .tree-item-self {
+  overflow: hidden;
+}

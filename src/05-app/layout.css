@@ -1,0 +1,63 @@
+/* ============================================================
+   OBSIDIAN APPLICATION SHELL
+   ============================================================ */
+
+body {
+  font-family: var(--font-interface);
+  background-color: var(--background-primary);
+}
+
+.workspace,
+.workspace-split,
+.workspace-tabs,
+.workspace-leaf,
+.workspace-leaf-content {
+  background-color: var(--background-primary);
+  color: var(--text-normal);
+}
+
+.workspace-ribbon,
+.side-dock-ribbon,
+.mod-left-split,
+.mod-right-split {
+  background-color: var(--background-secondary);
+  border-color: var(--background-modifier-border);
+}
+
+.workspace-leaf-resize-handle,
+.workspace-split.mod-horizontal > * > .workspace-leaf-resize-handle,
+.workspace-split.mod-vertical > * > .workspace-leaf-resize-handle {
+  background-color: var(--divider-color);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, var(--text-faint) 40%, transparent);
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: color-mix(in srgb, var(--text-muted) 55%, transparent);
+}
+
+body.quartzflow-density-compact {
+  --quartzflow-list-item-height-effective: 24px;
+  --quartzflow-tab-height-effective: 32px;
+  --quartzflow-panel-spacing-effective: 4px;
+}
+
+body.quartzflow-density-comfortable {
+  --quartzflow-list-item-height-effective: var(--quartzflow-list-item-height, 28px);
+  --quartzflow-tab-height-effective: var(--quartzflow-tab-height, 36px);
+  --quartzflow-panel-spacing-effective: var(--quartzflow-panel-spacing, 8px);
+}

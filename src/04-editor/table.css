@@ -1,0 +1,48 @@
+.markdown-rendered table {
+  width: 100%;
+  margin: 0.8em 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  word-break: initial;
+  border: 1px solid var(--table-border-color);
+  border-radius: var(--quartzflow-radius-small);
+  overflow: hidden;
+}
+
+.markdown-rendered table tr {
+  transition: background-color 0.15s ease;
+}
+
+.markdown-rendered table tr:nth-child(2n) {
+  background-color: color-mix(in srgb, var(--table-row-alt-background) calc(var(--quartzflow-table-style-strength, 1) * 100%), transparent);
+}
+
+.markdown-rendered table tbody tr:hover {
+  background-color: var(--quartzflow-table-hover-bg);
+}
+
+.markdown-rendered table th,
+.markdown-rendered table td {
+  border-bottom: 1px solid var(--table-border-color);
+  text-align: left;
+  padding: 6px 13px;
+}
+
+.markdown-rendered table tbody tr:last-child th,
+.markdown-rendered table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.markdown-rendered table th {
+  font-weight: 700;
+  background-color: color-mix(in srgb, var(--table-header-background) calc(var(--quartzflow-table-style-strength, 1) * 100%), transparent);
+  border-bottom: 2px solid var(--quartzflow-border);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* Header: whole-row hover (override any per-cell header hover) */
+.markdown-rendered table thead tr:hover th {
+  background-color: var(--quartzflow-table-header-hover-bg);
+}

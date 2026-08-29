@@ -1,0 +1,27 @@
+.markdown-rendered .footnotes,
+.markdown-rendered .footnote-ref,
+.markdown-rendered .footnote-backref {
+  color: var(--text-muted);
+}
+
+.markdown-rendered .footnote-ref,
+.markdown-rendered sup {
+  background-color: var(--code-background);
+  color: var(--code-normal);
+  border-radius: var(--radius-s);
+  padding-inline: 3px;
+}
+
+.markdown-embed,
+.file-embed,
+.internal-embed {
+  border-color: var(--quartzflow-border-subtle);
+  border-radius: var(--radius-m);
+  background-color: color-mix(in srgb, var(--quartzflow-bg-secondary) 55%, transparent);
+}
+
+.markdown-embed-title,
+.file-embed-title {
+  color: var(--text-muted);
+  font-family: var(--font-interface);
+}

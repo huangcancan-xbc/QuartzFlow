@@ -1,0 +1,40 @@
+.markdown-rendered a,
+.markdown-rendered .internal-link,
+.markdown-source-view .cm-link,
+.markdown-source-view .cm-hmd-internal-link,
+.markdown-source-view .cm-url {
+  color: var(--link-color);
+  text-decoration: none;
+  padding-inline: 2px;
+}
+
+.markdown-rendered a:hover,
+.markdown-rendered .internal-link:hover,
+.markdown-source-view .cm-link:hover,
+.markdown-source-view .cm-hmd-internal-link:hover {
+  color: var(--link-color-hover);
+  text-decoration: underline;
+}
+
+/* External links carry a trailing icon via background-image; restore the
+   right padding our generic `a { padding-inline: 2px }` rule eats away,
+   otherwise the arrow glyph overlaps the link text. */
+.markdown-rendered a.external-link,
+.markdown-rendered .external-link {
+  padding-inline-end: 13px;
+  background-position: right center;
+  background-size: 11px;
+}
+
+.markdown-rendered .tag,
+.markdown-source-view .cm-hashtag {
+  color: var(--tag-color);
+  background: var(--tag-background);
+  border-radius: var(--radius-s);
+  padding: 1px 6px;
+  text-decoration: none;
+}
+
+.markdown-rendered .tag:hover {
+  background: var(--tag-background-hover);
+}

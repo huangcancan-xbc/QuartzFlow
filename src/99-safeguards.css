@@ -1,0 +1,37 @@
+/* ============================================================
+   FINAL SAFEGUARDS
+   ============================================================ */
+
+body.theme-light {
+  --h1-color: #000000;
+  --h2-color: #000000;
+  --h3-color: #000000;
+  --h4-color: #000000;
+  --h5-color: #000000;
+  --h6-color: #777777;
+}
+
+body.theme-dark {
+  --h1-color: #e4e4e6;
+  --h2-color: #e4e4e6;
+  --h3-color: #e4e4e6;
+  --h4-color: #e4e4e6;
+  --h5-color: #e4e4e6;
+  --h6-color: #b8bcc3;
+}
+
+.is-flashing,
+.nav-file-title.is-being-dragged,
+.nav-folder-title.is-being-dragged {
+  background-color: color-mix(in srgb, var(--interactive-accent) 22%, transparent);
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--interactive-accent) 32%, transparent);
+}
+
+.print .markdown-rendered,
+.markdown-preview-view.is-readable-line-width .markdown-preview-sizer,
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-content {
+  max-width: var(--quartzflow-reading-width);
+}

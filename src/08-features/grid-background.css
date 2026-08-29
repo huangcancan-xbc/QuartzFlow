@@ -1,0 +1,34 @@
+/* ============================================================
+   QuartzFlow GRID BACKGROUND
+   ============================================================ */
+
+body {
+  --quartzflow-grid-size: 20px;
+}
+
+body.theme-light {
+  --quartzflow-grid-color: 60, 10, 30;
+  --quartzflow-grid-opacity: 0.04;
+}
+
+body.theme-dark {
+  --quartzflow-grid-color: 255, 255, 255;
+  --quartzflow-grid-opacity: 0.055;
+}
+
+.workspace-leaf-content[data-type="markdown"] .view-content,
+.markdown-reading-view,
+.markdown-source-view.mod-cm6 .cm-scroller {
+  background-image: linear-gradient(
+      90deg,
+      rgba(var(--quartzflow-grid-color), var(--quartzflow-grid-opacity)) 3%,
+      transparent 0
+    ),
+    linear-gradient(
+      1turn,
+      rgba(var(--quartzflow-grid-color), var(--quartzflow-grid-opacity)) 3%,
+      transparent 0
+    );
+  background-size: var(--quartzflow-grid-size) var(--quartzflow-grid-size);
+  background-position: 50% 30%;
+}

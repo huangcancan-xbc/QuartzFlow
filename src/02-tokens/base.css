@@ -1,0 +1,42 @@
+/* ============================================================
+   QuartzFlow DESIGN TOKENS
+   ============================================================ */
+
+body {
+  --quartzflow-blue: #23a9f2;
+  --quartzflow-yellow: #ffbd2e;
+  --quartzflow-green: #27c93f;
+  --quartzflow-red: #ff5f56;
+  --quartzflow-gold: var(--quartzflow-accent, #ca9b52);
+  --quartzflow-link-color: var(--quartzflow-link, #ca9b52);
+  --quartzflow-code-orange: var(--quartzflow-code-accent, #e96900);
+  --quartzflow-code-link: #22a2c9;
+  --quartzflow-heading-1-decoration: var(--quartzflow-blue);
+  --quartzflow-heading-2-decoration: var(--quartzflow-yellow);
+  --quartzflow-heading-3-decoration: var(--quartzflow-green);
+  --quartzflow-heading-4-decoration: var(--quartzflow-red);
+  --quartzflow-heading-5-decoration: var(--quartzflow-gold);
+  --quartzflow-heading-6-decoration: #777777;
+  --quartzflow-decoration-thick: var(--quartzflow-heading-underline-thickness, 0.6em);
+  --quartzflow-decoration-line: underline;
+  --quartzflow-decoration-style: solid;
+  --quartzflow-decoration-skip-ink: none;
+  --quartzflow-underline-offset: var(--quartzflow-heading-underline-offset, -0.4em);
+  --quartzflow-radius-base: var(--quartzflow-radius, 8px);
+  --quartzflow-radius-small: max(3px, calc(var(--quartzflow-radius-base) - 4px));
+  --quartzflow-radius-code: var(--quartzflow-code-radius, 6px);
+  --quartzflow-shadow-alpha: var(--quartzflow-shadow-strength, 0.12);
+  --quartzflow-modal-shadow-alpha: var(--quartzflow-modal-shadow-strength, 0.18);
+  --quartzflow-heading-shadow-alpha: var(--quartzflow-heading-shadow-strength, 0.2);
+  --quartzflow-code-shadow-alpha: var(--quartzflow-code-shadow-strength, 0.12);
+  --quartzflow-reading-width: var(--quartzflow-readable-width, 1100px);
+  --quartzflow-content-padding-x: 30px;
+  --quartzflow-content-padding-y: 20px;
+  --quartzflow-list-indent: 18px;
+  --quartzflow-font-text-stack: var(--quartzflow-font-text, Gilroy, Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif);
+  --quartzflow-font-interface-stack: var(--quartzflow-font-interface, Gilroy, Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif);
+  --quartzflow-font-code-stack: var(--quartzflow-font-code, Roboto Mono, Source Code Pro, Consolas, monospace);
+  --quartzflow-list-item-height-effective: var(--quartzflow-list-item-height, 28px);
+  --quartzflow-tab-height-effective: var(--quartzflow-tab-height, 36px);
+  --quartzflow-panel-spacing-effective: var(--quartzflow-panel-spacing, 8px);
+}

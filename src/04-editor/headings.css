@@ -1,0 +1,95 @@
+.markdown-rendered h1,
+.markdown-rendered h2,
+.markdown-rendered h3,
+.markdown-rendered h4,
+.markdown-rendered h5,
+.markdown-rendered h6,
+.markdown-source-view .cm-header-1,
+.markdown-source-view .cm-header-2,
+.markdown-source-view .cm-header-3,
+.markdown-source-view .cm-header-4,
+.markdown-source-view .cm-header-5,
+.markdown-source-view .cm-header-6 {
+  position: relative;
+  font-weight: 700;
+  line-height: 1.4;
+  cursor: text;
+  text-shadow: 1px 1px 2px rgba(var(--quartzflow-shadow-color), var(--quartzflow-heading-shadow-alpha));
+}
+
+.markdown-rendered h1,
+.markdown-source-view .cm-header-1 {
+  font-size: 2.2rem;
+  line-height: 1.3;
+  margin-block: 1.5rem 1rem;
+  padding-bottom: 0.4rem;
+  color: var(--h1-color);
+  text-decoration-color: var(--quartzflow-heading-1-decoration);
+}
+
+.markdown-rendered h2,
+.markdown-source-view .cm-header-2 {
+  font-size: 1.75rem;
+  line-height: 1.225;
+  margin-block: 35px 15px;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid var(--quartzflow-border);
+  color: var(--h2-color);
+  text-decoration-color: var(--quartzflow-heading-2-decoration);
+}
+
+.markdown-rendered h3,
+.markdown-source-view .cm-header-3 {
+  font-size: 1.4rem;
+  line-height: 1.43;
+  margin-block: 20px 7px;
+  color: var(--h3-color);
+  text-decoration-color: var(--quartzflow-heading-3-decoration);
+}
+
+.markdown-rendered h4,
+.markdown-source-view .cm-header-4 {
+  font-size: 1.2rem;
+  color: var(--h4-color);
+  text-decoration-color: var(--quartzflow-heading-4-decoration);
+}
+
+.markdown-rendered h5,
+.markdown-source-view .cm-header-5 {
+  font-size: 1rem;
+  color: var(--h5-color);
+  text-decoration-color: var(--quartzflow-heading-5-decoration);
+}
+
+.markdown-rendered h6,
+.markdown-source-view .cm-header-6 {
+  font-size: 1rem;
+  color: var(--text-muted);
+  text-decoration-color: var(--quartzflow-heading-6-decoration);
+}
+
+.markdown-rendered h1,
+.markdown-rendered h2,
+.markdown-rendered h3,
+.markdown-rendered h4,
+.markdown-source-view .cm-header-1,
+.markdown-source-view .cm-header-2,
+.markdown-source-view .cm-header-3,
+.markdown-source-view .cm-header-4 {
+  text-decoration-line: var(--quartzflow-decoration-line);
+  text-decoration-style: var(--quartzflow-decoration-style);
+  text-decoration-thickness: var(--quartzflow-decoration-thick);
+  text-decoration-skip-ink: var(--quartzflow-decoration-skip-ink);
+  text-underline-offset: var(--quartzflow-underline-offset);
+}
+
+body.quartzflow-no-heading-underline .markdown-rendered h1,
+body.quartzflow-no-heading-underline .markdown-rendered h2,
+body.quartzflow-no-heading-underline .markdown-rendered h3,
+body.quartzflow-no-heading-underline .markdown-rendered h4,
+body.quartzflow-no-heading-underline .markdown-source-view .cm-header-1,
+body.quartzflow-no-heading-underline .markdown-source-view .cm-header-2,
+body.quartzflow-no-heading-underline .markdown-source-view .cm-header-3,
+body.quartzflow-no-heading-underline .markdown-source-view .cm-header-4 {
+  text-decoration-line: none;
+}

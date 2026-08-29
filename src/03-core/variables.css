@@ -1,0 +1,76 @@
+/* ============================================================
+   OBSIDIAN CORE VARIABLE MAPPING
+   ============================================================ */
+
+body {
+  --font-text: var(--quartzflow-font-text-stack);
+  --font-interface: var(--quartzflow-font-interface-stack);
+  --font-monospace: var(--quartzflow-font-code-stack);
+  --font-text-size: var(--quartzflow-text-size, 16px);
+  --line-height-normal: var(--quartzflow-line-height, 1.6);
+  --line-height-tight: 1.35;
+  --background-primary: var(--quartzflow-bg-primary);
+  --background-primary-alt: var(--quartzflow-bg-primary-alt);
+  --background-secondary: var(--quartzflow-bg-secondary);
+  --background-secondary-alt: var(--quartzflow-bg-secondary-alt);
+  --background-modifier-border: var(--quartzflow-border);
+  --background-modifier-border-hover: color-mix(in srgb, var(--quartzflow-border) 75%, var(--quartzflow-gold));
+  --background-modifier-border-focus: var(--quartzflow-gold);
+  --background-modifier-form-field: var(--quartzflow-input-bg);
+  --background-modifier-form-field-highlighted: var(--quartzflow-bg-secondary-alt);
+  --background-modifier-hover: var(--quartzflow-hover-bg);
+  --background-modifier-active-hover: var(--quartzflow-active-bg);
+  --background-modifier-selected: var(--quartzflow-active-bg);
+  --text-normal: var(--quartzflow-text-normal);
+  --text-muted: var(--quartzflow-text-muted);
+  --text-faint: var(--quartzflow-text-faint);
+  --text-on-accent: var(--quartzflow-text-on-accent);
+  --text-accent: var(--quartzflow-link-color);
+  --text-accent-hover: color-mix(in srgb, var(--quartzflow-link-color) 80%, var(--quartzflow-blue));
+  --interactive-normal: var(--quartzflow-bg-secondary-alt);
+  --interactive-hover: var(--quartzflow-hover-bg);
+  --interactive-accent: var(--quartzflow-gold);
+  --interactive-accent-hover: color-mix(in srgb, var(--quartzflow-gold) 84%, var(--quartzflow-yellow));
+  --link-color: var(--quartzflow-link-color);
+  --link-color-hover: color-mix(in srgb, var(--quartzflow-link-color) 85%, var(--quartzflow-blue));
+  --link-external-color: var(--quartzflow-code-link);
+  --link-external-color-hover: color-mix(in srgb, var(--quartzflow-code-link) 85%, var(--quartzflow-yellow));
+  --tag-color: var(--quartzflow-code-link);
+  --tag-background: color-mix(in srgb, var(--quartzflow-code-link) 12%, transparent);
+  --tag-background-hover: color-mix(in srgb, var(--quartzflow-code-link) 20%, transparent);
+  --code-normal: var(--quartzflow-code-orange);
+  --code-background: var(--quartzflow-code-bg);
+  --code-comment: var(--quartzflow-text-muted);
+  --code-function: var(--quartzflow-blue);
+  --code-important: var(--quartzflow-red);
+  --code-keyword: var(--quartzflow-red);
+  --code-operator: var(--quartzflow-text-muted);
+  --code-property: var(--quartzflow-green);
+  --code-punctuation: var(--quartzflow-text-muted);
+  --code-string: var(--quartzflow-code-link);
+  --code-tag: var(--quartzflow-red);
+  --code-value: var(--quartzflow-yellow);
+  --blockquote-border-color: var(--quartzflow-blockquote-accent-color);
+  --blockquote-background-color: var(--quartzflow-blockquote-bg);
+  --table-border-color: var(--quartzflow-border);
+  --table-header-background: var(--quartzflow-table-header-bg);
+  --table-row-alt-background: var(--quartzflow-table-alt-bg);
+  --divider-color: var(--quartzflow-border-subtle);
+  --tab-container-background: var(--quartzflow-bg-secondary);
+  --tab-text-color: var(--quartzflow-text-muted);
+  --tab-text-color-active: var(--quartzflow-text-normal);
+  --titlebar-background: var(--quartzflow-bg-secondary);
+  --titlebar-background-focused: var(--quartzflow-bg-secondary);
+  --ribbon-background: var(--quartzflow-bg-secondary);
+  --status-bar-background: var(--quartzflow-bg-secondary);
+  --modal-background: var(--quartzflow-modal-bg);
+  --modal-border-color: var(--quartzflow-border);
+  --prompt-border-color: var(--quartzflow-border);
+  --background-modifier-box-shadow: rgba(var(--quartzflow-shadow-color), var(--quartzflow-shadow-alpha));
+  --radius-s: var(--quartzflow-radius-small);
+  --radius-m: var(--quartzflow-radius-base);
+  --radius-l: calc(var(--quartzflow-radius-base) + 4px);
+  --input-radius: var(--quartzflow-radius-small);
+  --button-radius: var(--quartzflow-radius-small);
+  --tab-radius-active: var(--quartzflow-radius-small);
+}

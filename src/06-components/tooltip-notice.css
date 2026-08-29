@@ -1,0 +1,70 @@
+.notice {
+  background-color: var(--quartzflow-bg-secondary-alt);
+  border-color: var(--quartzflow-border);
+}
+
+@keyframes quartzflow-tooltip-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.tooltip {
+  color: var(--text-normal);
+  background-color: var(--quartzflow-menu-bg);
+  border: 1px solid var(--background-modifier-border);
+  border-left: 3px solid var(--quartzflow-gold);
+  border-radius: var(--quartzflow-radius-base);
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.7;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+  box-shadow: 0 8px 24px rgba(var(--quartzflow-shadow-color), var(--quartzflow-modal-shadow-alpha));
+  max-width: 240px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  animation: quartzflow-tooltip-in 0.15s ease-out;
+}
+
+/* ============================================================
+   HOVER PREVIEW POPOVER (page preview on file/link hover,
+   Blue Topaz style: rounded clipping + accent glow)
+   ============================================================ */
+
+.popover.hover-popover,
+.popover.hover-popover .markdown-embed {
+  background-color: var(--modal-background);
+}
+
+.popover.hover-popover {
+  overflow: hidden;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+  box-shadow:
+    0 16px 48px rgba(var(--quartzflow-shadow-color), var(--quartzflow-modal-shadow-alpha)),
+    0 0 6px 4px color-mix(in srgb, var(--quartzflow-gold) 12%, transparent);
+}
+
+/* Preview content fills naturally instead of forcing full height */
+.popover.hover-popover :is(.markdown-preview-view, .markdown-rendered) .markdown-embed,
+.popover.hover-popover .markdown-preview-sizer:is(.markdown-preview-section, .markdown-rendered) {
+  height: auto;
+  min-height: min-content !important;
+}
+
+.popover.hover-popover > .markdown-embed > .markdown-embed-content > .markdown-source-view.mod-cm6 > .cm-editor > .cm-scroller,
+.popover.hover-popover > .markdown-embed > .markdown-embed-content .markdown-preview-view {
+  padding: 1em 0.5em 1em 1em;
+}
+
+/* Headings inside the preview keep a reasonable top spacing */
+.popover.hover-popover .markdown-preview-sizer:first-child :is(h1, h2, h3, h4, h5, h6):first-child {
+  margin-block-start: 0.3em;
+}

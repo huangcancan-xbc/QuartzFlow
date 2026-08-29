@@ -1,0 +1,28 @@
+body.theme-light {
+  color-scheme: light;
+  --quartzflow-bg-primary: var(--quartzflow-light-bg, #ffffff);
+  --quartzflow-bg-primary-alt: #f8f8f8;
+  --quartzflow-bg-secondary: var(--quartzflow-bg-primary);
+  --quartzflow-bg-secondary-alt: #f2f2f2;
+  --quartzflow-bg-tertiary: #efefef;
+  --quartzflow-text-normal: #000000;
+  --quartzflow-text-muted: #777777;
+  --quartzflow-text-faint: #999999;
+  --quartzflow-text-on-accent: #ffffff;
+  --quartzflow-border: #dfe2e5;
+  --quartzflow-border-subtle: #eeeeee;
+  --quartzflow-highlight-bg: var(--quartzflow-highlight-color, #ebffeb);
+  --quartzflow-code-bg: color-mix(in srgb, #f8f8f8 calc(var(--quartzflow-code-bg-strength, 1) * 100%), #ffffff);
+  --quartzflow-blockquote-accent-color: var(--quartzflow-blockquote-accent, #ca9b52);
+  --quartzflow-blockquote-bg: #efefef;
+  --quartzflow-table-alt-bg: #fafafa;
+  --quartzflow-table-header-bg: #f2f2f2;
+  --quartzflow-table-hover-bg: #ececec;
+  --quartzflow-table-header-hover-bg: #e6e6e6;
+  --quartzflow-menu-bg: #ffffff;
+  --quartzflow-modal-bg: #ffffff;
+  --quartzflow-input-bg: #f8f8f8;
+  --quartzflow-hover-bg: #f2f2f2;
+  --quartzflow-active-bg: #eee8dc;
+  --quartzflow-shadow-color: 0, 0, 0;
+}

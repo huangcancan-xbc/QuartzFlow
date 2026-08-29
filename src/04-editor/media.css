@@ -1,0 +1,57 @@
+.markdown-rendered hr,
+.markdown-source-view .hr.cm-line hr {
+  height: 2px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: var(--divider-color);
+  border: 0 none;
+}
+
+.markdown-rendered mark,
+.markdown-source-view .cm-highlight {
+  color: var(--quartzflow-text-normal);
+  background-color: var(--quartzflow-highlight-bg);
+  border-radius: var(--radius-s);
+  padding: 2px 4px;
+  margin-inline: 2px;
+  font-weight: 500;
+}
+
+.markdown-rendered del,
+.markdown-source-view .cm-strikethrough {
+  padding-inline: 1px 2px;
+}
+
+.markdown-rendered img {
+  border-radius: var(--quartzflow-image-radius, 8px);
+  border: 1px dashed var(--quartzflow-border-subtle);
+}
+
+.markdown-rendered .task-list-item-checkbox,
+.markdown-source-view .task-list-item-checkbox {
+  border-color: var(--quartzflow-border);
+  border-radius: 4px;
+}
+
+.markdown-rendered .task-list-item-checkbox:checked,
+.markdown-source-view .task-list-item-checkbox:checked {
+  background-color: var(--interactive-accent);
+  border-color: var(--interactive-accent);
+}
+
+.metadata-container,
+.metadata-properties,
+.metadata-property {
+  border-color: var(--quartzflow-border-subtle);
+}
+
+.metadata-container {
+  background: color-mix(in srgb, var(--quartzflow-bg-secondary) 55%, transparent);
+  border-radius: var(--radius-m);
+  padding: 8px 10px;
+}
+
+.metadata-property-key,
+.metadata-property-value {
+  color: var(--text-muted);
+}

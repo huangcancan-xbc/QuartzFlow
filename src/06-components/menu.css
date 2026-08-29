@@ -1,0 +1,25 @@
+.suggestion-item,
+.menu-item,
+.prompt-results .suggestion-item {
+  color: var(--text-muted);
+  border-radius: var(--radius-s);
+}
+
+.suggestion-item.is-selected,
+.suggestion-item:hover,
+.menu-item.selected,
+.menu-item:hover,
+.prompt-results .suggestion-item.is-selected {
+  color: var(--text-normal);
+  background-color: var(--background-modifier-hover);
+}
+
+.menu-separator {
+  border-color: var(--divider-color);
+}
+
+.menu-item-icon,
+.menu-item-flair,
+.suggestion-flair {
+  color: var(--text-faint);
+}

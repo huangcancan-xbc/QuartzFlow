@@ -1,0 +1,43 @@
+/* ============================================================
+   QuartzFlow SIDEBAR GRID BACKGROUND
+   ============================================================ */
+
+body.theme-light {
+  --quartzflow-sidebar-grid-opacity: var(--quartzflow-grid-opacity);
+}
+
+body.theme-dark {
+  --quartzflow-sidebar-grid-opacity: var(--quartzflow-grid-opacity);
+}
+
+.mod-left-split,
+.mod-right-split,
+.workspace-ribbon,
+.mod-left-split .workspace-tabs,
+.mod-right-split .workspace-tabs,
+.mod-left-split .workspace-leaf,
+.mod-right-split .workspace-leaf,
+.mod-left-split .workspace-leaf-content,
+.mod-right-split .workspace-leaf-content,
+.mod-left-split .view-content,
+.mod-right-split .view-content,
+.nav-files-container,
+.search-result-container,
+.outline,
+.outline .tree-item,
+.backlink-pane,
+.outgoing-link-pane,
+.tag-container {
+  background-image: linear-gradient(
+      90deg,
+      rgba(var(--quartzflow-grid-color), var(--quartzflow-sidebar-grid-opacity)) 3%,
+      transparent 0
+    ),
+    linear-gradient(
+      1turn,
+      rgba(var(--quartzflow-grid-color), var(--quartzflow-sidebar-grid-opacity)) 3%,
+      transparent 0
+    );
+  background-size: var(--quartzflow-grid-size) var(--quartzflow-grid-size);
+  background-position: 50% 30%;
+}

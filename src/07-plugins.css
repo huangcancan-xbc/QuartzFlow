@@ -1,0 +1,83 @@
+/* ============================================================
+   GENERIC PLUGIN COMPATIBILITY
+   ============================================================ */
+
+.workspace-leaf-content[data-type],
+.workspace-leaf-content .view-content,
+.dataview,
+.block-language-dataview,
+.block-language-dataviewjs,
+.tasks-layout,
+.calendar,
+.kanban-plugin,
+.excalidraw,
+.style-settings-container {
+  color: var(--text-normal);
+}
+
+.workspace-leaf-content[data-type] .view-content,
+.dataview.table-view-table,
+.block-language-dataview table,
+.tasks-layout,
+.calendar,
+.kanban-plugin__lane,
+.kanban-plugin__item,
+.excalidraw .Island,
+.style-settings-container .setting-item {
+  border-color: var(--background-modifier-border);
+}
+
+.dataview.table-view-table,
+.block-language-dataview table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dataview.table-view-table th,
+.dataview.table-view-table td,
+.block-language-dataview th,
+.block-language-dataview td {
+  border: 1px solid var(--table-border-color);
+  padding: 6px 13px;
+}
+
+.dataview.table-view-table th,
+.block-language-dataview th {
+  background-color: var(--table-header-background);
+}
+
+.kanban-plugin__lane,
+.kanban-plugin__item {
+  background-color: var(--background-secondary);
+  border-radius: var(--radius-m);
+}
+
+.kanban-plugin__item:hover {
+  background-color: var(--background-modifier-hover);
+}
+
+.calendar .day,
+.calendar .week-num,
+.calendar .month {
+  color: var(--text-muted);
+}
+
+.calendar .day:hover,
+.calendar .day.today {
+  color: var(--text-normal);
+  background-color: var(--background-modifier-hover);
+  border-radius: var(--radius-s);
+}
+
+.excalidraw .Island,
+.excalidraw .ToolIcon,
+.excalidraw .dropdown-menu {
+  background-color: var(--background-secondary);
+  color: var(--text-normal);
+  border-radius: var(--radius-m);
+}
+
+.style-settings-container .setting-item-name,
+.style-settings-container .setting-item-description {
+  font-family: var(--font-interface);
+}

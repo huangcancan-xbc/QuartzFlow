@@ -1,0 +1,96 @@
+/* ============================================================
+   RICH MARKDOWN COMPONENTS
+   ============================================================ */
+
+.markdown-rendered code,
+.markdown-source-view .cm-inline-code,
+.markdown-source-view .cm-hmd-codeblock,
+.cm-s-obsidian span.cm-inline-code {
+  margin-inline: 2px;
+  padding: 2px 4px;
+  border-radius: var(--radius-s);
+  font-family: var(--font-monospace);
+  font-size: 0.9em;
+  color: var(--code-normal);
+  background-color: var(--code-background);
+}
+
+.markdown-rendered pre,
+.markdown-source-view.mod-cm6 .HyperMD-codeblock,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
+  font-family: var(--font-monospace);
+  font-size: 0.9em;
+  line-height: 2;
+  color: var(--code-normal);
+  background-color: var(--code-background);
+}
+
+.markdown-rendered pre {
+  position: relative;
+  margin: 0.8rem 0;
+  padding: 2.4rem 1rem 1rem;
+  border: 1px solid var(--quartzflow-border-subtle);
+  border-radius: var(--quartzflow-radius-code);
+  box-shadow: 0 0 8px rgba(var(--quartzflow-shadow-color), var(--quartzflow-code-shadow-alpha));
+  overflow: auto;
+}
+
+.markdown-rendered pre::before,
+.markdown-rendered pre::after,
+.markdown-rendered pre code::before {
+  content: "";
+  position: absolute;
+  top: 0.8rem;
+  display: block;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(var(--quartzflow-shadow-color), 0.24);
+}
+
+.markdown-rendered pre::before {
+  left: 1rem;
+  background-color: var(--quartzflow-red);
+}
+
+.markdown-rendered pre::after {
+  left: 2.2rem;
+  background-color: var(--quartzflow-yellow);
+}
+
+.markdown-rendered pre code::before {
+  left: 3.4rem;
+  background-color: var(--quartzflow-green);
+}
+
+body.quartzflow-no-code-dots .markdown-rendered pre {
+  padding-top: 1rem;
+}
+
+body.quartzflow-no-code-dots .markdown-rendered pre::before,
+body.quartzflow-no-code-dots .markdown-rendered pre::after,
+body.quartzflow-no-code-dots .markdown-rendered pre code::before {
+  display: none;
+}
+
+.markdown-rendered pre code {
+  display: block;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+  border-top-left-radius: var(--quartzflow-radius-code);
+  border-top-right-radius: var(--quartzflow-radius-code);
+  padding-top: 0.8rem;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
+  border-bottom-left-radius: var(--quartzflow-radius-code);
+  border-bottom-right-radius: var(--quartzflow-radius-code);
+  padding-bottom: 0.8rem;
+}

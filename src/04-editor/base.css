@@ -1,0 +1,69 @@
+/* ============================================================
+   MARKDOWN CONTENT
+   ============================================================ */
+
+.markdown-reading-view,
+.markdown-source-view,
+.markdown-preview-view,
+.markdown-rendered,
+.cm-editor {
+  font-family: var(--font-text);
+  color: var(--text-normal);
+  -webkit-font-smoothing: antialiased;
+}
+
+.markdown-preview-sizer,
+.markdown-source-view.mod-cm6 .cm-contentContainer,
+.markdown-source-view.mod-cm6 .cm-content {
+  max-width: var(--quartzflow-reading-width);
+}
+
+.markdown-preview-sizer {
+  margin: 0 auto;
+  padding: var(--quartzflow-content-padding-y) var(--quartzflow-content-padding-x) 100px;
+}
+
+.markdown-source-view.mod-cm6 .cm-scroller {
+  font-family: var(--font-text);
+  line-height: var(--line-height-normal);
+}
+
+.markdown-source-view.mod-cm6 .cm-content {
+  margin: 0 auto;
+  padding: var(--quartzflow-content-padding-y) var(--quartzflow-content-padding-x) 100px;
+}
+
+.markdown-rendered p,
+.markdown-rendered ul,
+.markdown-rendered ol,
+.markdown-rendered dl,
+.markdown-rendered table,
+.markdown-rendered blockquote,
+.markdown-source-view.mod-cm6 .cm-line {
+  line-height: var(--line-height-normal);
+}
+
+.markdown-rendered p {
+  word-spacing: 0.05rem;
+}
+
+.markdown-rendered ul,
+.markdown-rendered ol {
+  padding-inline-start: var(--quartzflow-list-indent, 18px);
+}
+
+.markdown-rendered li > ul,
+.markdown-rendered li > ol {
+  margin-block: 0;
+}
+
+.markdown-rendered strong,
+.markdown-source-view .cm-strong {
+  font-weight: 700;
+  padding-inline: 1px;
+}
+
+.markdown-rendered em,
+.markdown-source-view .cm-em {
+  padding-inline: 2px 5px;
+}

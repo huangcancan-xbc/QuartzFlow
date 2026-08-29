@@ -1,0 +1,38 @@
+.markdown-rendered blockquote,
+.markdown-source-view.mod-cm6 .HyperMD-quote {
+  border-left: 3px solid var(--blockquote-border-color);
+  color: var(--text-normal);
+  background-color: var(--blockquote-background-color);
+  border-radius: var(--radius-s);
+}
+
+.markdown-rendered blockquote {
+  margin: 0.8em 0;
+  padding: 10px 15px;
+  font-size: 0.9em;
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-quote {
+  padding-inline-start: 15px;
+}
+
+body.quartzflow-blockquote-minimal .markdown-rendered blockquote,
+body.quartzflow-blockquote-minimal .markdown-source-view.mod-cm6 .HyperMD-quote {
+  background: transparent;
+}
+
+.callout {
+  border-radius: var(--radius-m);
+  border: 1px solid color-mix(in srgb, var(--callout-color) 36%, var(--quartzflow-border));
+  background-color: color-mix(in srgb, rgb(var(--callout-color)) 9%, var(--quartzflow-bg-secondary));
+  box-shadow: 0 2px 10px rgba(var(--quartzflow-shadow-color), calc(var(--quartzflow-shadow-alpha) * 0.65));
+}
+
+.callout-title {
+  font-family: var(--font-interface);
+  font-weight: 700;
+}
+
+.callout-content {
+  color: var(--text-normal);
+}
