@@ -29,8 +29,8 @@ function stripComments(text) {
 }
 
 // 迷你 CSS 扫描器：返回规则帧 {selector, line, decls:[{prop,value,important,line}], isAt}
-// 感知字符串与 url()：引号内及 url(...) 内的 ; : { } 不作为语法符号，
-// 避免 data-URI SVG 把声明切碎（如 content/url('data:image/svg+xml;utf8,<svg...')）。
+// 感知引号字符串：引号内的 ; : { } 不作为语法符号。项目内 url() 均带引号，
+// 故 data-URI SVG 不会把声明切碎（如 content: url('data:image/svg+xml;utf8,<svg...')）。
 function parseCss(text) {
   const rules = [];
   const stack = [];
@@ -52,19 +52,6 @@ function parseCss(text) {
   let k = 0;
   while (k < n) {
     const ch = text[k];
-    if (!buf.trim()) {
-      const rest = text.slice(k);
-      const um = rest.match(/^url\(\s*(["'])/i);
-      if (um) {
-        // 整个 url(...) 作为普通文本吞掉，其内部特殊字符不生效
-        bufLine = line;
-        const m = rest.match(/^url\(\s*(["'])(?:(?!\1).|\n)*?\1\s*\)/i);
-        const tok = m ? m[0] : rest;
-        for (const c of tok) { if (c === "\n") line++; buf += c; }
-        k += tok.length;
-        continue;
-      }
-    }
     if (ch === "\n") { line++; buf += ch; k++; continue; }
     if (ch === '"' || ch === "'") {
       // 字符串：原样收集直到同种引号闭合（或行尾，容错未闭合字符串）
@@ -228,7 +215,7 @@ rows(F.remote, ["file", "line", "url"]);
 h(`5. @import（${F.importRules.length}）—— 必须为 0`);
 rows(F.importRules, ["file", "line"]);
 h(`6. app:// 绝对路径引用（${F.appScheme.length}）`);
-rows(F.appScheme.slice(0, 5), ["file", "line"]);
+rows(F.appScheme.slice(0, 5), ["file", "line", "url"]);
 if (F.appScheme.length > 5) out.push(`…（共 ${F.appScheme.length} 处，其余略）`);
 h(`6b. 相对路径 url 引用（${F.relativeUrls.length}）—— 相对路径在 Obsidian 中会 404（base URL 是 vault 根）`);
 rows(F.relativeUrls, ["file", "line", "url"]);
