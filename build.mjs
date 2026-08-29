@@ -3,7 +3,7 @@
 //   node build.mjs                        build once
 //   node build.mjs --watch                rebuild on any src change
 //   node build.mjs --vault "D:\path"      build + copy theme.css into <vault>/.obsidian/themes/QuartzFlow/
-import { readdirSync, readFileSync, writeFileSync, statSync, watch, copyFileSync, mkdirSync } from "node:fs";
+import { readdirSync, readFileSync, writeFileSync, statSync, watch, copyFileSync, mkdirSync, existsSync } from "node:fs";
 import { join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -28,6 +28,17 @@ function deploy(vault) {
   console.log(`[deploy] copied theme.css -> ${dest}`);
 }
 
+const MIME = { woff2: "font/woff2", woff: "font/woff" };
+function inlineFonts(css) {
+  return css.replace(/url\("\.\/fonts\/([^"]+)"\)/g, (m, name) => {
+    const p = join(ROOT, "QuartzFlow", "fonts", name);
+    if (!existsSync(p)) throw new Error(`字体文件缺失: ${name}`);
+    const mime = MIME[name.split(".").pop().toLowerCase()];
+    if (!mime) throw new Error(`未知字体格式: ${name}`);
+    return `url("data:${mime};base64,${readFileSync(p).toString("base64")}")`;
+  });
+}
+
 function build() {
   const files = collect(SRC);
   const banner = (f) =>
@@ -39,8 +50,9 @@ function build() {
     `   Edit modules under src/ and run: node build.mjs */\n` +
     files.map((f) => banner(f) + readFileSync(f, "utf8").trim()).join("\n") +
     "\n";
-  writeFileSync(OUT, css, "utf8");
-  console.log(`[build] ${files.length} modules -> ${relative(ROOT, OUT)} (${css.length} bytes)`);
+  const final = inlineFonts(css);
+  writeFileSync(OUT, final, "utf8");
+  console.log(`[build] ${files.length} modules -> ${relative(ROOT, OUT)} (${final.length} bytes)`);
 }
 
 const vaultArg = process.argv.find((a) => a.startsWith("--vault="))?.slice(8)

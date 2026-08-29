@@ -54,7 +54,7 @@
 
 /* Replace subfolder collapse arrow with folder icon.
    No !important needed: (0,4,0) outranks core ".tree-item-self .tree-item-icon"
-   (0,2,0); file-icons' top-level HIDDEN rule (0,5,2) still wins where it applies. */
+   (0,2,0); file-icons' top-level HIDDEN rule (0,5,1)–(0,5,2) still wins where it applies. */
 .nav-folder-children .nav-folder > .nav-folder-title .tree-item-icon {
   display: flex;
   color: var(--quartzflow-folder-accent, #95a5a6);

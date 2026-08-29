@@ -177,6 +177,11 @@ npm run dev     # 监听 src/ 变化，自动重新构建
 
 构建按文件名排序拼合，文件夹的数字前缀即加载顺序。新增模块只需放入对应目录，无需修改构建脚本。
 
+字体处理：字体文件存放于 `QuartzFlow/fonts/`，`src/01-fonts.css` 以相对路径 `./fonts/...` 引用。
+构建时 `build.mjs` 会把所有被引用的字体以 base64 data URL 内嵌进 `theme.css`，产物完全自包含，
+不依赖主题安装路径，也不再需要任何 `app://` 绝对路径。新增或删除字体后，只需相应修改
+`01-fonts.css` 并重新构建即可。
+
 ### 9.2 本地调试
 
 1. 将 `QuartzFlow` 文件夹放到测试仓库的 `.obsidian/themes/QuartzFlow/` 目录（或用符号链接指向本仓库的 `QuartzFlow/`）。
@@ -189,8 +194,7 @@ npm run dev     # 监听 src/ 变化，自动重新构建
 
 - `manifest.json` 中的 `name` 与主题文件夹名称一致。
 - `version` 已正确递增。
-- `theme.css` 中无本地绝对路径。
-- 字体等静态资源使用相对路径 `./fonts/` 引用。
+- `theme.css` 中无本地绝对路径，也无 `app://` 或 `url("./fonts/...")` 残留引用（字体已在构建时以 base64 内嵌）。
 - 在浅色/深色模式下测试了阅读视图、实时预览、源码模式、设置面板、命令面板等关键界面。
 
 ## 10. manifest.json 字段说明

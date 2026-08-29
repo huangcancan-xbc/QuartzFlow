@@ -143,8 +143,8 @@
 /* ============================================================
    HIDDEN — folder title leading icon (looks like a small triangle/arrow
    next to the folder name). Keep file icons visible for child files.
-   No !important needed: these selectors are (0,5,2), which already
-   outranks every opponent — the theme's own icon cascade rules top out
+   No !important needed: these selectors are (0,5,1)–(0,5,2), which already
+   outrank every opponent — the theme's own icon cascade rules top out
    at (0,3,1) and core ".tree-item-self .tree-item-icon" is (0,2,0).
    ============================================================ */
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title .nav-folder-title-content::before,
@@ -161,7 +161,7 @@
 
 /* Also hide the native Obsidian collapse triangle on top-level folders
    so the cards look clean like the reference image.
-   No !important needed: (0,5,2) outranks the only display opponent,
+   No !important needed: (0,5,1) outranks the only display opponent,
    core ".collapse-icon { display: flex }" (0,1,0). */
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title .collapse-indicator,
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title > .collapse-indicator {

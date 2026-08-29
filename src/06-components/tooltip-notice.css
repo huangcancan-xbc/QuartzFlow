@@ -53,10 +53,11 @@
 }
 
 /* Preview content fills naturally instead of forcing full height.
-   min-height needs no !important: neither core app.css (1.12.4) nor the
-   theme sets min-height on these popover embed/sizer elements, and the
-   sibling height:auto already wins by specificity (0,4,0) over core
-   height:100% rules (≤0,3,0). */
+   No !important needed on height/min-height: neither core app.css (1.12.4)
+   nor the theme sets any height/min-height rule on these popover
+   embed/sizer elements — core height:100% rules only target
+   .markdown-preview-view/.markdown-embed-content pairs, which never match
+   these elements — so there is simply no opponent to outrank. */
 .popover.hover-popover :is(.markdown-preview-view, .markdown-rendered) .markdown-embed,
 .popover.hover-popover .markdown-preview-sizer:is(.markdown-preview-section, .markdown-rendered) {
   height: auto;
