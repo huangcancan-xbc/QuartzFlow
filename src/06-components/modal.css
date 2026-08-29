@@ -22,20 +22,17 @@
 }
 
 .modal-title,
-.prompt-title,
 .setting-item-name {
   color: var(--text-normal);
   font-weight: 700;
 }
 
-.modal-close-button,
-.prompt-close-button {
+.modal-close-button {
   color: var(--text-muted);
   border-radius: var(--radius-s);
 }
 
-.modal-close-button:hover,
-.prompt-close-button:hover {
+.modal-close-button:hover {
   color: var(--text-normal);
   background-color: var(--background-modifier-hover);
 }

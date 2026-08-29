@@ -38,5 +38,4 @@ body {
   --quartzflow-font-code-stack: var(--quartzflow-font-code, Roboto Mono, Source Code Pro, Consolas, monospace);
   --quartzflow-list-item-height-effective: var(--quartzflow-list-item-height, 28px);
   --quartzflow-tab-height-effective: var(--quartzflow-tab-height, 36px);
-  --quartzflow-panel-spacing-effective: var(--quartzflow-panel-spacing, 8px);
 }

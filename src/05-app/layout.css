@@ -53,11 +53,9 @@ body {
 body.quartzflow-density-compact {
   --quartzflow-list-item-height-effective: 24px;
   --quartzflow-tab-height-effective: 32px;
-  --quartzflow-panel-spacing-effective: 4px;
 }
 
 body.quartzflow-density-comfortable {
   --quartzflow-list-item-height-effective: var(--quartzflow-list-item-height, 28px);
   --quartzflow-tab-height-effective: var(--quartzflow-tab-height, 36px);
-  --quartzflow-panel-spacing-effective: var(--quartzflow-panel-spacing, 8px);
 }

@@ -545,7 +545,6 @@ body {
   --quartzflow-font-code-stack: var(--quartzflow-font-code, Roboto Mono, Source Code Pro, Consolas, monospace);
   --quartzflow-list-item-height-effective: var(--quartzflow-list-item-height, 28px);
   --quartzflow-tab-height-effective: var(--quartzflow-tab-height, 36px);
-  --quartzflow-panel-spacing-effective: var(--quartzflow-panel-spacing, 8px);
 }
 
 /* ============================================================
@@ -643,10 +642,9 @@ body {
   --background-modifier-border-hover: color-mix(in srgb, var(--quartzflow-border) 75%, var(--quartzflow-gold));
   --background-modifier-border-focus: var(--quartzflow-gold);
   --background-modifier-form-field: var(--quartzflow-input-bg);
-  --background-modifier-form-field-highlighted: var(--quartzflow-bg-secondary-alt);
   --background-modifier-hover: var(--quartzflow-hover-bg);
   --background-modifier-active-hover: var(--quartzflow-active-bg);
-  --background-modifier-selected: var(--quartzflow-active-bg);
+  --quartzflow-selected-bg: var(--quartzflow-active-bg);
   --text-normal: var(--quartzflow-text-normal);
   --text-muted: var(--quartzflow-text-muted);
   --text-faint: var(--quartzflow-text-faint);
@@ -1261,13 +1259,11 @@ body {
 body.quartzflow-density-compact {
   --quartzflow-list-item-height-effective: 24px;
   --quartzflow-tab-height-effective: 32px;
-  --quartzflow-panel-spacing-effective: 4px;
 }
 
 body.quartzflow-density-comfortable {
   --quartzflow-list-item-height-effective: var(--quartzflow-list-item-height, 28px);
   --quartzflow-tab-height-effective: var(--quartzflow-tab-height, 36px);
-  --quartzflow-panel-spacing-effective: var(--quartzflow-panel-spacing, 8px);
 }
 
 /* ============================================================
@@ -1279,14 +1275,12 @@ body.quartzflow-density-comfortable {
 }
 
 .side-dock-ribbon-action,
-.workspace-ribbon-collapse-btn,
 .clickable-icon {
   color: var(--text-muted);
   border-radius: var(--radius-s);
 }
 
 .side-dock-ribbon-action:hover,
-.workspace-ribbon-collapse-btn:hover,
 .clickable-icon:hover {
   color: var(--text-normal);
   background-color: var(--background-modifier-hover);
@@ -1332,18 +1326,15 @@ body.quartzflow-density-comfortable {
 .nav-folder-title.is-active,
 .tree-item-self.is-active {
   color: var(--text-normal);
-  background-color: var(--background-modifier-selected);
+  background-color: var(--quartzflow-selected-bg);
   box-shadow: inset 3px 0 0 var(--interactive-accent);
 }
 
-.nav-folder-collapse-indicator,
-.tree-item-icon,
-.search-result-collapse-indicator {
+.tree-item-icon {
   color: var(--text-faint);
 }
 
-.nav-file-tag,
-.nav-folder-tag {
+.nav-file-tag {
   color: var(--text-faint);
   background-color: var(--background-secondary-alt);
   border-radius: 999px;
@@ -1453,7 +1444,6 @@ button,
 .mod-cta,
 .mod-warning,
 .checkbox-container,
-.slider,
 input[type='range'] {
   font-family: var(--font-interface);
 }
@@ -1502,12 +1492,6 @@ input[type='checkbox'] {
   accent-color: var(--interactive-accent);
 }
 
-.color-picker-container,
-.pickr,
-.pickr button {
-  border-radius: var(--radius-s);
-}
-
 /* ============================================================
    src/06-components/menu.css
    ============================================================ */
@@ -1532,7 +1516,6 @@ input[type='checkbox'] {
 }
 
 .menu-item-icon,
-.menu-item-flair,
 .suggestion-flair {
   color: var(--text-faint);
 }
@@ -1564,20 +1547,17 @@ input[type='checkbox'] {
 }
 
 .modal-title,
-.prompt-title,
 .setting-item-name {
   color: var(--text-normal);
   font-weight: 700;
 }
 
-.modal-close-button,
-.prompt-close-button {
+.modal-close-button {
   color: var(--text-muted);
   border-radius: var(--radius-s);
 }
 
-.modal-close-button:hover,
-.prompt-close-button:hover {
+.modal-close-button:hover {
   color: var(--text-normal);
   background-color: var(--background-modifier-hover);
 }
@@ -1612,7 +1592,7 @@ input[type='checkbox'] {
 
 .vertical-tab-nav-item.is-active {
   color: var(--text-normal);
-  background-color: var(--background-modifier-selected);
+  background-color: var(--quartzflow-selected-bg);
   box-shadow: inset 3px 0 0 var(--interactive-accent);
 }
 
@@ -1993,9 +1973,7 @@ input[type='checkbox'] {
 
 /* Also hide the native Obsidian collapse triangle on top-level folders
    so the cards look clean like the reference image. */
-.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title .nav-folder-collapse-indicator,
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title .collapse-indicator,
-.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title > .nav-folder-collapse-indicator,
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title > .collapse-indicator {
   display: none !important;
   width: 0 !important;
@@ -2191,8 +2169,6 @@ body.theme-dark {
    ============================================================ */
 
 /* --- Hide collapse arrow for ALL folders and subfolders --- */
-.nav-folder-collapse-indicator,
-.nav-folder-collapse-indicator svg,
 .tree-item-inner .collapse-icon,
 .collapse-indicator,
 .nav-folder-children .collapse-icon {
@@ -2223,9 +2199,7 @@ body.theme-dark {
 }
 
 /* Ensure all nested folder collapse indicators are hidden */
-.nav-folder-children .nav-folder-collapse-indicator,
-.nav-folder-children .collapse-indicator,
-.tree-item.nav-folder .nav-folder-collapse-indicator {
+.nav-folder-children .collapse-indicator {
   display: none !important;
 }
 

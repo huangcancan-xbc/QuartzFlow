@@ -7,8 +7,6 @@
    ============================================================ */
 
 /* --- Hide collapse arrow for ALL folders and subfolders --- */
-.nav-folder-collapse-indicator,
-.nav-folder-collapse-indicator svg,
 .tree-item-inner .collapse-icon,
 .collapse-indicator,
 .nav-folder-children .collapse-icon {
@@ -39,9 +37,7 @@
 }
 
 /* Ensure all nested folder collapse indicators are hidden */
-.nav-folder-children .nav-folder-collapse-indicator,
-.nav-folder-children .collapse-indicator,
-.tree-item.nav-folder .nav-folder-collapse-indicator {
+.nav-folder-children .collapse-indicator {
   display: none !important;
 }
 

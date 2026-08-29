@@ -31,7 +31,6 @@ button,
 .mod-cta,
 .mod-warning,
 .checkbox-container,
-.slider,
 input[type='range'] {
   font-family: var(--font-interface);
 }
@@ -78,10 +77,4 @@ input[type='range'] {
 
 input[type='checkbox'] {
   accent-color: var(--interactive-accent);
-}
-
-.color-picker-container,
-.pickr,
-.pickr button {
-  border-radius: var(--radius-s);
 }

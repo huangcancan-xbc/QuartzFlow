@@ -17,10 +17,9 @@ body {
   --background-modifier-border-hover: color-mix(in srgb, var(--quartzflow-border) 75%, var(--quartzflow-gold));
   --background-modifier-border-focus: var(--quartzflow-gold);
   --background-modifier-form-field: var(--quartzflow-input-bg);
-  --background-modifier-form-field-highlighted: var(--quartzflow-bg-secondary-alt);
   --background-modifier-hover: var(--quartzflow-hover-bg);
   --background-modifier-active-hover: var(--quartzflow-active-bg);
-  --background-modifier-selected: var(--quartzflow-active-bg);
+  --quartzflow-selected-bg: var(--quartzflow-active-bg);
   --text-normal: var(--quartzflow-text-normal);
   --text-muted: var(--quartzflow-text-muted);
   --text-faint: var(--quartzflow-text-faint);

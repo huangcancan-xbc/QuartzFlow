@@ -25,7 +25,7 @@
 
 .vertical-tab-nav-item.is-active {
   color: var(--text-normal);
-  background-color: var(--background-modifier-selected);
+  background-color: var(--quartzflow-selected-bg);
   box-shadow: inset 3px 0 0 var(--interactive-accent);
 }
 

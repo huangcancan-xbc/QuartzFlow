@@ -160,9 +160,7 @@
 
 /* Also hide the native Obsidian collapse triangle on top-level folders
    so the cards look clean like the reference image. */
-.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title .nav-folder-collapse-indicator,
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title .collapse-indicator,
-.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title > .nav-folder-collapse-indicator,
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title > .collapse-indicator {
   display: none !important;
   width: 0 !important;

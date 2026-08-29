@@ -4,14 +4,12 @@
 }
 
 .side-dock-ribbon-action,
-.workspace-ribbon-collapse-btn,
 .clickable-icon {
   color: var(--text-muted);
   border-radius: var(--radius-s);
 }
 
 .side-dock-ribbon-action:hover,
-.workspace-ribbon-collapse-btn:hover,
 .clickable-icon:hover {
   color: var(--text-normal);
   background-color: var(--background-modifier-hover);
