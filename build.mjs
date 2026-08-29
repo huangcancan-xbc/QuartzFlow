@@ -1,8 +1,9 @@
 // QuartzFlow build: concatenates src/**/*.css (sorted by path) into QuartzFlow/theme.css.
 // Usage:
-//   node build.mjs                        build once
-//   node build.mjs --watch                rebuild on any src change
-//   node build.mjs --vault "D:\path"      build + copy theme.css into <vault>/.obsidian/themes/QuartzFlow/
+//   node build.mjs                                build once
+//   node build.mjs --watch                        rebuild on any src change
+//   node build.mjs --deploy --vault="<vault dir>" build + copy theme.css into <vault dir>/.obsidian/themes/QuartzFlow/
+//   node build.mjs --deploy                       same, reading the vault path from the .vault file at repo root
 import { readdirSync, readFileSync, writeFileSync, statSync, watch, copyFileSync, mkdirSync, existsSync } from "node:fs";
 import { join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -58,8 +59,23 @@ function build() {
   console.log(`[build] ${files.length} modules -> ${relative(ROOT, OUT)} (${Buffer.byteLength(final, "utf8")} bytes)`);
 }
 
-const vaultArg = process.argv.find((a) => a.startsWith("--vault="))?.slice(8)
-  ?? (process.argv.includes("--deploy") ? "D:\\Coding\\博客" : null);
+function resolveVault() {
+  const eq = process.argv.find((a) => a.startsWith("--vault="));
+  if (eq) return eq.slice("--vault=".length);
+  const i = process.argv.indexOf("--vault");
+  if (i !== -1 && process.argv[i + 1]) return process.argv[i + 1];
+  if (!process.argv.includes("--deploy")) return null;
+  const vaultFile = join(ROOT, ".vault");
+  const vault = existsSync(vaultFile) ? readFileSync(vaultFile, "utf8").trim() : "";
+  if (vault) return vault;
+  console.error(
+    "[deploy] 未指定目标库路径。用法：node build.mjs --deploy --vault=\"<库路径>\"，" +
+      "或在仓库根目录创建 .vault 文件（单行写入库路径）。"
+  );
+  process.exit(1);
+}
+
+const vaultArg = resolveVault();
 
 build();
 if (vaultArg) deploy(vaultArg);

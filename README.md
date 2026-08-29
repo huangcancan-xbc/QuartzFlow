@@ -10,14 +10,14 @@ QuartzFlow 是一款受 macOS 风格启发的 Obsidian 主题，基于开源的 
 QuartzFlow/
   theme.css       主题样式文件（Obsidian 必需）
   manifest.json   主题元数据文件（Obsidian 必需）
-  fonts/          内嵌字体文件（推荐保留）
+  fonts/          字体源文件（构建时内嵌，运行时不需要）
 ```
 
 **文件说明：**
 
-- **`theme.css`：主题的核心样式文件。** Obsidian 加载主题时只会读取这一个 CSS 文件，因此所有样式、字体引用、CSS 变量、Style Settings 配置块都集中于此。
+- **`theme.css`：主题的核心样式文件。** Obsidian 加载主题时只会读取这一个 CSS 文件，因此所有样式、内嵌字体数据、CSS 变量、Style Settings 配置块都集中于此。
 - **`manifest.json`：主题的元数据文件。** Obsidian 通过它识别主题名称、版本、作者等信息。其中 `name` 字段必须与主题文件夹名称完全一致（包括大小写），否则主题不会出现在设置列表中。
-- **`fonts/`：存放主题使用的字体文件。** `theme.css` 通过相对路径 `./fonts/` 引用这些资源，确保主题文件夹整体移动后仍能正常加载。
+- **`fonts/`：存放主题使用的字体源文件（语义化命名）。** 构建时由 `build.mjs` 将字体内嵌为 base64 data URL，产物 `theme.css` 完全自包含，不含任何外部字体引用。该目录仅在开发构建时需要保留，主题安装到 Obsidian 后运行时不依赖它。
 
 ## 2. 功能特性
 
@@ -176,6 +176,17 @@ npm run dev     # 监听 src/ 变化，自动重新构建
 ```
 
 构建按文件名排序拼合，文件夹的数字前缀即加载顺序。新增模块只需放入对应目录，无需修改构建脚本。
+
+部署到本地测试库（可选）：
+
+```bash
+npm run deploy        # 构建并把 theme.css 复制到 <库>/.obsidian/themes/QuartzFlow/
+npm run watch-deploy  # 监听 src/，改动即构建并部署
+```
+
+目标库路径通过 `--vault="<库路径>"` 传入（如 `node build.mjs --deploy --vault="<库路径>"`），
+或在仓库根目录创建 `.vault` 文件（单行写入库路径，`npm run deploy` 默认读取它）。
+`.vault` 属于个人本地配置，已被 `.gitignore` 忽略，不入库。
 
 字体处理：字体文件存放于 `QuartzFlow/fonts/`，`src/01-fonts.css` 以相对路径 `./fonts/...` 引用。
 构建时 `build.mjs` 会把所有被引用的字体以 base64 data URL 内嵌进 `theme.css`，产物完全自包含，
