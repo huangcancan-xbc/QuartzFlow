@@ -126,9 +126,12 @@ for (const m of modules) {
     hasSettings: /^settings:/m.test(sm[1]),
   };
 
-  for (const r of m.rules) {
-    if (r.selector.startsWith("@import")) F.importRules.push({ file: m.rel, line: r.line });
+  // @import 是无花括号语句，规则帧扫描器不会成帧：直接对去注释文本按行做语句级检测（换行保留，行号不变）
+  m.text.split("\n").forEach((ln, idx) => {
+    if (/^\s*@import\b/.test(ln)) F.importRules.push({ file: m.rel, line: idx + 1 });
+  });
 
+  for (const r of m.rules) {
     for (const dec of r.decls) {
       if (dec.important) F.important.push({ file: m.rel, line: dec.line, selector: r.selector, prop: dec.prop });
       for (const u of dec.value.matchAll(/url\(\s*["']?([^"')]+)["']?\s*\)/g)) {
@@ -227,6 +230,8 @@ rows(F.importRules, ["file", "line"]);
 h(`6. app:// 绝对路径引用（${F.appScheme.length}）`);
 rows(F.appScheme.slice(0, 5), ["file", "line"]);
 if (F.appScheme.length > 5) out.push(`…（共 ${F.appScheme.length} 处，其余略）`);
+h(`6b. 相对路径 url 引用（${F.relativeUrls.length}）—— 相对路径在 Obsidian 中会 404（base URL 是 vault 根）`);
+rows(F.relativeUrls, ["file", "line", "url"]);
 h(`7. 块内重复声明（前者被覆盖，${F.dupDecls.length}）`);
 rows(F.dupDecls, ["file", "selector", "prop", "deadLine", "overriddenBy"]);
 h(`8. 定义未引用的自定义属性（${F.unusedTokens.length}，需人工确认）`);
