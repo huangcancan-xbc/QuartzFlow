@@ -2108,15 +2108,15 @@ body.theme-dark {
 /* ============================================================
    QUIET OUTLINE — per-level rounded pills
    - Pills: H1 blue / H2 yellow / H3 green / H4 red (heading tokens).
-     Each pill is a 4px-wide inline-block ::before hung on the title
-     text element, so it sits after the collapse arrow and follows
-     the row indent. H5+ gets no pill.
+     Each pill is a 4px-wide rounded block with a soft shadow, placed
+     in the indent gutter LEFT of the collapse arrow (matching the
+     reference design); the arrow sits between pill and title text.
+     H5+ gets no pill.
    - No CSS numbering: documents number their own headings.
    - The plugin's built-in indent guide lines are disabled.
    Quiet Outline renders via naive-ui n-tree; level-N classes live on
    .n-tree-node-content (nodeProps), text in .n-tree-node-content__text;
-   the switcher arrow sits outside the content span, so a ::before on
-   the text never covers it.
+   the switcher arrow sits outside the content span.
    ============================================================ */
 
 /* Kill the plugin's built-in indent guide lines entirely
@@ -2126,15 +2126,16 @@ body.theme-dark {
   content: none;
 }
 
-/* ---- Level pills on the title text ---- */
+/* ---- Level pills on the title text (shadow + roomy gap) ---- */
 .quiet-outline .n-tree-node-content:is(.level-1, .level-2, .level-3, .level-4) .n-tree-node-content__text::before {
   content: "";
   display: inline-block;
   width: 4px;
   height: 0.95em;
   border-radius: 2px;
-  margin-right: 7px;
+  margin-right: 10px;
   vertical-align: -0.15em;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
 }
 
 .quiet-outline .n-tree-node-content.level-1 .n-tree-node-content__text::before { background: var(--quartzflow-heading-1-decoration); }
@@ -2147,28 +2148,57 @@ body.theme-dark {
    Depth is matched structurally (level-N item = inside exactly N-1
    .tree-item-children). Prefix chains use descendant combinators so
    virtual-scroll anonymous wrappers cannot break them; the :not()
-   chains keep levels mutually exclusive. The pill hangs on
-   .tree-item-inner (title text) so it follows the row indent and
-   never collides with the absolutely-positioned collapse arrow.
+   chains keep levels mutually exclusive.
+
+   Geometry (matches the reference design):
+   - the pill is absolutely positioned in the 20px gutter at the row's
+     left (same anchor trick as the core collapse icon), so it follows
+     the indent and sits LEFT of the arrow;
+   - the collapse arrow is nudged 8px right, between pill and text;
+   - the title text gets 6px leading padding so the arrow never
+     touches it, and rows with/without an arrow stay aligned.
    ============================================================ */
 
-.workspace-leaf-content[data-type="outline"] .tree-item:not(.tree-item-children .tree-item) > .tree-item-self .tree-item-inner::before,
-.workspace-leaf-content[data-type="outline"] .tree-item-children .tree-item:not(.tree-item-children .tree-item-children .tree-item) > .tree-item-self .tree-item-inner::before,
-.workspace-leaf-content[data-type="outline"] .tree-item-children .tree-item-children .tree-item:not(.tree-item-children .tree-item-children .tree-item-children .tree-item) > .tree-item-self .tree-item-inner::before,
-.workspace-leaf-content[data-type="outline"] .tree-item-children .tree-item-children .tree-item-children .tree-item:not(.tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item) > .tree-item-self .tree-item-inner::before {
-  content: "";
-  display: inline-block;
-  width: 4px;
-  height: 0.95em;
-  border-radius: 2px;
-  margin-right: 7px;
-  vertical-align: -0.15em;
+.workspace-leaf-content[data-type="outline"] .tree-item-self .tree-item-icon {
+  margin-inline-start: calc(-1 * var(--size-4-5) + 8px);
 }
 
-.workspace-leaf-content[data-type="outline"] .tree-item:not(.tree-item-children .tree-item) > .tree-item-self .tree-item-inner::before { background: var(--quartzflow-heading-1-decoration); }
-.workspace-leaf-content[data-type="outline"] .tree-item-children .tree-item:not(.tree-item-children .tree-item-children .tree-item) > .tree-item-self .tree-item-inner::before { background: var(--quartzflow-heading-2-decoration); }
-.workspace-leaf-content[data-type="outline"] .tree-item-children .tree-item-children .tree-item:not(.tree-item-children .tree-item-children .tree-item-children .tree-item) > .tree-item-self .tree-item-inner::before { background: var(--quartzflow-heading-3-decoration); }
-.workspace-leaf-content[data-type="outline"] .tree-item-children .tree-item-children .tree-item-children .tree-item:not(.tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item) > .tree-item-self .tree-item-inner::before { background: var(--quartzflow-heading-4-decoration); }
+.workspace-leaf-content[data-type="outline"] .tree-item-self .tree-item-inner {
+  padding-inline-start: 6px;
+}
+
+.workspace-leaf-content[data-type="outline"] .tree-item:not(.tree-item-children .tree-item) > .tree-item-self::before,
+.workspace-leaf-content[data-type="outline"] .tree-item-children .tree-item:not(.tree-item-children .tree-item-children .tree-item) > .tree-item-self::before,
+.workspace-leaf-content[data-type="outline"] .tree-item-children .tree-item-children .tree-item:not(.tree-item-children .tree-item-children .tree-item-children .tree-item) > .tree-item-self::before,
+.workspace-leaf-content[data-type="outline"] .tree-item-children .tree-item-children .tree-item-children .tree-item:not(.tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item) > .tree-item-self::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-inline-start: calc(-1 * var(--size-4-5));
+  width: 4px;
+  height: 1em;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+.workspace-leaf-content[data-type="outline"] .tree-item:not(.tree-item-children .tree-item) > .tree-item-self::before { background: var(--quartzflow-heading-1-decoration); }
+.workspace-leaf-content[data-type="outline"] .tree-item-children .tree-item:not(.tree-item-children .tree-item-children .tree-item) > .tree-item-self::before { background: var(--quartzflow-heading-2-decoration); }
+.workspace-leaf-content[data-type="outline"] .tree-item-children .tree-item-children .tree-item:not(.tree-item-children .tree-item-children .tree-item-children .tree-item) > .tree-item-self::before { background: var(--quartzflow-heading-3-decoration); }
+.workspace-leaf-content[data-type="outline"] .tree-item-children .tree-item-children .tree-item-children .tree-item:not(.tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item) > .tree-item-self::before { background: var(--quartzflow-heading-4-decoration); }
+
+/* ---- Row state: default regular weight, active bold + neutral bg
+   (the sidebar gold active treatment is scoped out of the outline) ---- */
+.workspace-leaf-content[data-type="outline"] .tree-item-self {
+  font-weight: 400;
+}
+
+.workspace-leaf-content[data-type="outline"] .tree-item-self.is-active {
+  font-weight: 600;
+  color: var(--nav-item-color-active);
+  background-color: var(--nav-item-background-active);
+  box-shadow: none;
+}
 
 /* ============================================================
    src/08-features/rainbow-folders.css
