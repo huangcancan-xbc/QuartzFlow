@@ -2130,7 +2130,7 @@ body.theme-dark {
 .quiet-outline .n-tree-node-content:is(.level-1, .level-2, .level-3, .level-4) .n-tree-node-content__text::before {
   content: "";
   display: inline-block;
-  width: 4px;
+  width: 5px;
   height: 0.95em;
   border-radius: 2px;
   margin-right: 10px;
@@ -2159,12 +2159,19 @@ body.theme-dark {
      touches it, and rows with/without an arrow stay aligned.
    ============================================================ */
 
+.workspace-leaf-content[data-type="outline"] .tree-item-children {
+  border-inline-start: none;
+  padding-inline-start: calc(var(--nav-item-children-padding-start, var(--nav-item-children-padding-left)) + 6px);
+  margin-inline-start: calc(var(--nav-item-children-margin-start, var(--nav-item-children-margin-left)) + 6px);
+}
+
 .workspace-leaf-content[data-type="outline"] .tree-item-self .tree-item-icon {
   margin-inline-start: calc(-1 * var(--size-4-5) + 8px);
+  color: var(--text-muted);
 }
 
 .workspace-leaf-content[data-type="outline"] .tree-item-self .tree-item-inner {
-  padding-inline-start: 6px;
+  padding-inline-start: 8px;
 }
 
 .workspace-leaf-content[data-type="outline"] .tree-item:not(.tree-item-children .tree-item) > .tree-item-self::before,
@@ -2176,7 +2183,7 @@ body.theme-dark {
   top: 50%;
   transform: translateY(-50%);
   margin-inline-start: calc(-1 * var(--size-4-5));
-  width: 4px;
+  width: 5px;
   height: 1em;
   border-radius: 2px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
