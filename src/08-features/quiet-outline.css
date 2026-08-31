@@ -87,14 +87,20 @@
 .workspace-leaf-content[data-type="outline"] .tree-item-children .tree-item-children .tree-item:not(.tree-item-children .tree-item-children .tree-item-children .tree-item) > .tree-item-self::before { background: var(--quartzflow-heading-3-decoration); }
 .workspace-leaf-content[data-type="outline"] .tree-item-children .tree-item-children .tree-item-children .tree-item:not(.tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item) > .tree-item-self::before { background: var(--quartzflow-heading-4-decoration); }
 
-/* ---- Row state: default regular weight, active bold + neutral bg
-   (the sidebar gold active treatment is scoped out of the outline) ---- */
-.workspace-leaf-content[data-type="outline"] .tree-item-self {
-  font-weight: 400;
+/* ---- Row state: drive weights through the official --nav-item-weight*
+   tokens instead of fighting the core hover/active rules on specificity.
+   Core state machine: default = --nav-item-weight, hover (incl. hovering
+   an active row) = --nav-item-weight-hover, active = --nav-item-weight-active.
+   Scoping all three to the outline panel keeps the selected row bold for
+   the whole time it is active — hover can no longer downgrade it — while
+   color/background keep coming from the core's is-active rules. ---- */
+.workspace-leaf-content[data-type="outline"] {
+  --nav-item-weight: 400;
+  --nav-item-weight-hover: 400;
+  --nav-item-weight-active: 600;
 }
 
 .workspace-leaf-content[data-type="outline"] .tree-item-self.is-active {
-  font-weight: 600;
   color: var(--nav-item-color-active);
   background-color: var(--nav-item-background-active);
   box-shadow: none;
