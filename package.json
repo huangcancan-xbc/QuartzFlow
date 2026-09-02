@@ -5,6 +5,8 @@
   "description": "A macOS-inspired Obsidian theme with polished light and high-contrast dark modes.",
   "scripts": {
     "build": "node build.mjs",
+    "audit": "node scripts/audit.mjs",
+    "check": "npm run build && npm run audit",
     "dev": "node build.mjs --watch",
     "deploy": "node build.mjs --deploy",
     "watch-deploy": "node build.mjs --deploy --watch"

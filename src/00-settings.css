@@ -71,12 +71,12 @@ settings:
     title: Text font
     title.zh: 正文字体
     type: variable-text
-    default: 'Gilroy, Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif'
+    default: 'Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif'
   - id: quartzflow-font-interface
     title: Interface font
     title.zh: 界面字体
     type: variable-text
-    default: 'Gilroy, Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif'
+    default: 'Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif'
   - id: quartzflow-font-code
     title: Code font
     title.zh: 代码字体

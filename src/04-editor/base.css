@@ -47,11 +47,6 @@
   word-spacing: 0.05rem;
 }
 
-.markdown-rendered ul,
-.markdown-rendered ol {
-  padding-inline-start: var(--quartzflow-list-indent, 18px);
-}
-
 .markdown-rendered li > ul,
 .markdown-rendered li > ol {
   margin-block: 0;

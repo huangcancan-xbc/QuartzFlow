@@ -77,12 +77,12 @@ settings:
     title: Text font
     title.zh: 正文字体
     type: variable-text
-    default: 'Gilroy, Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif'
+    default: 'Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif'
   - id: quartzflow-font-interface
     title: Interface font
     title.zh: 界面字体
     type: variable-text
-    default: 'Gilroy, Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif'
+    default: 'Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif'
   - id: quartzflow-font-code
     title: Code font
     title.zh: 代码字体
@@ -202,6 +202,8 @@ settings:
    Note: the inliner matches font url() references anywhere in this
    file, comments included — so never spell one out inside a comment;
    describe it in words instead.
+   Roboto Mono and Source Sans Pro are distributed under the SIL
+   Open Font License 1.1. See QuartzFlow/fonts/OFL-1.1.txt.
    ============================================================ */
 /* cyrillic-ext */
 @font-face {
@@ -499,14 +501,6 @@ settings:
     U+FEFF, U+FFFD;
 }
 
-/* full */
-@font-face {
-  font-family: "Gilroy";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Gilroy"), url("data:font/woff2;base64,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") format("woff2");
-}
-
 /* ============================================================
    src/02-tokens/base.css
    ============================================================ */
@@ -548,9 +542,8 @@ body {
   --quartzflow-reading-width: var(--quartzflow-readable-width, 1100px);
   --quartzflow-content-padding-x: 30px;
   --quartzflow-content-padding-y: 20px;
-  --quartzflow-list-indent: 18px;
-  --quartzflow-font-text-stack: var(--quartzflow-font-text, Gilroy, Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif);
-  --quartzflow-font-interface-stack: var(--quartzflow-font-interface, Gilroy, Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif);
+  --quartzflow-font-text-stack: var(--quartzflow-font-text, Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif);
+  --quartzflow-font-interface-stack: var(--quartzflow-font-interface, Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif);
   --quartzflow-font-code-stack: var(--quartzflow-font-code, Roboto Mono, Source Code Pro, Consolas, monospace);
   --quartzflow-list-item-height-effective: var(--quartzflow-list-item-height, 28px);
   --quartzflow-tab-height-effective: var(--quartzflow-tab-height, 36px);
@@ -643,6 +636,9 @@ body {
   --font-text-size: var(--quartzflow-text-size, 16px);
   --line-height-normal: var(--quartzflow-line-height, 1.6);
   --line-height-tight: 1.35;
+  --list-indent: 1.5em;
+  --list-indent-editing: 0.5em;
+  --list-indent-source: 0;
   --background-primary: var(--quartzflow-bg-primary);
   --background-primary-alt: var(--quartzflow-bg-primary-alt);
   --background-secondary: var(--quartzflow-bg-secondary);
@@ -757,11 +753,6 @@ body {
 
 .markdown-rendered p {
   word-spacing: 0.05rem;
-}
-
-.markdown-rendered ul,
-.markdown-rendered ol {
-  padding-inline-start: var(--quartzflow-list-indent, 18px);
 }
 
 .markdown-rendered li > ul,
@@ -1163,15 +1154,14 @@ body.quartzflow-no-heading-underline .markdown-source-view .cm-header-4 {
 .markdown-rendered table {
   width: 100%;
   margin: 0.8em 0;
-  border-collapse: separate;
+  padding: 0;
+  border-collapse: collapse;
   border-spacing: 0;
   word-break: initial;
-  border: 1px solid var(--table-border-color);
-  border-radius: var(--quartzflow-radius-small);
-  overflow: hidden;
 }
 
 .markdown-rendered table tr {
+  border-top: 1px solid var(--table-border-color);
   transition: background-color 0.15s ease;
 }
 
@@ -1179,34 +1169,40 @@ body.quartzflow-no-heading-underline .markdown-source-view .cm-header-4 {
   background-color: color-mix(in srgb, var(--table-row-alt-background) calc(var(--quartzflow-table-style-strength, 1) * 100%), transparent);
 }
 
-.markdown-rendered table tbody tr:hover {
+.markdown-rendered table tbody tr:is(:hover, :focus-within) {
   background-color: var(--quartzflow-table-hover-bg);
 }
 
 .markdown-rendered table th,
 .markdown-rendered table td {
-  border-bottom: 1px solid var(--table-border-color);
-  text-align: left;
+  margin: 0;
   padding: 6px 13px;
-}
-
-.markdown-rendered table tbody tr:last-child th,
-.markdown-rendered table tbody tr:last-child td {
-  border-bottom: none;
+  border: 1px solid var(--table-border-color);
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
 }
 
 .markdown-rendered table th {
   font-weight: 700;
   background-color: color-mix(in srgb, var(--table-header-background) calc(var(--quartzflow-table-style-strength, 1) * 100%), transparent);
-  border-bottom: 2px solid var(--quartzflow-border);
-  position: sticky;
-  top: 0;
-  z-index: 1;
 }
 
-/* Header: whole-row hover (override any per-cell header hover) */
 .markdown-rendered table thead tr:hover th {
   background-color: var(--quartzflow-table-header-hover-bg);
+}
+
+.markdown-rendered table caption {
+  margin-bottom: 0.5em;
+  color: var(--text-muted);
+  font-size: 0.9em;
+  text-align: start;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .markdown-rendered table tr {
+    transition: none;
+  }
 }
 
 /* ============================================================
@@ -1663,40 +1659,44 @@ input[type='checkbox'] {
   border-color: var(--quartzflow-border);
 }
 
-@keyframes quartzflow-tooltip-in {
-  from {
-    opacity: 0;
-    transform: translateY(4px) scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+@keyframes quartzflow-floating-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.tooltip,
+.popover.hover-popover {
+  --quartzflow-rainbow-edge: linear-gradient(115deg,
+    var(--quartzflow-red),
+    var(--quartzflow-yellow),
+    var(--quartzflow-green),
+    var(--quartzflow-blue),
+    #8e44ad);
 }
 
 .tooltip {
   color: var(--text-normal);
-  background-color: var(--quartzflow-menu-bg);
-  border: 1px solid var(--background-modifier-border);
-  border-left: 3px solid var(--quartzflow-gold);
+  background:
+    linear-gradient(color-mix(in srgb, var(--quartzflow-menu-bg) 97%, transparent), color-mix(in srgb, var(--quartzflow-menu-bg) 97%, transparent)) padding-box,
+    var(--quartzflow-rainbow-edge) border-box;
+  border: 1px solid transparent;
   border-radius: var(--quartzflow-radius-base);
-  padding: 5px 10px;
-  font-size: 11px;
-  font-weight: 500;
-  line-height: 1.7;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.01em;
-  box-shadow: 0 8px 24px rgba(var(--quartzflow-shadow-color), var(--quartzflow-modal-shadow-alpha));
-  max-width: 240px;
+  padding: 7px 10px;
+  max-width: min(320px, calc(100vw - 24px));
+  overflow-wrap: anywhere;
   white-space: pre-wrap;
-  word-wrap: break-word;
-  animation: quartzflow-tooltip-in 0.15s ease-out;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+  box-shadow:
+    0 10px 30px rgba(var(--quartzflow-shadow-color), var(--quartzflow-modal-shadow-alpha)),
+    -6px 0 18px color-mix(in srgb, var(--quartzflow-red) 8%, transparent),
+    6px 0 18px color-mix(in srgb, var(--quartzflow-blue) 8%, transparent);
+  animation: quartzflow-floating-in 0.12s ease-out;
 }
-
-/* ============================================================
-   HOVER PREVIEW POPOVER (page preview on file/link hover,
-   Blue Topaz style: rounded clipping + accent glow)
-   ============================================================ */
 
 .popover.hover-popover,
 .popover.hover-popover .markdown-embed {
@@ -1705,19 +1705,28 @@ input[type='checkbox'] {
 
 .popover.hover-popover {
   overflow: hidden;
-  border: 1px solid var(--background-modifier-border);
+  background:
+    linear-gradient(var(--modal-background), var(--modal-background)) padding-box,
+    var(--quartzflow-rainbow-edge) border-box;
+  border: 1px solid transparent;
   border-radius: var(--radius-m);
   box-shadow:
     0 16px 48px rgba(var(--quartzflow-shadow-color), var(--quartzflow-modal-shadow-alpha)),
-    0 0 6px 4px color-mix(in srgb, var(--quartzflow-gold) 12%, transparent);
+    -8px 0 24px color-mix(in srgb, var(--quartzflow-red) 8%, transparent),
+    8px 0 24px color-mix(in srgb, var(--quartzflow-blue) 8%, transparent);
+  animation: quartzflow-floating-in 0.12s ease-out;
 }
 
-/* Preview content fills naturally instead of forcing full height.
-   No !important needed on height/min-height: neither core app.css (1.12.4)
-   nor the theme sets any height/min-height rule on these popover
-   embed/sizer elements — core height:100% rules only target
-   .markdown-preview-view/.markdown-embed-content pairs, which never match
-   these elements — so there is simply no opponent to outrank. */
+.popover.hover-popover::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0 0 auto;
+  height: 3px;
+  background: var(--quartzflow-rainbow-edge);
+  pointer-events: none;
+}
+
 .popover.hover-popover :is(.markdown-preview-view, .markdown-rendered) .markdown-embed,
 .popover.hover-popover .markdown-preview-sizer:is(.markdown-preview-section, .markdown-rendered) {
   height: auto;
@@ -1729,9 +1738,15 @@ input[type='checkbox'] {
   padding: 1em 0.5em 1em 1em;
 }
 
-/* Headings inside the preview keep a reasonable top spacing */
 .popover.hover-popover .markdown-preview-sizer:first-child :is(h1, h2, h3, h4, h5, h6):first-child {
   margin-block-start: 0.3em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tooltip,
+  .popover.hover-popover {
+    animation: none;
+  }
 }
 
 /* ============================================================
@@ -1977,33 +1992,6 @@ input[type='checkbox'] {
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title .nav-folder-title-content::after,
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title .tree-item-icon {
   display: none;
-  width: 0;
-  height: 0;
-  margin: 0;
-  padding: 0;
-  visibility: hidden;
-  content: none;
-}
-
-/* Also hide the native Obsidian collapse triangle on top-level folders
-   so the cards look clean like the reference image.
-   No !important needed: (0,5,1) outranks the only display opponent,
-   core ".collapse-icon { display: flex }" (0,1,0). */
-.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title .collapse-indicator,
-.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title > .collapse-indicator {
-  display: none;
-  width: 0;
-  height: 0;
-  margin: 0;
-  padding: 0;
-  visibility: hidden;
-  content: none;
-}
-
-/* Slim down the leading padding now that the icon is gone, so the title
-   sits closer to the colored left border like the reference. */
-.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title {
-  padding: 7px 10px 7px 10px;
 }
 
 /* ============================================================
@@ -2048,11 +2036,16 @@ input[type='checkbox'] {
   transition: transform 0.3s ease; /* Smooth return when hover ends */
 }
 
-/* Apply animation on hover - remove 'forwards' so it resets after hover */
+/* Delay the marquee so brief pointer passes stay still. */
 .nav-file-title:hover .nav-file-title-content:not(.is-being-renamed),
 .nav-folder-title:hover .nav-folder-title-content:not(.is-being-renamed) {
-  animation: filemove 1.5s 1 normal linear;
-  /* No 'forwards' = animation resets when hover ends */
+  animation: filemove 1.5s 0.35s 1 normal ease-in-out;
+}
+
+/* Keep labels stable while choosing a drag target. */
+body.is-grabbing .nav-files-container :is(.nav-file-title-content, .nav-folder-title-content) {
+  animation: none;
+  transform: none;
 }
 
 /* Ensure the animation has space to work */
@@ -2062,6 +2055,18 @@ input[type='checkbox'] {
 
 .nav-folder-children .tree-item-self {
   overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-file-title-content,
+  .nav-folder-title-content {
+    transition: none;
+  }
+
+  .nav-file-title:hover .nav-file-title-content:not(.is-being-renamed),
+  .nav-folder-title:hover .nav-folder-title-content:not(.is-being-renamed) {
+    animation: none;
+  }
 }
 
 /* ============================================================
@@ -2217,77 +2222,17 @@ body.theme-dark {
    src/08-features/rainbow-folders.css
    ============================================================ */
 /* ============================================================
-   QuartzFlow RAINBOW FOLDER CARDS
-   Each top-level folder = independent rounded card with a
-   colored left border and matching title color.
-   10-color rainbow cycle: red → orange → yellow → green →
-   cyan → blue → indigo → purple → gray → slate
+   RAINBOW FOLDER LAYOUT
+   Visual structure only. Interaction states live in
+   sidebar-interactions.css.
    ============================================================ */
 
-/* --- Hide collapse arrow for ALL folders and subfolders ---
-   keep !important on display only: the bare .collapse-indicator part (0,1,0)
-   must beat core ".markdown-preview-view .collapse-indicator" (0,2,0,
-   display:inline-flex) in EVERY context (nav/preview/editor) at once;
-   matching that without !important would require enumerating all core
-   contexts and is not safe.
-   The other declarations drop !important: with display:none they have no
-   visual effect of their own (kept as non-important fallbacks). */
 .tree-item-inner .collapse-icon,
 .collapse-indicator,
 .nav-folder-children .collapse-icon {
-  display: none !important; /* keep !important: core .markdown-preview-view .collapse-indicator (0,2,0) display:inline-flex outranks the bare selector */
-  visibility: hidden;
-  width: 0;
-  height: 0;
-  margin: 0;
-  padding: 0;
-  opacity: 0;
+  display: none !important;
 }
 
-/* Extra rules to ensure subfolder arrows are hidden.
-   No !important needed: these selectors (0,3,0)-(0,4,0) already outrank the
-   only core opponent ".collapse-icon { display: flex }" (0,1,0), and the
-   theme always loads after core app.css. */
-.nav-folder-children .tree-item-self .tree-item-inner .collapse-icon,
-.nav-folder-children .nav-folder .collapse-icon,
-.nav-folder-children .nav-folder-title .collapse-icon {
-  display: none;
-}
-
-/* Hide default folder icon.
-   No !important needed: (0,2,1) outranks file-icons' base ::before icon rule
-   (0,2,1) which loads earlier, and core styles no nav-folder-title-content
-   ::before at all. The nested-show rule below wins over this one by
-   specificity; top-level titles inside the file explorer stay hidden via
-   file-icons' higher-specificity HIDDEN rule. */
-.nav-folder-title .nav-folder-title-content::before {
-  display: none;
-}
-
-/* But show icon for nested folders.
-   No !important needed: (0,3,1) outranks the hide rule above (0,2,1). */
-.nav-folder-children .nav-folder-title .nav-folder-title-content::before {
-  display: inline-block;
-}
-
-/* Replace subfolder collapse arrow with folder icon.
-   No !important needed: (0,4,0) outranks core ".tree-item-self .tree-item-icon"
-   (0,2,0); file-icons' top-level HIDDEN rule (0,5,1)–(0,5,2) still wins where it applies. */
-.nav-folder-children .nav-folder > .nav-folder-title .tree-item-icon {
-  display: flex;
-  color: var(--quartzflow-folder-accent, #95a5a6);
-  opacity: 0.8;
-}
-
-/* Force show folder icon for nested folders.
-   No !important needed: core sets no display on .tree-item-icon svg. */
-.nav-folder-children .nav-folder .tree-item-icon svg {
-  display: block;
-}
-
-/* Add folder icon using ::before pseudo-element for nested folders.
-   No !important needed on display: this rule (0,2,1) loads after and outranks
-   the hide rule above (0,2,1); the (0,3,1) show-nested rule also agrees. */
 .nav-folder-children .nav-folder-title-content::before {
   content: "";
   display: inline-block;
@@ -2304,7 +2249,6 @@ body.theme-dark {
   opacity: 0.7;
 }
 
-/* Unified font family for sidebar */
 .nav-files-container,
 .nav-folder-title,
 .nav-file-title,
@@ -2313,21 +2257,23 @@ body.theme-dark {
   font-weight: 600;
 }
 
-/* Adjust font size for better readability */
-.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title {
-  font-size: 13px;
+/* Override Obsidian's depth-based row width so hit areas reach the right edge. */
+.nav-files-container .nav-folder-children > .tree-item,
+.nav-files-container :where(.nav-file-title, .nav-folder-title) {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  margin-inline-end: 0 !important;
 }
 
-.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-file-title,
-.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-folder-title {
-  font-size: 12px;
+.nav-files-container :where(.nav-file-title, .nav-folder-title) {
+  flex: 1 1 100% !important;
+  align-self: stretch !important;
 }
 
-/* --- 8-color rainbow palette (slightly softer tones) --- */
-/* Obsidian inserts a leading placeholder before the first nav-folder inside the
-   virtualized scroller, so the first visible folder lands on index 2.
-   nth-child(8n+k) formulas repeat infinitely — any number of top-level
-   folders is covered. Cycles: red → orange → yellow → green → teal → blue → purple → slate. */
+/* Obsidian's virtualized list adds a leading placeholder, so the first
+   visible top-level folder is nth-child(2). */
 .nav-files-container > div > .tree-item.nav-folder:nth-child(8n+2) { --quartzflow-folder-accent: #e74c3c; }
 .nav-files-container > div > .tree-item.nav-folder:nth-child(8n+3) { --quartzflow-folder-accent: #e67e22; }
 .nav-files-container > div > .tree-item.nav-folder:nth-child(8n+4) { --quartzflow-folder-accent: #f1c40f; }
@@ -2337,7 +2283,6 @@ body.theme-dark {
 .nav-files-container > div > .tree-item.nav-folder:nth-child(8n+8) { --quartzflow-folder-accent: #8e44ad; }
 .nav-files-container > div > .tree-item.nav-folder:nth-child(8n+9) { --quartzflow-folder-accent: #607d8b; }
 
-/* --- Card wrapper (the .tree-item.nav-folder itself) --- */
 .nav-files-container > div > .tree-item.nav-folder {
   background: #ffffff;
   border: 1px solid #e5e7eb;
@@ -2346,342 +2291,91 @@ body.theme-dark {
   margin: 7px 4px;
   overflow: hidden;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.nav-files-container > div > .tree-item.nav-folder:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-/* --- Folder title row --- */
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title {
-  font-size: 13px;
-  font-weight: 600;
   color: var(--quartzflow-folder-accent, #5d6d7e);
   background: transparent;
-  padding: 7px 10px 7px 12px;
-  margin: 0;
-  border-radius: 0;
   border: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 7px 10px 7px 12px;
+  font-size: 13px;
+  font-weight: 600;
   line-height: 1.4;
-}
-
-.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title:hover {
-  background: color-mix(in srgb, var(--quartzflow-folder-accent) 8%, transparent);
 }
 
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title.is-active {
   background: color-mix(in srgb, var(--quartzflow-folder-accent) 8%, transparent);
 }
 
-/* --- Children area (inside the card) --- */
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children {
-  padding: 2px 6px 6px 20px;
-  margin: 0;
-  border: none;
   background: transparent;
+  border: none;
+  margin: 0;
+  padding: 2px 6px 6px 20px;
 }
 
-/* --- Child file titles --- */
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-file-title {
-  color: #4a4a4a;
+  color: var(--text-muted);
+  border-radius: 4px;
+  padding: 4px 8px;
   font-size: 12px;
   font-weight: 500;
-  padding: 4px 8px;
-  border-radius: 4px;
   line-height: 1.4;
 }
 
-.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-file-title:hover {
-  background: color-mix(in srgb, var(--quartzflow-folder-accent) 10%, transparent);
-  color: #222;
-}
-
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-file-title.is-active {
+  color: var(--text-normal);
   background: color-mix(in srgb, var(--quartzflow-folder-accent) 12%, transparent);
-  color: #222;
   box-shadow: none;
 }
 
-/* Gradient bottom marker on the active file (Blue Topaz style) */
 .nav-files-container .nav-file-title.is-active::before {
   content: "";
   position: absolute;
   bottom: -1px;
   left: 0;
-  height: 2px;
   width: 100%;
+  height: 2px;
   background-image: linear-gradient(to right, var(--quartzflow-folder-accent, var(--quartzflow-gold)), transparent 90%);
   pointer-events: none;
 }
 
-/* --- Child sub-folder titles --- */
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-folder-title {
-  color: color-mix(in srgb, var(--quartzflow-folder-accent) 70%, #444);
+  color: color-mix(in srgb, var(--quartzflow-folder-accent) 70%, var(--text-normal));
+  border-radius: 4px;
+  padding: 4px 8px;
   font-size: 12px;
   font-weight: 600;
-  padding: 4px 8px;
-  border-radius: 4px;
 }
 
-.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-folder-title:hover {
-  background: color-mix(in srgb, var(--quartzflow-folder-accent) 10%, transparent);
-  font-weight: 700;
-}
-
-/* --- File icon tint (柔和的粉绿色/浅青，跟图片一致) --- */
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .tree-item-icon {
   color: #a5d6a7;
   opacity: 0.85;
 }
 
-/* --- Nested sub-folders: no extra card styling, just indent --- */
 .nav-files-container > div > .tree-item.nav-folder .nav-folder .nav-folder-title {
   background: transparent;
   border: none;
   border-radius: 4px;
 }
 
-/* --- Dark theme overrides --- */
 body.theme-dark .nav-files-container > div > .tree-item.nav-folder {
   background: color-mix(in srgb, var(--quartzflow-folder-accent, #95a5a6) 12%, var(--quartzflow-bg-tertiary));
   border-color: rgba(255, 255, 255, 0.08);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-body.theme-dark .nav-files-container > div > .tree-item.nav-folder:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
-}
-
-body.theme-dark .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title:hover {
-  background: color-mix(in srgb, var(--quartzflow-folder-accent) 12%, transparent);
-}
-
 body.theme-dark .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title.is-active {
   background: color-mix(in srgb, var(--quartzflow-folder-accent) 14%, transparent);
-}
-
-body.theme-dark .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-file-title {
-  color: #c8c8c8;
-}
-
-body.theme-dark .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-file-title:hover {
-  background: color-mix(in srgb, var(--quartzflow-folder-accent) 14%, transparent);
-  color: #eee;
-}
-
-body.theme-dark .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-file-title.is-active {
-  color: #eee;
 }
 
 body.theme-dark .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .tree-item-icon {
   color: #6fc985;
   opacity: 0.8;
 }
-/* Note: child files and nested folders inherit --quartzflow-folder-accent
-   automatically (CSS custom properties inherit), so no per-level rules needed. */
 
-/* ============================================================
-   HOVER INTERACTIONS (Blue Topaz style)
-   ============================================================ */
-
-/* Smooth background transitions on all nav items */
-.nav-files-container .nav-file-title,
-.nav-files-container .nav-folder-title {
-  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.2s ease, outline-color 0.15s ease;
-}
-
-/* Loose top-level files (not inside any folder card): gold-tinted hover */
-.nav-files-container > div > .tree-item.nav-file .nav-file-title:hover {
-  background: color-mix(in srgb, var(--quartzflow-gold) 10%, transparent);
-  color: var(--text-normal);
-}
-
-.nav-files-container > div > .tree-item.nav-file .nav-file-title.is-active {
-  background: color-mix(in srgb, var(--quartzflow-gold) 14%, transparent);
-  color: var(--text-normal);
-  box-shadow: none;
-}
-
-/* Dragging: soft gradient wash + hairline outline on the row under
-   the cursor. keep !important: transient drag state — this rule (0,4,1)
-   must beat the unguarded rainbow card hover/active rules above
-   ((0,5,1)-(0,7,1)), which is not safely reachable by selector lengthening. */
-body.is-grabbing .nav-files-container .nav-folder-title:hover,
-body.is-grabbing .nav-files-container .nav-file-title:hover {
-  font-weight: 600 !important; /* keep !important: drag state beats card title font-weight rules */
-  color: color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 78%, var(--text-normal)) !important; /* keep !important: beats card hover/active color rules (0,5,1)-(0,7,1) */
-  background: linear-gradient(90deg,
-    color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 16%, transparent),
-    color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 6%, transparent)) !important; /* keep !important: beats card hover/active background rules (0,5,1)-(0,7,1) */
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 45%, transparent) !important; /* keep !important: beats sidebar .is-active box-shadow and card rules */
-  opacity: 1 !important; /* keep !important: drag state must fully show the hovered row */
-}
-
-/* The dragged item itself: faint tint + accent border.
-   Two layers of selectors for robustness:
-   (a) Direct — class hangs on the title row itself
-   (b) :has()  — class hangs on a descendant (e.g. content span);
-                 Obsidian has been observed putting .is-being-dragged
-                 on the inner text span, which is inline-block and
-                 sized to the text, producing a partial-width box.
-                 :has() lets the FULL-WIDTH title row catch the class
-                 on any descendant and become the highlight target.
-   IMPORTANT: the parent rainbow card has border-radius: 6px and
-   overflow: hidden, which clips CSS outline on a child whose border
-   sits flush against the card's content edge. We use box-shadow
-   (inset, not clipped by parent overflow) + a ::before overlay drawn
-   3px inside the title (safely inside the card's 6px radius) for the
-   dashed effect.
-   keep !important: drag transient state — (0,3,0)-(0,4,0) here must beat
-   the card/child paint rules above ((0,4,1)-(0,6,1)) plus core
-   ".tree-item-self.is-being-dragged" accent painting. */
-.nav-files-container .nav-file-title.is-being-dragged,
-.nav-files-container .nav-folder-title.is-being-dragged,
-.nav-files-container .nav-file-title:has(.is-being-dragged),
-.nav-files-container .nav-folder-title:has(.is-being-dragged),
-.nav-files-container .tree-item.is-being-dragged > .nav-folder-title,
-.nav-files-container .tree-item.is-being-dragged > .nav-file-title {
-  display: block !important; /* keep !important: beats core .tree-item-self display:flex during drag */
-  width: 100% !important; /* keep !important: drag transient state, full-width row */
-  min-width: 0 !important; /* keep !important: overrides filename-scroll min-width:max-content (0,1,0)+ */
-  max-width: 100% !important; /* keep !important: drag transient state, full-width row */
-  box-sizing: border-box !important; /* keep !important: drag transient state, full-width row */
-  position: relative !important; /* keep !important: anchors the ::before dashed overlay */
-  background: color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 10%, transparent) !important; /* keep !important: beats card title background rules (0,4,1)-(0,6,1) */
-  box-shadow:
-    inset 0 0 0 1.5px color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 75%, transparent),
-    0 1px 6px color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 20%, transparent) !important; /* keep !important: beats sidebar .is-active inset bar + card shadows */
-  border-radius: var(--quartzflow-radius-base) !important; /* keep !important: beats nested-folder title radius rules */
-  opacity: 0.94 !important; /* keep !important: drag transient state */
-}
-
-/* Dashed accent overlay via ::before. inset: 3px keeps the dashed
-   border safely inside the rainbow card's 6px border-radius so the
-   parent overflow:hidden does not clip it. */
-.nav-files-container .nav-file-title.is-being-dragged::before,
-.nav-files-container .nav-folder-title.is-being-dragged::before,
-.nav-files-container .nav-file-title:has(.is-being-dragged)::before,
-.nav-files-container .nav-folder-title:has(.is-being-dragged)::before,
-.nav-files-container .tree-item.is-being-dragged > .nav-folder-title::before,
-.nav-files-container .tree-item.is-being-dragged > .nav-file-title::before {
-  content: "";
-  position: absolute;
-  inset: 3px;
-  border: 1.5px dashed color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 60%, transparent);
-  border-radius: 4px;
-  pointer-events: none;
-}
-
-/* keep !important: drag transient state — the filename-scroll hover
-   animation rule reaches (0,4,0) and min-width:max-content, which these
-   (0,3,0)-(0,4,0) selectors must suppress while dragging. */
-.nav-files-container .is-being-dragged .nav-file-title-content,
-.nav-files-container .is-being-dragged .nav-folder-title-content,
-.nav-files-container .tree-item.is-being-dragged .nav-file-title-content,
-.nav-files-container .tree-item.is-being-dragged .nav-folder-title-content {
-  min-width: 0 !important; /* keep !important: beats filename-scroll min-width:max-content */
-  animation: none !important; /* keep !important: beats filename-scroll hover animation (0,4,0) */
-  transform: none !important; /* keep !important: freezes any mid-scroll transform during drag */
-}
-
-/* Drop target row: gradient fill + hairline accent ring + bold label.
-   Same dual strategy: direct selectors for the title itself, :has()
-   for the case where the class is on a descendant. Bare
-   .is-being-dragged-over is intentionally NOT used at this level —
-   it could match the folder wrapper and paint the whole card block
-   (children included). Box-shadow inset used (not outline) for the
-   same card-clipping reason.
-   keep !important: drag transient state — must beat the card hover/active
-   paint rules above ((0,5,1)-(0,7,1)) and core drop-target painting
-   (".tree-item-self.is-being-dragged-over", ".nav-folder.is-being-dragged-over > .nav-folder-title"). */
-.nav-files-container .nav-file-title.is-being-dragged-over,
-.nav-files-container .nav-folder-title.is-being-dragged-over,
-.nav-files-container .nav-file-title:has(.is-being-dragged-over),
-.nav-files-container .nav-folder-title:has(.is-being-dragged-over),
-.nav-files-container .nav-folder.is-being-dragged-over > .nav-folder-title,
-.nav-files-container .tree-item.is-being-dragged-over > .nav-folder-title,
-.nav-files-container .tree-item.is-being-dragged-over > .nav-file-title,
-.nav-files-container .tree-item.is-being-dragged-over > .tree-item-self {
-  display: block !important; /* keep !important: beats core .tree-item-self display:flex during drop */
-  width: 100% !important; /* keep !important: drag transient state, full-width row */
-  min-width: 0 !important; /* keep !important: overrides filename-scroll min-width:max-content */
-  max-width: 100% !important; /* keep !important: drag transient state, full-width row */
-  box-sizing: border-box !important; /* keep !important: drag transient state, full-width row */
-  position: relative !important; /* keep !important: drag transient state */
-  border-radius: var(--quartzflow-radius-base) !important; /* keep !important: beats nested-folder title radius rules */
-  font-weight: 700 !important; /* keep !important: beats card title font-weight rules */
-  color: color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 80%, var(--text-normal)) !important; /* keep !important: beats core .nav-item-color-highlighted and card color rules */
-  background: linear-gradient(90deg,
-    color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 26%, transparent),
-    color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 9%, transparent)) !important; /* keep !important: beats card hover/active background rules (0,5,1)-(0,7,1) */
-  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 70%, transparent) !important; /* keep !important: beats sidebar .is-active inset bar + card shadows */
-}
-
-/* TIER C — fallback if :has() is unavailable: the class sits directly
-   on the inner content span (observed in screenshots). Force the span
-   to a full-width block with a light tint + inset shadow (the inset
-   shadow is on the span itself, but spans inside a card with
-   overflow:hidden still get clipped at the rounded edge — only the
-   straight middle shows; acceptable degradation).
-   keep !important: drag transient state — the class position varies by
-   Obsidian version; these rules were tuned repeatedly and must win
-   unconditionally while dragging. */
-.nav-files-container .nav-file-title-content.is-being-dragged,
-.nav-files-container .nav-folder-title-content.is-being-dragged {
-  display: block !important; /* keep !important: beats core/filename-scroll display:inline-block on content spans */
-  width: 100% !important; /* keep !important: drag transient state, full-width span */
-  min-width: 0 !important; /* keep !important: overrides filename-scroll min-width:max-content */
-  max-width: 100% !important; /* keep !important: drag transient state, full-width span */
-  box-sizing: border-box !important; /* keep !important: drag transient state, full-width span */
-  border-radius: var(--quartzflow-radius-base) !important; /* keep !important: drag transient state */
-  background: color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 8%, transparent) !important; /* keep !important: drag transient state */
-  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 70%, transparent) !important; /* keep !important: drag transient state */
-}
-
-/* keep !important: drag transient state — same reasoning as the
-   .is-being-dragged tier above. */
-.nav-files-container .nav-file-title-content.is-being-dragged-over,
-.nav-files-container .nav-folder-title-content.is-being-dragged-over {
-  display: block !important; /* keep !important: beats core/filename-scroll display:inline-block on content spans */
-  width: 100% !important; /* keep !important: drag transient state, full-width span */
-  min-width: 0 !important; /* keep !important: overrides filename-scroll min-width:max-content */
-  max-width: 100% !important; /* keep !important: drag transient state, full-width span */
-  box-sizing: border-box !important; /* keep !important: drag transient state, full-width span */
-  border-radius: var(--quartzflow-radius-base) !important; /* keep !important: drag transient state */
-  background: linear-gradient(90deg,
-    color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 22%, transparent),
-    color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 8%, transparent)) !important; /* keep !important: drag transient state */
-  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 70%, transparent) !important; /* keep !important: drag transient state */
-}
-
-/* TIER D — if the drag class lands on a structural wrapper
-   (.tree-item / .nav-folder / children container), reset the wrapper
-   so the whole card block is not painted; the title-row rules above
-   (TIER A direct / TIER B :has) still light up the correct row.
-   keep !important: (0,3,0) here loses to the rainbow card wrapper rule
-   ".nav-files-container > div > .tree-item.nav-folder" (0,3,1) without it. */
-.nav-files-container .tree-item.is-being-dragged-over,
-.nav-files-container .nav-folder.is-being-dragged-over,
-.nav-files-container .nav-folder-children.is-being-dragged-over,
-.nav-files-container .tree-item.is-being-dragged,
-.nav-files-container .nav-folder.is-being-dragged {
-  background: transparent !important; /* keep !important: beats rainbow card wrapper background (0,3,1) */
-  outline: none !important; /* keep !important: drag transient state, suppress any focus/drag outline */
-  box-shadow: none !important; /* keep !important: beats rainbow card wrapper box-shadow (0,3,1) */
-}
-
-/* Root drop zone (gaps between folder cards count as root): only a
-   subtle dashed gold frame, no fill — a full gold wash looks muddy.
-   keep !important: drag transient state — must blank the sidebar-grid
-   background and stay deterministic regardless of future container rules. */
-.nav-files-container.is-being-dragged-over {
-  background: transparent !important; /* keep !important: resets sidebar-grid background-image during drop */
-  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--quartzflow-gold) 45%, transparent) !important; /* keep !important: drag drop zone frame */
-  border-radius: var(--radius-m) !important; /* keep !important: drag drop zone frame */
-}
-
-/* Nested folder indentation guide line, tinted by folder accent */
 .nav-files-container .nav-folder-children .nav-folder-children {
   border-left: 1px solid color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-border)) 25%, transparent);
 }
@@ -2734,6 +2428,188 @@ body.theme-dark {
 }
 
 /* ============================================================
+   src/08-features/sidebar-interactions.css
+   ============================================================ */
+/* ============================================================
+   FILE EXPLORER INTERACTION LAYER
+   Hover, keyboard focus, drag source, drop target, and root drop zone.
+   ============================================================ */
+
+.nav-files-container {
+  --quartzflow-explorer-accent: var(--quartzflow-gold);
+}
+
+.nav-files-container > div > .tree-item.nav-folder {
+  --quartzflow-explorer-accent: var(--quartzflow-folder-accent, var(--quartzflow-gold));
+  transition: box-shadow 0.15s ease;
+}
+
+.nav-files-container :where(.nav-file-title, .nav-folder-title) {
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.14s ease, color 0.14s ease, box-shadow 0.14s ease, opacity 0.1s ease;
+}
+
+.nav-files-container > div > .tree-item.nav-folder:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+body.theme-dark .nav-files-container > div > .tree-item.nav-folder:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.nav-files-container :where(.nav-file-title, .nav-folder-title):hover {
+  color: var(--text-normal);
+  background: color-mix(in srgb, var(--quartzflow-explorer-accent) 10%, transparent);
+  box-shadow: inset 2px 0 0 color-mix(in srgb, var(--quartzflow-explorer-accent) 62%, transparent);
+}
+
+body.theme-dark .nav-files-container :where(.nav-file-title, .nav-folder-title):hover {
+  background: color-mix(in srgb, var(--quartzflow-explorer-accent) 14%, transparent);
+}
+
+.nav-files-container :where(.nav-file-title, .nav-folder-title):focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--quartzflow-explorer-accent) 78%, var(--text-normal));
+  outline-offset: -2px;
+}
+
+.nav-files-container > div > .tree-item.nav-file .nav-file-title.is-active {
+  color: var(--text-normal);
+  background: color-mix(in srgb, var(--quartzflow-gold) 14%, transparent);
+  box-shadow: none;
+}
+
+body.is-grabbing .nav-files-container :where(.nav-file-title, .nav-folder-title) {
+  cursor: grabbing !important;
+}
+
+/* Keep the native explorer scroller available while a pointer drag is active. */
+body.is-grabbing .nav-files-container {
+  overflow-y: auto !important;
+  overscroll-behavior-y: contain;
+  pointer-events: auto;
+  scroll-behavior: auto;
+  touch-action: pan-y;
+}
+
+body.is-grabbing .nav-files-container :where(.nav-file-title, .nav-folder-title):hover {
+  color: color-mix(in srgb, var(--quartzflow-explorer-accent) 78%, var(--text-normal)) !important;
+  background: color-mix(in srgb, var(--quartzflow-explorer-accent) 12%, transparent) !important;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--quartzflow-explorer-accent) 42%, transparent) !important;
+}
+
+/* Obsidian may place drag classes on a row, its content, or a wrapper.
+   :has() normalizes those variants into one full-width row state. */
+.nav-files-container :where(.tree-item, .nav-folder, .nav-folder-children):is(.is-being-dragged, .is-being-dragged-over) {
+  background: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.nav-files-container :where(.nav-file-title, .nav-folder-title):is(.is-being-dragged, :has(.is-being-dragged)),
+.nav-files-container :where(.tree-item, .nav-folder).is-being-dragged > :where(.nav-file-title, .nav-folder-title),
+.nav-files-container :where(.nav-file-title, .nav-folder-title):is(.is-being-dragged-over, :has(.is-being-dragged-over)),
+.nav-files-container :where(.tree-item, .nav-folder).is-being-dragged-over > :where(.nav-file-title, .nav-folder-title),
+.nav-files-container .nav-folder:has(> .nav-folder-children.is-being-dragged-over) > .nav-folder-title,
+.nav-files-container .tree-item.is-being-dragged-over > .tree-item-self {
+  position: relative !important;
+  display: flex !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  border-radius: var(--quartzflow-radius-base) !important;
+}
+
+/* Drag source: subdued and dashed, never confused with the destination. */
+.nav-files-container :where(.nav-file-title, .nav-folder-title):is(.is-being-dragged, :has(.is-being-dragged)),
+.nav-files-container :where(.tree-item, .nav-folder).is-being-dragged > :where(.nav-file-title, .nav-folder-title) {
+  color: var(--text-muted) !important;
+  background: color-mix(in srgb, var(--quartzflow-explorer-accent) 6%, transparent) !important;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--quartzflow-explorer-accent) 42%, transparent) !important;
+  opacity: 0.66 !important;
+}
+
+.nav-files-container :where(.nav-file-title, .nav-folder-title):is(.is-being-dragged, :has(.is-being-dragged))::after,
+.nav-files-container :where(.tree-item, .nav-folder).is-being-dragged > :where(.nav-file-title, .nav-folder-title)::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px dashed color-mix(in srgb, var(--quartzflow-explorer-accent) 62%, transparent);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+/* Drop target: solid ring, stronger fill, and elevation. */
+.nav-files-container :where(.nav-file-title, .nav-folder-title):is(.is-being-dragged-over, :has(.is-being-dragged-over)),
+.nav-files-container :where(.tree-item, .nav-folder).is-being-dragged-over > :where(.nav-file-title, .nav-folder-title),
+.nav-files-container .nav-folder:has(> .nav-folder-children.is-being-dragged-over) > .nav-folder-title,
+.nav-files-container .tree-item.is-being-dragged-over > .tree-item-self {
+  color: color-mix(in srgb, var(--quartzflow-explorer-accent) 82%, var(--text-normal)) !important;
+  background: linear-gradient(90deg,
+    color-mix(in srgb, var(--quartzflow-explorer-accent) 18%, transparent),
+    color-mix(in srgb, var(--quartzflow-explorer-accent) 5%, transparent)) !important;
+  box-shadow:
+    inset 3px 0 0 color-mix(in srgb, var(--quartzflow-explorer-accent) 88%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, var(--quartzflow-explorer-accent) 58%, transparent),
+    0 2px 8px color-mix(in srgb, var(--quartzflow-explorer-accent) 12%, transparent) !important;
+  opacity: 1 !important;
+}
+
+/* Tint the exact target folder and its subtree without leaking to ancestors. */
+.nav-files-container .nav-folder:is(
+  .is-being-dragged-over,
+  :has(> .nav-folder-title.is-being-dragged-over),
+  :has(> .nav-folder-title .is-being-dragged-over),
+  :has(> .nav-folder-children.is-being-dragged-over)
+) {
+  background: linear-gradient(90deg,
+    color-mix(in srgb, var(--quartzflow-explorer-accent) 20%, var(--background-primary)),
+    color-mix(in srgb, var(--quartzflow-explorer-accent) 13%, var(--background-primary))) !important;
+  border-radius: var(--radius-m) !important;
+  box-shadow:
+    inset 4px 0 0 color-mix(in srgb, var(--quartzflow-explorer-accent) 88%, transparent),
+    inset 0 0 0 2px color-mix(in srgb, var(--quartzflow-explorer-accent) 62%, transparent) !important;
+}
+
+.nav-files-container .nav-folder:is(
+  .is-being-dragged-over,
+  :has(> .nav-folder-title.is-being-dragged-over),
+  :has(> .nav-folder-title .is-being-dragged-over),
+  :has(> .nav-folder-children.is-being-dragged-over)
+) > .nav-folder-children {
+  background: transparent !important;
+  box-shadow: inset 2px 0 0 color-mix(in srgb, var(--quartzflow-explorer-accent) 46%, transparent) !important;
+}
+
+/* Root is a separate destination, not an oversized folder row. Suppress it
+   whenever a more specific descendant target is active. */
+.nav-files-container.is-being-dragged-over:not(:has(.tree-item .is-being-dragged-over, .tree-item.is-being-dragged-over)) {
+  background:
+    linear-gradient(90deg, #e74c3c, #e67e22, #f1c40f, #2ecc71, #1abc9c, #3498db, #8e44ad) top / 100% 4px no-repeat,
+    color-mix(in srgb, var(--quartzflow-gold) 9%, var(--background-primary)) !important;
+  outline: none !important;
+  border-radius: var(--radius-m) !important;
+  box-shadow:
+    inset 0 0 0 2px color-mix(in srgb, var(--quartzflow-gold) 72%, transparent),
+    inset 0 14px 30px color-mix(in srgb, var(--quartzflow-gold) 8%, transparent) !important;
+}
+
+/* Drop readiness must feel immediate even when a collapsed folder is waiting
+   for Obsidian's native auto-expand timer. */
+body.is-grabbing .nav-files-container :where(.nav-file-title, .nav-folder-title),
+body.is-grabbing .nav-files-container .nav-folder {
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-files-container > div > .tree-item.nav-folder,
+  .nav-files-container :where(.nav-file-title, .nav-folder-title) {
+    transition: none;
+  }
+}
+
+/* ============================================================
    src/99-safeguards.css
    ============================================================ */
 /* ============================================================
@@ -2758,9 +2634,7 @@ body.theme-dark {
   --h6-color: #b8bcc3;
 }
 
-.is-flashing,
-.nav-file-title.is-being-dragged,
-.nav-folder-title.is-being-dragged {
+.is-flashing {
   background-color: color-mix(in srgb, var(--interactive-accent) 22%, transparent);
 }
 

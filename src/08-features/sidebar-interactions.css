@@ -1,0 +1,178 @@
+/* ============================================================
+   FILE EXPLORER INTERACTION LAYER
+   Hover, keyboard focus, drag source, drop target, and root drop zone.
+   ============================================================ */
+
+.nav-files-container {
+  --quartzflow-explorer-accent: var(--quartzflow-gold);
+}
+
+.nav-files-container > div > .tree-item.nav-folder {
+  --quartzflow-explorer-accent: var(--quartzflow-folder-accent, var(--quartzflow-gold));
+  transition: box-shadow 0.15s ease;
+}
+
+.nav-files-container :where(.nav-file-title, .nav-folder-title) {
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.14s ease, color 0.14s ease, box-shadow 0.14s ease, opacity 0.1s ease;
+}
+
+.nav-files-container > div > .tree-item.nav-folder:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+body.theme-dark .nav-files-container > div > .tree-item.nav-folder:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.nav-files-container :where(.nav-file-title, .nav-folder-title):hover {
+  color: var(--text-normal);
+  background: color-mix(in srgb, var(--quartzflow-explorer-accent) 10%, transparent);
+  box-shadow: inset 2px 0 0 color-mix(in srgb, var(--quartzflow-explorer-accent) 62%, transparent);
+}
+
+body.theme-dark .nav-files-container :where(.nav-file-title, .nav-folder-title):hover {
+  background: color-mix(in srgb, var(--quartzflow-explorer-accent) 14%, transparent);
+}
+
+.nav-files-container :where(.nav-file-title, .nav-folder-title):focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--quartzflow-explorer-accent) 78%, var(--text-normal));
+  outline-offset: -2px;
+}
+
+.nav-files-container > div > .tree-item.nav-file .nav-file-title.is-active {
+  color: var(--text-normal);
+  background: color-mix(in srgb, var(--quartzflow-gold) 14%, transparent);
+  box-shadow: none;
+}
+
+body.is-grabbing .nav-files-container :where(.nav-file-title, .nav-folder-title) {
+  cursor: grabbing !important;
+}
+
+/* Keep the native explorer scroller available while a pointer drag is active. */
+body.is-grabbing .nav-files-container {
+  overflow-y: auto !important;
+  overscroll-behavior-y: contain;
+  pointer-events: auto;
+  scroll-behavior: auto;
+  touch-action: pan-y;
+}
+
+body.is-grabbing .nav-files-container :where(.nav-file-title, .nav-folder-title):hover {
+  color: color-mix(in srgb, var(--quartzflow-explorer-accent) 78%, var(--text-normal)) !important;
+  background: color-mix(in srgb, var(--quartzflow-explorer-accent) 12%, transparent) !important;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--quartzflow-explorer-accent) 42%, transparent) !important;
+}
+
+/* Obsidian may place drag classes on a row, its content, or a wrapper.
+   :has() normalizes those variants into one full-width row state. */
+.nav-files-container :where(.tree-item, .nav-folder, .nav-folder-children):is(.is-being-dragged, .is-being-dragged-over) {
+  background: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.nav-files-container :where(.nav-file-title, .nav-folder-title):is(.is-being-dragged, :has(.is-being-dragged)),
+.nav-files-container :where(.tree-item, .nav-folder).is-being-dragged > :where(.nav-file-title, .nav-folder-title),
+.nav-files-container :where(.nav-file-title, .nav-folder-title):is(.is-being-dragged-over, :has(.is-being-dragged-over)),
+.nav-files-container :where(.tree-item, .nav-folder).is-being-dragged-over > :where(.nav-file-title, .nav-folder-title),
+.nav-files-container .nav-folder:has(> .nav-folder-children.is-being-dragged-over) > .nav-folder-title,
+.nav-files-container .tree-item.is-being-dragged-over > .tree-item-self {
+  position: relative !important;
+  display: flex !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  border-radius: var(--quartzflow-radius-base) !important;
+}
+
+/* Drag source: subdued and dashed, never confused with the destination. */
+.nav-files-container :where(.nav-file-title, .nav-folder-title):is(.is-being-dragged, :has(.is-being-dragged)),
+.nav-files-container :where(.tree-item, .nav-folder).is-being-dragged > :where(.nav-file-title, .nav-folder-title) {
+  color: var(--text-muted) !important;
+  background: color-mix(in srgb, var(--quartzflow-explorer-accent) 6%, transparent) !important;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--quartzflow-explorer-accent) 42%, transparent) !important;
+  opacity: 0.66 !important;
+}
+
+.nav-files-container :where(.nav-file-title, .nav-folder-title):is(.is-being-dragged, :has(.is-being-dragged))::after,
+.nav-files-container :where(.tree-item, .nav-folder).is-being-dragged > :where(.nav-file-title, .nav-folder-title)::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px dashed color-mix(in srgb, var(--quartzflow-explorer-accent) 62%, transparent);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+/* Drop target: solid ring, stronger fill, and elevation. */
+.nav-files-container :where(.nav-file-title, .nav-folder-title):is(.is-being-dragged-over, :has(.is-being-dragged-over)),
+.nav-files-container :where(.tree-item, .nav-folder).is-being-dragged-over > :where(.nav-file-title, .nav-folder-title),
+.nav-files-container .nav-folder:has(> .nav-folder-children.is-being-dragged-over) > .nav-folder-title,
+.nav-files-container .tree-item.is-being-dragged-over > .tree-item-self {
+  color: color-mix(in srgb, var(--quartzflow-explorer-accent) 82%, var(--text-normal)) !important;
+  background: linear-gradient(90deg,
+    color-mix(in srgb, var(--quartzflow-explorer-accent) 18%, transparent),
+    color-mix(in srgb, var(--quartzflow-explorer-accent) 5%, transparent)) !important;
+  box-shadow:
+    inset 3px 0 0 color-mix(in srgb, var(--quartzflow-explorer-accent) 88%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, var(--quartzflow-explorer-accent) 58%, transparent),
+    0 2px 8px color-mix(in srgb, var(--quartzflow-explorer-accent) 12%, transparent) !important;
+  opacity: 1 !important;
+}
+
+/* Tint the exact target folder and its subtree without leaking to ancestors. */
+.nav-files-container .nav-folder:is(
+  .is-being-dragged-over,
+  :has(> .nav-folder-title.is-being-dragged-over),
+  :has(> .nav-folder-title .is-being-dragged-over),
+  :has(> .nav-folder-children.is-being-dragged-over)
+) {
+  background: linear-gradient(90deg,
+    color-mix(in srgb, var(--quartzflow-explorer-accent) 20%, var(--background-primary)),
+    color-mix(in srgb, var(--quartzflow-explorer-accent) 13%, var(--background-primary))) !important;
+  border-radius: var(--radius-m) !important;
+  box-shadow:
+    inset 4px 0 0 color-mix(in srgb, var(--quartzflow-explorer-accent) 88%, transparent),
+    inset 0 0 0 2px color-mix(in srgb, var(--quartzflow-explorer-accent) 62%, transparent) !important;
+}
+
+.nav-files-container .nav-folder:is(
+  .is-being-dragged-over,
+  :has(> .nav-folder-title.is-being-dragged-over),
+  :has(> .nav-folder-title .is-being-dragged-over),
+  :has(> .nav-folder-children.is-being-dragged-over)
+) > .nav-folder-children {
+  background: transparent !important;
+  box-shadow: inset 2px 0 0 color-mix(in srgb, var(--quartzflow-explorer-accent) 46%, transparent) !important;
+}
+
+/* Root is a separate destination, not an oversized folder row. Suppress it
+   whenever a more specific descendant target is active. */
+.nav-files-container.is-being-dragged-over:not(:has(.tree-item .is-being-dragged-over, .tree-item.is-being-dragged-over)) {
+  background:
+    linear-gradient(90deg, #e74c3c, #e67e22, #f1c40f, #2ecc71, #1abc9c, #3498db, #8e44ad) top / 100% 4px no-repeat,
+    color-mix(in srgb, var(--quartzflow-gold) 9%, var(--background-primary)) !important;
+  outline: none !important;
+  border-radius: var(--radius-m) !important;
+  box-shadow:
+    inset 0 0 0 2px color-mix(in srgb, var(--quartzflow-gold) 72%, transparent),
+    inset 0 14px 30px color-mix(in srgb, var(--quartzflow-gold) 8%, transparent) !important;
+}
+
+/* Drop readiness must feel immediate even when a collapsed folder is waiting
+   for Obsidian's native auto-expand timer. */
+body.is-grabbing .nav-files-container :where(.nav-file-title, .nav-folder-title),
+body.is-grabbing .nav-files-container .nav-folder {
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-files-container > div > .tree-item.nav-folder,
+  .nav-files-container :where(.nav-file-title, .nav-folder-title) {
+    transition: none;
+  }
+}

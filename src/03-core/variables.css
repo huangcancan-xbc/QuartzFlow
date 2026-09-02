@@ -9,6 +9,9 @@ body {
   --font-text-size: var(--quartzflow-text-size, 16px);
   --line-height-normal: var(--quartzflow-line-height, 1.6);
   --line-height-tight: 1.35;
+  --list-indent: 1.5em;
+  --list-indent-editing: 0.5em;
+  --list-indent-source: 0;
   --background-primary: var(--quartzflow-bg-primary);
   --background-primary-alt: var(--quartzflow-bg-primary-alt);
   --background-secondary: var(--quartzflow-bg-secondary);

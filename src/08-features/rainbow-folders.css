@@ -1,75 +1,15 @@
 /* ============================================================
-   QuartzFlow RAINBOW FOLDER CARDS
-   Each top-level folder = independent rounded card with a
-   colored left border and matching title color.
-   10-color rainbow cycle: red → orange → yellow → green →
-   cyan → blue → indigo → purple → gray → slate
+   RAINBOW FOLDER LAYOUT
+   Visual structure only. Interaction states live in
+   sidebar-interactions.css.
    ============================================================ */
 
-/* --- Hide collapse arrow for ALL folders and subfolders ---
-   keep !important on display only: the bare .collapse-indicator part (0,1,0)
-   must beat core ".markdown-preview-view .collapse-indicator" (0,2,0,
-   display:inline-flex) in EVERY context (nav/preview/editor) at once;
-   matching that without !important would require enumerating all core
-   contexts and is not safe.
-   The other declarations drop !important: with display:none they have no
-   visual effect of their own (kept as non-important fallbacks). */
 .tree-item-inner .collapse-icon,
 .collapse-indicator,
 .nav-folder-children .collapse-icon {
-  display: none !important; /* keep !important: core .markdown-preview-view .collapse-indicator (0,2,0) display:inline-flex outranks the bare selector */
-  visibility: hidden;
-  width: 0;
-  height: 0;
-  margin: 0;
-  padding: 0;
-  opacity: 0;
+  display: none !important;
 }
 
-/* Extra rules to ensure subfolder arrows are hidden.
-   No !important needed: these selectors (0,3,0)-(0,4,0) already outrank the
-   only core opponent ".collapse-icon { display: flex }" (0,1,0), and the
-   theme always loads after core app.css. */
-.nav-folder-children .tree-item-self .tree-item-inner .collapse-icon,
-.nav-folder-children .nav-folder .collapse-icon,
-.nav-folder-children .nav-folder-title .collapse-icon {
-  display: none;
-}
-
-/* Hide default folder icon.
-   No !important needed: (0,2,1) outranks file-icons' base ::before icon rule
-   (0,2,1) which loads earlier, and core styles no nav-folder-title-content
-   ::before at all. The nested-show rule below wins over this one by
-   specificity; top-level titles inside the file explorer stay hidden via
-   file-icons' higher-specificity HIDDEN rule. */
-.nav-folder-title .nav-folder-title-content::before {
-  display: none;
-}
-
-/* But show icon for nested folders.
-   No !important needed: (0,3,1) outranks the hide rule above (0,2,1). */
-.nav-folder-children .nav-folder-title .nav-folder-title-content::before {
-  display: inline-block;
-}
-
-/* Replace subfolder collapse arrow with folder icon.
-   No !important needed: (0,4,0) outranks core ".tree-item-self .tree-item-icon"
-   (0,2,0); file-icons' top-level HIDDEN rule (0,5,1)–(0,5,2) still wins where it applies. */
-.nav-folder-children .nav-folder > .nav-folder-title .tree-item-icon {
-  display: flex;
-  color: var(--quartzflow-folder-accent, #95a5a6);
-  opacity: 0.8;
-}
-
-/* Force show folder icon for nested folders.
-   No !important needed: core sets no display on .tree-item-icon svg. */
-.nav-folder-children .nav-folder .tree-item-icon svg {
-  display: block;
-}
-
-/* Add folder icon using ::before pseudo-element for nested folders.
-   No !important needed on display: this rule (0,2,1) loads after and outranks
-   the hide rule above (0,2,1); the (0,3,1) show-nested rule also agrees. */
 .nav-folder-children .nav-folder-title-content::before {
   content: "";
   display: inline-block;
@@ -86,7 +26,6 @@
   opacity: 0.7;
 }
 
-/* Unified font family for sidebar */
 .nav-files-container,
 .nav-folder-title,
 .nav-file-title,
@@ -95,21 +34,23 @@
   font-weight: 600;
 }
 
-/* Adjust font size for better readability */
-.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title {
-  font-size: 13px;
+/* Override Obsidian's depth-based row width so hit areas reach the right edge. */
+.nav-files-container .nav-folder-children > .tree-item,
+.nav-files-container :where(.nav-file-title, .nav-folder-title) {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  margin-inline-end: 0 !important;
 }
 
-.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-file-title,
-.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-folder-title {
-  font-size: 12px;
+.nav-files-container :where(.nav-file-title, .nav-folder-title) {
+  flex: 1 1 100% !important;
+  align-self: stretch !important;
 }
 
-/* --- 8-color rainbow palette (slightly softer tones) --- */
-/* Obsidian inserts a leading placeholder before the first nav-folder inside the
-   virtualized scroller, so the first visible folder lands on index 2.
-   nth-child(8n+k) formulas repeat infinitely — any number of top-level
-   folders is covered. Cycles: red → orange → yellow → green → teal → blue → purple → slate. */
+/* Obsidian's virtualized list adds a leading placeholder, so the first
+   visible top-level folder is nth-child(2). */
 .nav-files-container > div > .tree-item.nav-folder:nth-child(8n+2) { --quartzflow-folder-accent: #e74c3c; }
 .nav-files-container > div > .tree-item.nav-folder:nth-child(8n+3) { --quartzflow-folder-accent: #e67e22; }
 .nav-files-container > div > .tree-item.nav-folder:nth-child(8n+4) { --quartzflow-folder-accent: #f1c40f; }
@@ -119,7 +60,6 @@
 .nav-files-container > div > .tree-item.nav-folder:nth-child(8n+8) { --quartzflow-folder-accent: #8e44ad; }
 .nav-files-container > div > .tree-item.nav-folder:nth-child(8n+9) { --quartzflow-folder-accent: #607d8b; }
 
-/* --- Card wrapper (the .tree-item.nav-folder itself) --- */
 .nav-files-container > div > .tree-item.nav-folder {
   background: #ffffff;
   border: 1px solid #e5e7eb;
@@ -128,342 +68,91 @@
   margin: 7px 4px;
   overflow: hidden;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.nav-files-container > div > .tree-item.nav-folder:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-/* --- Folder title row --- */
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title {
-  font-size: 13px;
-  font-weight: 600;
   color: var(--quartzflow-folder-accent, #5d6d7e);
   background: transparent;
-  padding: 7px 10px 7px 12px;
-  margin: 0;
-  border-radius: 0;
   border: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 7px 10px 7px 12px;
+  font-size: 13px;
+  font-weight: 600;
   line-height: 1.4;
-}
-
-.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title:hover {
-  background: color-mix(in srgb, var(--quartzflow-folder-accent) 8%, transparent);
 }
 
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title.is-active {
   background: color-mix(in srgb, var(--quartzflow-folder-accent) 8%, transparent);
 }
 
-/* --- Children area (inside the card) --- */
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children {
-  padding: 2px 6px 6px 20px;
-  margin: 0;
-  border: none;
   background: transparent;
+  border: none;
+  margin: 0;
+  padding: 2px 6px 6px 20px;
 }
 
-/* --- Child file titles --- */
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-file-title {
-  color: #4a4a4a;
+  color: var(--text-muted);
+  border-radius: 4px;
+  padding: 4px 8px;
   font-size: 12px;
   font-weight: 500;
-  padding: 4px 8px;
-  border-radius: 4px;
   line-height: 1.4;
 }
 
-.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-file-title:hover {
-  background: color-mix(in srgb, var(--quartzflow-folder-accent) 10%, transparent);
-  color: #222;
-}
-
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-file-title.is-active {
+  color: var(--text-normal);
   background: color-mix(in srgb, var(--quartzflow-folder-accent) 12%, transparent);
-  color: #222;
   box-shadow: none;
 }
 
-/* Gradient bottom marker on the active file (Blue Topaz style) */
 .nav-files-container .nav-file-title.is-active::before {
   content: "";
   position: absolute;
   bottom: -1px;
   left: 0;
-  height: 2px;
   width: 100%;
+  height: 2px;
   background-image: linear-gradient(to right, var(--quartzflow-folder-accent, var(--quartzflow-gold)), transparent 90%);
   pointer-events: none;
 }
 
-/* --- Child sub-folder titles --- */
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-folder-title {
-  color: color-mix(in srgb, var(--quartzflow-folder-accent) 70%, #444);
+  color: color-mix(in srgb, var(--quartzflow-folder-accent) 70%, var(--text-normal));
+  border-radius: 4px;
+  padding: 4px 8px;
   font-size: 12px;
   font-weight: 600;
-  padding: 4px 8px;
-  border-radius: 4px;
 }
 
-.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-folder-title:hover {
-  background: color-mix(in srgb, var(--quartzflow-folder-accent) 10%, transparent);
-  font-weight: 700;
-}
-
-/* --- File icon tint (柔和的粉绿色/浅青，跟图片一致) --- */
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .tree-item-icon {
   color: #a5d6a7;
   opacity: 0.85;
 }
 
-/* --- Nested sub-folders: no extra card styling, just indent --- */
 .nav-files-container > div > .tree-item.nav-folder .nav-folder .nav-folder-title {
   background: transparent;
   border: none;
   border-radius: 4px;
 }
 
-/* --- Dark theme overrides --- */
 body.theme-dark .nav-files-container > div > .tree-item.nav-folder {
   background: color-mix(in srgb, var(--quartzflow-folder-accent, #95a5a6) 12%, var(--quartzflow-bg-tertiary));
   border-color: rgba(255, 255, 255, 0.08);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-body.theme-dark .nav-files-container > div > .tree-item.nav-folder:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
-}
-
-body.theme-dark .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title:hover {
-  background: color-mix(in srgb, var(--quartzflow-folder-accent) 12%, transparent);
-}
-
 body.theme-dark .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title.is-active {
   background: color-mix(in srgb, var(--quartzflow-folder-accent) 14%, transparent);
-}
-
-body.theme-dark .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-file-title {
-  color: #c8c8c8;
-}
-
-body.theme-dark .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-file-title:hover {
-  background: color-mix(in srgb, var(--quartzflow-folder-accent) 14%, transparent);
-  color: #eee;
-}
-
-body.theme-dark .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .nav-file-title.is-active {
-  color: #eee;
 }
 
 body.theme-dark .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .tree-item-icon {
   color: #6fc985;
   opacity: 0.8;
 }
-/* Note: child files and nested folders inherit --quartzflow-folder-accent
-   automatically (CSS custom properties inherit), so no per-level rules needed. */
 
-/* ============================================================
-   HOVER INTERACTIONS (Blue Topaz style)
-   ============================================================ */
-
-/* Smooth background transitions on all nav items */
-.nav-files-container .nav-file-title,
-.nav-files-container .nav-folder-title {
-  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.2s ease, outline-color 0.15s ease;
-}
-
-/* Loose top-level files (not inside any folder card): gold-tinted hover */
-.nav-files-container > div > .tree-item.nav-file .nav-file-title:hover {
-  background: color-mix(in srgb, var(--quartzflow-gold) 10%, transparent);
-  color: var(--text-normal);
-}
-
-.nav-files-container > div > .tree-item.nav-file .nav-file-title.is-active {
-  background: color-mix(in srgb, var(--quartzflow-gold) 14%, transparent);
-  color: var(--text-normal);
-  box-shadow: none;
-}
-
-/* Dragging: soft gradient wash + hairline outline on the row under
-   the cursor. keep !important: transient drag state — this rule (0,4,1)
-   must beat the unguarded rainbow card hover/active rules above
-   ((0,5,1)-(0,7,1)), which is not safely reachable by selector lengthening. */
-body.is-grabbing .nav-files-container .nav-folder-title:hover,
-body.is-grabbing .nav-files-container .nav-file-title:hover {
-  font-weight: 600 !important; /* keep !important: drag state beats card title font-weight rules */
-  color: color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 78%, var(--text-normal)) !important; /* keep !important: beats card hover/active color rules (0,5,1)-(0,7,1) */
-  background: linear-gradient(90deg,
-    color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 16%, transparent),
-    color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 6%, transparent)) !important; /* keep !important: beats card hover/active background rules (0,5,1)-(0,7,1) */
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 45%, transparent) !important; /* keep !important: beats sidebar .is-active box-shadow and card rules */
-  opacity: 1 !important; /* keep !important: drag state must fully show the hovered row */
-}
-
-/* The dragged item itself: faint tint + accent border.
-   Two layers of selectors for robustness:
-   (a) Direct — class hangs on the title row itself
-   (b) :has()  — class hangs on a descendant (e.g. content span);
-                 Obsidian has been observed putting .is-being-dragged
-                 on the inner text span, which is inline-block and
-                 sized to the text, producing a partial-width box.
-                 :has() lets the FULL-WIDTH title row catch the class
-                 on any descendant and become the highlight target.
-   IMPORTANT: the parent rainbow card has border-radius: 6px and
-   overflow: hidden, which clips CSS outline on a child whose border
-   sits flush against the card's content edge. We use box-shadow
-   (inset, not clipped by parent overflow) + a ::before overlay drawn
-   3px inside the title (safely inside the card's 6px radius) for the
-   dashed effect.
-   keep !important: drag transient state — (0,3,0)-(0,4,0) here must beat
-   the card/child paint rules above ((0,4,1)-(0,6,1)) plus core
-   ".tree-item-self.is-being-dragged" accent painting. */
-.nav-files-container .nav-file-title.is-being-dragged,
-.nav-files-container .nav-folder-title.is-being-dragged,
-.nav-files-container .nav-file-title:has(.is-being-dragged),
-.nav-files-container .nav-folder-title:has(.is-being-dragged),
-.nav-files-container .tree-item.is-being-dragged > .nav-folder-title,
-.nav-files-container .tree-item.is-being-dragged > .nav-file-title {
-  display: block !important; /* keep !important: beats core .tree-item-self display:flex during drag */
-  width: 100% !important; /* keep !important: drag transient state, full-width row */
-  min-width: 0 !important; /* keep !important: overrides filename-scroll min-width:max-content (0,1,0)+ */
-  max-width: 100% !important; /* keep !important: drag transient state, full-width row */
-  box-sizing: border-box !important; /* keep !important: drag transient state, full-width row */
-  position: relative !important; /* keep !important: anchors the ::before dashed overlay */
-  background: color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 10%, transparent) !important; /* keep !important: beats card title background rules (0,4,1)-(0,6,1) */
-  box-shadow:
-    inset 0 0 0 1.5px color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 75%, transparent),
-    0 1px 6px color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 20%, transparent) !important; /* keep !important: beats sidebar .is-active inset bar + card shadows */
-  border-radius: var(--quartzflow-radius-base) !important; /* keep !important: beats nested-folder title radius rules */
-  opacity: 0.94 !important; /* keep !important: drag transient state */
-}
-
-/* Dashed accent overlay via ::before. inset: 3px keeps the dashed
-   border safely inside the rainbow card's 6px border-radius so the
-   parent overflow:hidden does not clip it. */
-.nav-files-container .nav-file-title.is-being-dragged::before,
-.nav-files-container .nav-folder-title.is-being-dragged::before,
-.nav-files-container .nav-file-title:has(.is-being-dragged)::before,
-.nav-files-container .nav-folder-title:has(.is-being-dragged)::before,
-.nav-files-container .tree-item.is-being-dragged > .nav-folder-title::before,
-.nav-files-container .tree-item.is-being-dragged > .nav-file-title::before {
-  content: "";
-  position: absolute;
-  inset: 3px;
-  border: 1.5px dashed color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 60%, transparent);
-  border-radius: 4px;
-  pointer-events: none;
-}
-
-/* keep !important: drag transient state — the filename-scroll hover
-   animation rule reaches (0,4,0) and min-width:max-content, which these
-   (0,3,0)-(0,4,0) selectors must suppress while dragging. */
-.nav-files-container .is-being-dragged .nav-file-title-content,
-.nav-files-container .is-being-dragged .nav-folder-title-content,
-.nav-files-container .tree-item.is-being-dragged .nav-file-title-content,
-.nav-files-container .tree-item.is-being-dragged .nav-folder-title-content {
-  min-width: 0 !important; /* keep !important: beats filename-scroll min-width:max-content */
-  animation: none !important; /* keep !important: beats filename-scroll hover animation (0,4,0) */
-  transform: none !important; /* keep !important: freezes any mid-scroll transform during drag */
-}
-
-/* Drop target row: gradient fill + hairline accent ring + bold label.
-   Same dual strategy: direct selectors for the title itself, :has()
-   for the case where the class is on a descendant. Bare
-   .is-being-dragged-over is intentionally NOT used at this level —
-   it could match the folder wrapper and paint the whole card block
-   (children included). Box-shadow inset used (not outline) for the
-   same card-clipping reason.
-   keep !important: drag transient state — must beat the card hover/active
-   paint rules above ((0,5,1)-(0,7,1)) and core drop-target painting
-   (".tree-item-self.is-being-dragged-over", ".nav-folder.is-being-dragged-over > .nav-folder-title"). */
-.nav-files-container .nav-file-title.is-being-dragged-over,
-.nav-files-container .nav-folder-title.is-being-dragged-over,
-.nav-files-container .nav-file-title:has(.is-being-dragged-over),
-.nav-files-container .nav-folder-title:has(.is-being-dragged-over),
-.nav-files-container .nav-folder.is-being-dragged-over > .nav-folder-title,
-.nav-files-container .tree-item.is-being-dragged-over > .nav-folder-title,
-.nav-files-container .tree-item.is-being-dragged-over > .nav-file-title,
-.nav-files-container .tree-item.is-being-dragged-over > .tree-item-self {
-  display: block !important; /* keep !important: beats core .tree-item-self display:flex during drop */
-  width: 100% !important; /* keep !important: drag transient state, full-width row */
-  min-width: 0 !important; /* keep !important: overrides filename-scroll min-width:max-content */
-  max-width: 100% !important; /* keep !important: drag transient state, full-width row */
-  box-sizing: border-box !important; /* keep !important: drag transient state, full-width row */
-  position: relative !important; /* keep !important: drag transient state */
-  border-radius: var(--quartzflow-radius-base) !important; /* keep !important: beats nested-folder title radius rules */
-  font-weight: 700 !important; /* keep !important: beats card title font-weight rules */
-  color: color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 80%, var(--text-normal)) !important; /* keep !important: beats core .nav-item-color-highlighted and card color rules */
-  background: linear-gradient(90deg,
-    color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 26%, transparent),
-    color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 9%, transparent)) !important; /* keep !important: beats card hover/active background rules (0,5,1)-(0,7,1) */
-  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 70%, transparent) !important; /* keep !important: beats sidebar .is-active inset bar + card shadows */
-}
-
-/* TIER C — fallback if :has() is unavailable: the class sits directly
-   on the inner content span (observed in screenshots). Force the span
-   to a full-width block with a light tint + inset shadow (the inset
-   shadow is on the span itself, but spans inside a card with
-   overflow:hidden still get clipped at the rounded edge — only the
-   straight middle shows; acceptable degradation).
-   keep !important: drag transient state — the class position varies by
-   Obsidian version; these rules were tuned repeatedly and must win
-   unconditionally while dragging. */
-.nav-files-container .nav-file-title-content.is-being-dragged,
-.nav-files-container .nav-folder-title-content.is-being-dragged {
-  display: block !important; /* keep !important: beats core/filename-scroll display:inline-block on content spans */
-  width: 100% !important; /* keep !important: drag transient state, full-width span */
-  min-width: 0 !important; /* keep !important: overrides filename-scroll min-width:max-content */
-  max-width: 100% !important; /* keep !important: drag transient state, full-width span */
-  box-sizing: border-box !important; /* keep !important: drag transient state, full-width span */
-  border-radius: var(--quartzflow-radius-base) !important; /* keep !important: drag transient state */
-  background: color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 8%, transparent) !important; /* keep !important: drag transient state */
-  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 70%, transparent) !important; /* keep !important: drag transient state */
-}
-
-/* keep !important: drag transient state — same reasoning as the
-   .is-being-dragged tier above. */
-.nav-files-container .nav-file-title-content.is-being-dragged-over,
-.nav-files-container .nav-folder-title-content.is-being-dragged-over {
-  display: block !important; /* keep !important: beats core/filename-scroll display:inline-block on content spans */
-  width: 100% !important; /* keep !important: drag transient state, full-width span */
-  min-width: 0 !important; /* keep !important: overrides filename-scroll min-width:max-content */
-  max-width: 100% !important; /* keep !important: drag transient state, full-width span */
-  box-sizing: border-box !important; /* keep !important: drag transient state, full-width span */
-  border-radius: var(--quartzflow-radius-base) !important; /* keep !important: drag transient state */
-  background: linear-gradient(90deg,
-    color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 22%, transparent),
-    color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 8%, transparent)) !important; /* keep !important: drag transient state */
-  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-gold)) 70%, transparent) !important; /* keep !important: drag transient state */
-}
-
-/* TIER D — if the drag class lands on a structural wrapper
-   (.tree-item / .nav-folder / children container), reset the wrapper
-   so the whole card block is not painted; the title-row rules above
-   (TIER A direct / TIER B :has) still light up the correct row.
-   keep !important: (0,3,0) here loses to the rainbow card wrapper rule
-   ".nav-files-container > div > .tree-item.nav-folder" (0,3,1) without it. */
-.nav-files-container .tree-item.is-being-dragged-over,
-.nav-files-container .nav-folder.is-being-dragged-over,
-.nav-files-container .nav-folder-children.is-being-dragged-over,
-.nav-files-container .tree-item.is-being-dragged,
-.nav-files-container .nav-folder.is-being-dragged {
-  background: transparent !important; /* keep !important: beats rainbow card wrapper background (0,3,1) */
-  outline: none !important; /* keep !important: drag transient state, suppress any focus/drag outline */
-  box-shadow: none !important; /* keep !important: beats rainbow card wrapper box-shadow (0,3,1) */
-}
-
-/* Root drop zone (gaps between folder cards count as root): only a
-   subtle dashed gold frame, no fill — a full gold wash looks muddy.
-   keep !important: drag transient state — must blank the sidebar-grid
-   background and stay deterministic regardless of future container rules. */
-.nav-files-container.is-being-dragged-over {
-  background: transparent !important; /* keep !important: resets sidebar-grid background-image during drop */
-  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--quartzflow-gold) 45%, transparent) !important; /* keep !important: drag drop zone frame */
-  border-radius: var(--radius-m) !important; /* keep !important: drag drop zone frame */
-}
-
-/* Nested folder indentation guide line, tinted by folder accent */
 .nav-files-container .nav-folder-children .nav-folder-children {
   border-left: 1px solid color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-border)) 25%, transparent);
 }

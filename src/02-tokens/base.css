@@ -36,9 +36,8 @@ body {
   --quartzflow-reading-width: var(--quartzflow-readable-width, 1100px);
   --quartzflow-content-padding-x: 30px;
   --quartzflow-content-padding-y: 20px;
-  --quartzflow-list-indent: 18px;
-  --quartzflow-font-text-stack: var(--quartzflow-font-text, Gilroy, Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif);
-  --quartzflow-font-interface-stack: var(--quartzflow-font-interface, Gilroy, Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif);
+  --quartzflow-font-text-stack: var(--quartzflow-font-text, Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif);
+  --quartzflow-font-interface-stack: var(--quartzflow-font-interface, Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif);
   --quartzflow-font-code-stack: var(--quartzflow-font-code, Roboto Mono, Source Code Pro, Consolas, monospace);
   --quartzflow-list-item-height-effective: var(--quartzflow-list-item-height, 28px);
   --quartzflow-tab-height-effective: var(--quartzflow-tab-height, 36px);

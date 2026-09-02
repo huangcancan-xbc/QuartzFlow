@@ -20,9 +20,7 @@ body.theme-dark {
   --h6-color: #b8bcc3;
 }
 
-.is-flashing,
-.nav-file-title.is-being-dragged,
-.nav-folder-title.is-being-dragged {
+.is-flashing {
   background-color: color-mix(in srgb, var(--interactive-accent) 22%, transparent);
 }
 

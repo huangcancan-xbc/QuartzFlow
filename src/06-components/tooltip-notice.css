@@ -3,40 +3,44 @@
   border-color: var(--quartzflow-border);
 }
 
-@keyframes quartzflow-tooltip-in {
-  from {
-    opacity: 0;
-    transform: translateY(4px) scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+@keyframes quartzflow-floating-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.tooltip,
+.popover.hover-popover {
+  --quartzflow-rainbow-edge: linear-gradient(115deg,
+    var(--quartzflow-red),
+    var(--quartzflow-yellow),
+    var(--quartzflow-green),
+    var(--quartzflow-blue),
+    #8e44ad);
 }
 
 .tooltip {
   color: var(--text-normal);
-  background-color: var(--quartzflow-menu-bg);
-  border: 1px solid var(--background-modifier-border);
-  border-left: 3px solid var(--quartzflow-gold);
+  background:
+    linear-gradient(color-mix(in srgb, var(--quartzflow-menu-bg) 97%, transparent), color-mix(in srgb, var(--quartzflow-menu-bg) 97%, transparent)) padding-box,
+    var(--quartzflow-rainbow-edge) border-box;
+  border: 1px solid transparent;
   border-radius: var(--quartzflow-radius-base);
-  padding: 5px 10px;
-  font-size: 11px;
-  font-weight: 500;
-  line-height: 1.7;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.01em;
-  box-shadow: 0 8px 24px rgba(var(--quartzflow-shadow-color), var(--quartzflow-modal-shadow-alpha));
-  max-width: 240px;
+  padding: 7px 10px;
+  max-width: min(320px, calc(100vw - 24px));
+  overflow-wrap: anywhere;
   white-space: pre-wrap;
-  word-wrap: break-word;
-  animation: quartzflow-tooltip-in 0.15s ease-out;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+  box-shadow:
+    0 10px 30px rgba(var(--quartzflow-shadow-color), var(--quartzflow-modal-shadow-alpha)),
+    -6px 0 18px color-mix(in srgb, var(--quartzflow-red) 8%, transparent),
+    6px 0 18px color-mix(in srgb, var(--quartzflow-blue) 8%, transparent);
+  animation: quartzflow-floating-in 0.12s ease-out;
 }
-
-/* ============================================================
-   HOVER PREVIEW POPOVER (page preview on file/link hover,
-   Blue Topaz style: rounded clipping + accent glow)
-   ============================================================ */
 
 .popover.hover-popover,
 .popover.hover-popover .markdown-embed {
@@ -45,19 +49,28 @@
 
 .popover.hover-popover {
   overflow: hidden;
-  border: 1px solid var(--background-modifier-border);
+  background:
+    linear-gradient(var(--modal-background), var(--modal-background)) padding-box,
+    var(--quartzflow-rainbow-edge) border-box;
+  border: 1px solid transparent;
   border-radius: var(--radius-m);
   box-shadow:
     0 16px 48px rgba(var(--quartzflow-shadow-color), var(--quartzflow-modal-shadow-alpha)),
-    0 0 6px 4px color-mix(in srgb, var(--quartzflow-gold) 12%, transparent);
+    -8px 0 24px color-mix(in srgb, var(--quartzflow-red) 8%, transparent),
+    8px 0 24px color-mix(in srgb, var(--quartzflow-blue) 8%, transparent);
+  animation: quartzflow-floating-in 0.12s ease-out;
 }
 
-/* Preview content fills naturally instead of forcing full height.
-   No !important needed on height/min-height: neither core app.css (1.12.4)
-   nor the theme sets any height/min-height rule on these popover
-   embed/sizer elements — core height:100% rules only target
-   .markdown-preview-view/.markdown-embed-content pairs, which never match
-   these elements — so there is simply no opponent to outrank. */
+.popover.hover-popover::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0 0 auto;
+  height: 3px;
+  background: var(--quartzflow-rainbow-edge);
+  pointer-events: none;
+}
+
 .popover.hover-popover :is(.markdown-preview-view, .markdown-rendered) .markdown-embed,
 .popover.hover-popover .markdown-preview-sizer:is(.markdown-preview-section, .markdown-rendered) {
   height: auto;
@@ -69,7 +82,13 @@
   padding: 1em 0.5em 1em 1em;
 }
 
-/* Headings inside the preview keep a reasonable top spacing */
 .popover.hover-popover .markdown-preview-sizer:first-child :is(h1, h2, h3, h4, h5, h6):first-child {
   margin-block-start: 0.3em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tooltip,
+  .popover.hover-popover {
+    animation: none;
+  }
 }

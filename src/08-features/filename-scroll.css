@@ -37,11 +37,16 @@
   transition: transform 0.3s ease; /* Smooth return when hover ends */
 }
 
-/* Apply animation on hover - remove 'forwards' so it resets after hover */
+/* Delay the marquee so brief pointer passes stay still. */
 .nav-file-title:hover .nav-file-title-content:not(.is-being-renamed),
 .nav-folder-title:hover .nav-folder-title-content:not(.is-being-renamed) {
-  animation: filemove 1.5s 1 normal linear;
-  /* No 'forwards' = animation resets when hover ends */
+  animation: filemove 1.5s 0.35s 1 normal ease-in-out;
+}
+
+/* Keep labels stable while choosing a drag target. */
+body.is-grabbing .nav-files-container :is(.nav-file-title-content, .nav-folder-title-content) {
+  animation: none;
+  transform: none;
 }
 
 /* Ensure the animation has space to work */
@@ -51,4 +56,16 @@
 
 .nav-folder-children .tree-item-self {
   overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-file-title-content,
+  .nav-folder-title-content {
+    transition: none;
+  }
+
+  .nav-file-title:hover .nav-file-title-content:not(.is-being-renamed),
+  .nav-folder-title:hover .nav-folder-title-content:not(.is-being-renamed) {
+    animation: none;
+  }
 }

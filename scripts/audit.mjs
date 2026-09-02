@@ -125,7 +125,9 @@ for (const m of modules) {
         const url = u[1];
         if (/^https?:\/\//i.test(url)) F.remote.push({ file: m.rel, line: dec.line, url });
         else if (url.startsWith("app://")) F.appScheme.push({ file: m.rel, line: dec.line, url });
-        else if (!url.startsWith("data:")) F.relativeUrls.push({ file: m.rel, line: dec.line, url });
+        else if (!url.startsWith("data:") && !url.startsWith("./fonts/")) {
+          F.relativeUrls.push({ file: m.rel, line: dec.line, url });
+        }
       }
     }
 
@@ -153,7 +155,7 @@ for (const m of modules) for (const r of m.rules) for (const dec of r.decls) {
 F.unusedTokens = [...defined.entries()].filter(([n]) => !used.has(n)).map(([name, w]) => ({ name, ...w }));
 
 // 字体：@font-face 清单、死文件、缺失文件、字体族实际使用点
-const diskFonts = readdirSync(FONTS);
+const diskFonts = readdirSync(FONTS).filter((file) => /\.woff2?$/i.test(file));
 for (const m of modules) for (const r of m.rules) if (r.selector === "@font-face") {
   const get = (p) => (r.decls.find((x) => x.prop === p) || {}).value || "";
   F.fonts.push({
@@ -217,7 +219,7 @@ rows(F.importRules, ["file", "line"]);
 h(`6. app:// 绝对路径引用（${F.appScheme.length}）`);
 rows(F.appScheme.slice(0, 5), ["file", "line", "url"]);
 if (F.appScheme.length > 5) out.push(`…（共 ${F.appScheme.length} 处，其余略）`);
-h(`6b. 相对路径 url 引用（${F.relativeUrls.length}）—— 相对路径在 Obsidian 中会 404（base URL 是 vault 根）`);
+h(`6b. 未内联的相对路径 url 引用（${F.relativeUrls.length}）—— 在 Obsidian 中会 404`);
 rows(F.relativeUrls, ["file", "line", "url"]);
 h(`7. 块内重复声明（前者被覆盖，${F.dupDecls.length}）`);
 rows(F.dupDecls, ["file", "selector", "prop", "deadLine", "overriddenBy"]);

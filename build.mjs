@@ -79,18 +79,14 @@ const vaultArg = resolveVault();
 
 build();
 if (vaultArg) deploy(vaultArg);
-if (vaultArg && process.argv.includes("--watch")) {
+if (process.argv.includes("--watch")) {
   let timer = null;
   watch(SRC, { recursive: true }, () => {
     clearTimeout(timer);
-    timer = setTimeout(() => { build(); deploy(vaultArg); }, 100);
+    timer = setTimeout(() => {
+      build();
+      if (vaultArg) deploy(vaultArg);
+    }, 100);
   });
-  console.log("[watch] watching src/ for changes (build + deploy)...");
-} else if (process.argv.includes("--watch")) {
-  let timer = null;
-  watch(SRC, { recursive: true }, () => {
-    clearTimeout(timer);
-    timer = setTimeout(build, 100);
-  });
-  console.log("[watch] watching src/ for changes...");
+  console.log(`[watch] watching src/ for changes${vaultArg ? " (build + deploy)" : ""}...`);
 }

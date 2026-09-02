@@ -151,31 +151,4 @@
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title .nav-folder-title-content::after,
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title .tree-item-icon {
   display: none;
-  width: 0;
-  height: 0;
-  margin: 0;
-  padding: 0;
-  visibility: hidden;
-  content: none;
-}
-
-/* Also hide the native Obsidian collapse triangle on top-level folders
-   so the cards look clean like the reference image.
-   No !important needed: (0,5,1) outranks the only display opponent,
-   core ".collapse-icon { display: flex }" (0,1,0). */
-.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title .collapse-indicator,
-.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title > .collapse-indicator {
-  display: none;
-  width: 0;
-  height: 0;
-  margin: 0;
-  padding: 0;
-  visibility: hidden;
-  content: none;
-}
-
-/* Slim down the leading padding now that the icon is gone, so the title
-   sits closer to the colored left border like the reference. */
-.nav-files-container > div > .tree-item.nav-folder > .nav-folder-title {
-  padding: 7px 10px 7px 10px;
 }
