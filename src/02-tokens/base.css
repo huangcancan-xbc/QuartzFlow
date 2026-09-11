@@ -8,7 +8,7 @@ body {
   --quartzflow-green: #27c93f;
   --quartzflow-red: #ff5f56;
   --quartzflow-gold: var(--quartzflow-accent, #ca9b52);
-  --quartzflow-link-color: var(--quartzflow-link, #ca9b52);
+  --quartzflow-link-color: var(--quartzflow-link, #ca9b51);
   --quartzflow-code-orange: var(--quartzflow-code-accent, #e96900);
   --quartzflow-code-link: #22a2c9;
   /* Derived surface alias (mode value comes from dark.css/light.css);

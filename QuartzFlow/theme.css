@@ -16,175 +16,204 @@ name: QuartzFlow
 id: quartzflow
 settings:
   - id: quartzflow-colors-heading
-    title: Colors
-    title.zh: 颜色
+    title: 颜色与背景
+    description: 设置主题强调色、笔记链接和明暗模式背景。
     type: heading
-    level: 2
+    level: 1
   - id: quartzflow-accent
-    title: Accent color
-    title.zh: 强调色
-    description: Used for active UI states and primary highlights.
-    description.zh: 用于激活状态元素和主要高亮的颜色。
+    title: 主题强调色
+    description: 用于主要按钮、启用状态和界面重点提示。
     type: variable-color
     default: '#ca9b52'
     format: hex
   - id: quartzflow-link
-    title: Link color
-    title.zh: 链接颜色
+    title: 链接颜色
+    description: 统一设置内部笔记链接与外部网页链接的颜色，链接文字自动加粗。
     type: variable-color
-    default: '#ca9b52'
+    default: '#ca9b51'
     format: hex
   - id: quartzflow-light-bg
-    title: Light background
-    title.zh: 浅色模式背景
+    title: 浅色模式背景
+    description: 设置浅色模式下正文和侧栏的基础背景色。
     type: variable-color
     default: '#ffffff'
     format: hex
   - id: quartzflow-dark-bg
-    title: Dark background
-    title.zh: 深色模式背景
+    title: 深色模式背景
+    description: 设置深色模式下正文和侧栏的基础背景色。
     type: variable-color
     default: '#000000'
     format: hex
-  - id: quartzflow-code-accent
-    title: Code accent color
-    title.zh: 代码强调色
-    type: variable-color
-    default: '#e96900'
-    format: hex
-  - id: quartzflow-blockquote-accent
-    title: Blockquote accent color
-    title.zh: 引用块强调色
-    description: Overrides the color used for the blockquote left border. Defaults to matching the main accent color.
-    description.zh: 单独设置引用块左侧竖线的颜色，默认跟随强调色。
-    type: variable-color
-    default: '#ca9b52'
-    format: hex
-  - id: quartzflow-highlight-color
-    title: Highlight background color
-    title.zh: 高亮背景色
-    description: Background color for ==highlighted== text and search match highlighting.
-    description.zh: 用于 ==高亮== 文本和搜索匹配高亮的背景色。
-    type: variable-color
-    default: '#ebffeb'
-    format: hex
+
   - id: quartzflow-typography-heading
-    title: Typography
-    title.zh: 排版
+    title: 字体与排版
+    description: 分别设置字体和正文阅读尺寸。
+    type: heading
+    level: 1
+  - id: quartzflow-fonts-heading
+    title: 字体选择
+    description: 可用英文逗号分隔多个字体名称，按顺序使用可用字体。
     type: heading
     level: 2
   - id: quartzflow-font-text
-    title: Text font
-    title.zh: 正文字体
+    title: 正文字体
+    description: 用于笔记正文；保留字体名称原文即可。
     type: variable-text
     default: 'Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif'
   - id: quartzflow-font-interface
-    title: Interface font
-    title.zh: 界面字体
+    title: 界面字体
+    description: 用于侧栏、菜单、标签页和设置界面。
     type: variable-text
     default: 'Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif'
   - id: quartzflow-font-code
-    title: Code font
-    title.zh: 代码字体
+    title: 代码字体
+    description: 用于行内代码和代码块，建议使用等宽字体。
     type: variable-text
     default: 'Roboto Mono, Source Code Pro, Consolas, monospace'
+  - id: quartzflow-reading-heading
+    title: 正文阅读
+    description: 调整字号、行距和正文最大宽度。
+    type: heading
+    level: 2
   - id: quartzflow-text-size
-    title: Text size
-    title.zh: 字号大小
+    title: 正文字号
+    description: 单位为像素，默认值为 16。
     type: variable-number
     default: 16
     format: px
   - id: quartzflow-line-height
-    title: Line height
-    title.zh: 行高
+    title: 正文行高
+    description: 按字号的倍数设置，默认值为 1.6。
     type: variable-number
     default: 1.6
   - id: quartzflow-readable-width
-    title: Reading width
-    title.zh: 正文宽度
+    title: 正文最大宽度
+    description: 单位为像素，默认值为 1100；窗口较窄时随可用空间收缩。
     type: variable-number
     default: 1100
     format: px
+
+  - id: quartzflow-components-heading
+    title: 内容样式
+    description: 按标题、代码、引用、表格和图片分别调整。
+    type: heading
+    level: 1
   - id: quartzflow-headings-heading
-    title: Heading Decoration
-    title.zh: 标题装饰
+    title: 标题与高亮
     type: heading
     level: 2
+  - id: quartzflow-dark-heading-color
+    title: 暗色标题颜色
+    description: 单独调整深色模式下一至五级标题的文字颜色，默认使用柔和灰色。
+    type: variable-color
+    default: '#b8c2cf'
+    format: hex
   - id: quartzflow-no-heading-underline
-    title: Disable heading underlines
-    title.zh: 禁用标题下划线
+    title: 隐藏标题装饰线
+    description: 开启后隐藏一级至四级标题的彩色装饰线。
     type: class-toggle
     default: false
+  - id: quartzflow-highlight-color
+    title: 文本高亮背景
+    description: 用于正文高亮和搜索匹配背景，选色时请兼顾明暗模式下的文字可读性。
+    type: variable-color
+    default: '#ebffeb'
+    format: hex
   - id: quartzflow-code-heading
-    title: Code Blocks
-    title.zh: 代码块
+    title: 代码块
     type: heading
     level: 2
+  - id: quartzflow-code-accent
+    title: 代码文字颜色
+    description: 设置行内代码和代码块的基础文字颜色，语法高亮仍使用各自配色。
+    type: variable-color
+    default: '#e96900'
+    format: hex
   - id: quartzflow-no-code-dots
-    title: Disable macOS code block dots
-    title.zh: 禁用代码块 macOS 圆点
+    title: 隐藏代码块装饰圆点
+    description: 开启后隐藏阅读视图中代码块顶部的三色圆点，并收起顶部留白。
     type: class-toggle
     default: false
   - id: quartzflow-code-radius
-    title: Code block radius
-    title.zh: 代码块圆角
+    title: 代码块圆角
+    description: 单位为像素，默认值为 6，设为 0 可使用直角。
     type: variable-number
     default: 6
     format: px
-  - id: quartzflow-density-heading
-    title: Layout Density
-    title.zh: 布局密度
+  - id: quartzflow-blockquote-heading
+    title: 引用块
+    description: 调整普通引用块的竖线和背景样式。
     type: heading
     level: 2
-  - id: quartzflow-density
-    title: Sidebar density
-    title.zh: 侧边栏密度
-    type: class-select
-    allowEmpty: false
-    default: quartzflow-density-comfortable
-    options:
-      - label: Comfortable 舒适
-        value: quartzflow-density-comfortable
-      - label: Compact 紧凑
-        value: quartzflow-density-compact
-  - id: quartzflow-components-heading
-    title: Components
-    title.zh: 组件
-    type: heading
-    level: 2
-  - id: quartzflow-radius
-    title: Global radius
-    title.zh: 全局圆角
-    type: variable-number
-    default: 8
-    format: px
-  - id: quartzflow-shadow-strength
-    title: Global shadow strength
-    title.zh: 全局阴影强度
-    type: variable-number
-    default: 0.12
-  - id: quartzflow-table-style-strength
-    title: Table style strength
-    title.zh: 表格样式强度
-    type: variable-number
-    default: 1
+  - id: quartzflow-blockquote-accent
+    title: 引用竖线颜色
+    description: 单独设置引用块左侧竖线的颜色。
+    type: variable-color
+    default: '#ca9b52'
+    format: hex
   - id: quartzflow-blockquote-style
-    title: Blockquote style
-    title.zh: 引用块样式
+    title: 引用背景样式
+    description: 可保留背景填充，或使用仅带竖线的简洁样式。
     type: class-select
     allowEmpty: false
     default: quartzflow-blockquote-filled
     options:
-      - label: Filled 填充
+      - label: 背景填充
         value: quartzflow-blockquote-filled
-      - label: Minimal 极简
+      - label: 仅保留竖线
         value: quartzflow-blockquote-minimal
+  - id: quartzflow-table-heading
+    title: 表格
+    type: heading
+    level: 2
+  - id: quartzflow-table-style-strength
+    title: 表格底色强度
+    description: 调整表头和交替行的底色，建议填写 0 至 1；0 为透明，1 为完整底色。
+    type: variable-number
+    default: 1
+  - id: quartzflow-image-heading
+    title: 图片
+    type: heading
+    level: 2
   - id: quartzflow-image-radius
-    title: Image radius
-    title.zh: 图片圆角
+    title: 图片圆角
+    description: 单位为像素，默认值为 8，设为 0 可使用直角。
     type: variable-number
     default: 8
     format: px
+
+  - id: quartzflow-density-heading
+    title: 界面与布局
+    description: 调整侧栏与标签页密度，以及界面的基础圆角和通用阴影。
+    type: heading
+    level: 1
+  - id: quartzflow-density
+    title: 侧栏与标签页密度
+    description: 舒适模式留白更充足，紧凑模式可显示更多内容。
+    type: class-select
+    allowEmpty: false
+    default: quartzflow-density-comfortable
+    options:
+      - label: 舒适
+        value: quartzflow-density-comfortable
+      - label: 紧凑
+        value: quartzflow-density-compact
+  - id: quartzflow-radius
+    title: 界面基础圆角
+    description: 单位为像素，默认值为 8；代码块和图片可在各自分组中单独设置。
+    type: variable-number
+    default: 8
+    format: px
+  - id: quartzflow-shadow-strength
+    title: 通用阴影强度
+    description: 调整使用通用阴影的组件，建议填写 0 至 1；数值越大，阴影越深。
+    type: variable-number
+    default: 0.12
+  - id: quartzflow-elastic-dividers
+    title: 弹性分隔条
+    description: 配合“QuartzFlow 弹性分隔条”插件，随拖动方向弯曲并弹性回位；遵循系统的“减少动态效果”设置。
+    type: class-toggle
+    default: true
 */
 
 /* ============================================================
@@ -514,7 +543,7 @@ body {
   --quartzflow-green: #27c93f;
   --quartzflow-red: #ff5f56;
   --quartzflow-gold: var(--quartzflow-accent, #ca9b52);
-  --quartzflow-link-color: var(--quartzflow-link, #ca9b52);
+  --quartzflow-link-color: var(--quartzflow-link, #ca9b51);
   --quartzflow-code-orange: var(--quartzflow-code-accent, #e96900);
   --quartzflow-code-link: #22a2c9;
   /* Derived surface alias (mode value comes from dark.css/light.css);
@@ -559,17 +588,23 @@ body.theme-dark {
   --quartzflow-green: #42e85f;
   --quartzflow-red: #ff6f67;
   --quartzflow-gold: var(--quartzflow-accent, #e0b665);
-  --quartzflow-link-color: var(--quartzflow-link, #e0b665);
   --quartzflow-code-orange: var(--quartzflow-code-accent, #ff9a3d);
   --quartzflow-code-link: #66d9ff;
+  /* Richer hues with restrained luminance beneath the soft gray text. */
+  --quartzflow-heading-1-decoration: #005480;
+  --quartzflow-heading-2-decoration: #694900;
+  --quartzflow-heading-3-decoration: #0b5c20;
+  --quartzflow-heading-4-decoration: #883026;
   --quartzflow-heading-6-decoration: #888888;
+  --quartzflow-heading-shadow-alpha: var(--quartzflow-heading-shadow-strength, 0);
   --quartzflow-bg-primary: var(--quartzflow-dark-bg, #000000);
   --quartzflow-bg-primary-alt: #08090b;
   --quartzflow-bg-secondary: var(--quartzflow-bg-primary);
   --quartzflow-bg-secondary-alt: #15181d;
   --quartzflow-bg-tertiary: #1c2026;
-  --quartzflow-text-normal: #f2f2f2;
-  --quartzflow-text-muted: #b8bcc3;
+  --quartzflow-text-normal: #d7dadd;
+  --bold-color: #f0f1f3;
+  --quartzflow-text-muted: #a0a8b5;
   --quartzflow-text-faint: #858b94;
   --quartzflow-text-on-accent: #000000;
   --quartzflow-border: #2b3038;
@@ -636,6 +671,7 @@ body {
   --font-text-size: var(--quartzflow-text-size, 16px);
   --line-height-normal: var(--quartzflow-line-height, 1.6);
   --line-height-tight: 1.35;
+  --heading-spacing: 1.25rem;
   --list-indent: 1.5em;
   --list-indent-editing: 0.5em;
   --list-indent-source: 0;
@@ -660,9 +696,10 @@ body {
   --interactive-accent: var(--quartzflow-gold);
   --interactive-accent-hover: color-mix(in srgb, var(--quartzflow-gold) 84%, var(--quartzflow-yellow));
   --link-color: var(--quartzflow-link-color);
+  --link-weight: 700;
   --link-color-hover: color-mix(in srgb, var(--quartzflow-link-color) 85%, var(--quartzflow-blue));
-  --link-external-color: var(--quartzflow-code-link);
-  --link-external-color-hover: color-mix(in srgb, var(--quartzflow-code-link) 85%, var(--quartzflow-yellow));
+  --link-external-color: var(--quartzflow-link-color);
+  --link-external-color-hover: var(--link-color-hover);
   --tag-color: var(--quartzflow-code-link);
   --tag-background: color-mix(in srgb, var(--quartzflow-code-link) 12%, transparent);
   --tag-background-hover: color-mix(in srgb, var(--quartzflow-code-link) 20%, transparent);
@@ -947,6 +984,21 @@ body.quartzflow-no-code-dots .markdown-rendered pre code::before {
 /* ============================================================
    src/04-editor/headings.css
    ============================================================ */
+/* Use the native spacing token so headings after paragraphs, lists and
+   other blocks follow the same rhythm as consecutive headings. */
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6) {
+  margin-block: var(--heading-spacing) 0.45rem;
+}
+
+/* Editor spacing belongs to the heading line, not its inline text spans. */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header {
+  padding-top: 0.75rem;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header + .cm-line:not(.HyperMD-header):not(:has(> br:only-child)) {
+  padding-top: 0.25rem;
+}
+
 .markdown-rendered h1,
 .markdown-rendered h2,
 .markdown-rendered h3,
@@ -970,8 +1022,7 @@ body.quartzflow-no-code-dots .markdown-rendered pre code::before {
 .markdown-source-view .cm-header-1 {
   font-size: 2.2rem;
   line-height: 1.3;
-  margin-block: 1.5rem 1rem;
-  padding-bottom: 0.4rem;
+  padding-bottom: 0.1em;
   color: var(--h1-color);
   text-decoration-color: var(--quartzflow-heading-1-decoration);
 }
@@ -980,8 +1031,7 @@ body.quartzflow-no-code-dots .markdown-rendered pre code::before {
 .markdown-source-view .cm-header-2 {
   font-size: 1.75rem;
   line-height: 1.225;
-  margin-block: 35px 15px;
-  padding-bottom: 0.5em;
+  padding-bottom: 0.2em;
   border-bottom: 1px solid var(--quartzflow-border);
   color: var(--h2-color);
   text-decoration-color: var(--quartzflow-heading-2-decoration);
@@ -991,7 +1041,6 @@ body.quartzflow-no-code-dots .markdown-rendered pre code::before {
 .markdown-source-view .cm-header-3 {
   font-size: 1.4rem;
   line-height: 1.43;
-  margin-block: 20px 7px;
   color: var(--h3-color);
   text-decoration-color: var(--quartzflow-heading-3-decoration);
 }
@@ -1052,8 +1101,14 @@ body.quartzflow-no-heading-underline .markdown-source-view .cm-header-4 {
 .markdown-source-view .cm-hmd-internal-link,
 .markdown-source-view .cm-url {
   color: var(--link-color);
+  font-weight: var(--link-weight);
   text-decoration: none;
   padding-inline: 2px;
+}
+
+/* Bold text inside a link keeps the link's color in both modes. */
+.markdown-rendered a :is(strong, b) {
+  color: inherit;
 }
 
 .markdown-rendered a:hover,
@@ -1064,14 +1119,18 @@ body.quartzflow-no-heading-underline .markdown-source-view .cm-header-4 {
   text-decoration: underline;
 }
 
-/* External links carry a trailing icon via background-image; restore the
-   right padding our generic `a { padding-inline: 2px }` rule eats away,
-   otherwise the arrow glyph overlaps the link text. */
+/* Reserve the icon width plus a half-em gap after the label. */
 .markdown-rendered a.external-link,
-.markdown-rendered .external-link {
-  padding-inline-end: 13px;
+.markdown-rendered .external-link,
+.markdown-source-view .external-link {
+  padding-inline-end: 1.25em;
   background-position: right center;
-  background-size: 11px;
+  background-size: 0.75em;
+}
+
+.markdown-rendered .external-link:dir(rtl),
+.markdown-source-view .external-link:dir(rtl) {
+  background-position: left center;
 }
 
 .markdown-rendered .tag,
@@ -1610,19 +1669,11 @@ input[type='checkbox'] {
 
 /* ============================================================
    QuartzFlow STYLE SETTINGS CATEGORIES
-   Give this theme's own Style Settings section headings a
-   stronger visual identity (colored left bar + tinted background)
-   so they read as clear category dividers when scrolling the
-   Style Settings panel. Scoped to this theme's own heading ids
-   only, so other plugins' Style Settings sections are untouched.
+   Theme-owned headings share the category styling, including
+   the nested sections defined in 00-settings.css.
    ============================================================ */
 
-.style-settings-heading[data-id="quartzflow-colors-heading"],
-.style-settings-heading[data-id="quartzflow-typography-heading"],
-.style-settings-heading[data-id="quartzflow-headings-heading"],
-.style-settings-heading[data-id="quartzflow-code-heading"],
-.style-settings-heading[data-id="quartzflow-density-heading"],
-.style-settings-heading[data-id="quartzflow-components-heading"] {
+.style-settings-heading[data-id^="quartzflow-"][data-id$="-heading"] {
   margin-top: 18px;
   padding: 6px 10px 6px 12px;
   border-bottom: none;
@@ -1631,23 +1682,13 @@ input[type='checkbox'] {
   background-color: color-mix(in srgb, var(--quartzflow-gold) 8%, transparent);
 }
 
-.style-settings-heading[data-id="quartzflow-colors-heading"] .setting-item-name,
-.style-settings-heading[data-id="quartzflow-typography-heading"] .setting-item-name,
-.style-settings-heading[data-id="quartzflow-headings-heading"] .setting-item-name,
-.style-settings-heading[data-id="quartzflow-code-heading"] .setting-item-name,
-.style-settings-heading[data-id="quartzflow-density-heading"] .setting-item-name,
-.style-settings-heading[data-id="quartzflow-components-heading"] .setting-item-name {
+.style-settings-heading[data-id^="quartzflow-"][data-id$="-heading"] .setting-item-name {
   font-size: 1.05em;
   font-weight: 700;
   color: var(--quartzflow-gold);
 }
 
-.style-settings-heading[data-id="quartzflow-colors-heading"] .style-settings-collapse-indicator,
-.style-settings-heading[data-id="quartzflow-typography-heading"] .style-settings-collapse-indicator,
-.style-settings-heading[data-id="quartzflow-headings-heading"] .style-settings-collapse-indicator,
-.style-settings-heading[data-id="quartzflow-code-heading"] .style-settings-collapse-indicator,
-.style-settings-heading[data-id="quartzflow-density-heading"] .style-settings-collapse-indicator,
-.style-settings-heading[data-id="quartzflow-components-heading"] .style-settings-collapse-indicator {
+.style-settings-heading[data-id^="quartzflow-"][data-id$="-heading"] .style-settings-collapse-indicator {
   color: var(--quartzflow-gold);
 }
 
@@ -1837,6 +1878,37 @@ input[type='checkbox'] {
 }
 
 /* ============================================================
+   src/08-features/elastic-dividers.css
+   ============================================================ */
+/* The optional companion observes drag direction; native sizing stays untouched. */
+.quartzflow-elastic-line {
+  display: none;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body.quartzflow-elastic-dividers .workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-leaf-resize-handle {
+    --quartzflow-elastic-enabled: 1;
+  }
+
+  body.quartzflow-elastic-dividers .workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-leaf-resize-handle.quartzflow-elastic-active {
+    overflow: visible;
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  body.quartzflow-elastic-dividers .workspace-leaf-resize-handle.quartzflow-elastic-active > .quartzflow-elastic-line {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    stroke: var(--interactive-accent);
+  }
+}
+
+/* ============================================================
    src/08-features/file-icons.css
    ============================================================ */
 /* ============================================================
@@ -2008,10 +2080,8 @@ input[type='checkbox'] {
     transform: translate(0, 0);
   }
   100% {
-    /* 使用 min() 确保短文件名不移动（保持0），长文件名向左移动 */
-    /* 如果文件名宽度 < 180px: calc(-100% + 180px) > 0，min(正值, 0) = 0 (不移动) */
-    /* 如果文件名宽度 > 180px: calc(-100% + 180px) < 0，min(负值, 0) = 负值 (向左移动) */
-    transform: translate(min(calc(-100% + 180px), 0px), 0);
+    /* Only travel the overflow beyond the row's available content width. */
+    transform: translate(min(calc(100cqi - 100%), 0px), 0);
   }
 }
 
@@ -2025,6 +2095,7 @@ input[type='checkbox'] {
   overflow: hidden;
   white-space: nowrap;
   max-width: 100%;
+  container-type: inline-size;
 }
 
 /* File/folder content containers - must be able to exceed parent width */
@@ -2039,22 +2110,13 @@ input[type='checkbox'] {
 /* Delay the marquee so brief pointer passes stay still. */
 .nav-file-title:hover .nav-file-title-content:not(.is-being-renamed),
 .nav-folder-title:hover .nav-folder-title-content:not(.is-being-renamed) {
-  animation: filemove 1.5s 0.35s 1 normal ease-in-out;
+  animation: filemove 4s 0.35s 1 normal ease-in-out forwards;
 }
 
 /* Keep labels stable while choosing a drag target. */
 body.is-grabbing .nav-files-container :is(.nav-file-title-content, .nav-folder-title-content) {
   animation: none;
   transform: none;
-}
-
-/* Ensure the animation has space to work */
-.tree-item-self {
-  overflow: hidden;
-}
-
-.nav-folder-children .tree-item-self {
-  overflow: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2132,6 +2194,14 @@ body.theme-dark {
 }
 
 /* ---- Level pills on the title text (shadow + roomy gap) ---- */
+/* Small navigation markers can carry more color than text underlines. */
+body.theme-dark :is(.quiet-outline, .workspace-leaf-content[data-type="outline"]) {
+  --quartzflow-heading-1-decoration: color-mix(in srgb, var(--quartzflow-blue) 70%, var(--quartzflow-bg-primary));
+  --quartzflow-heading-2-decoration: color-mix(in srgb, var(--quartzflow-yellow) 70%, var(--quartzflow-bg-primary));
+  --quartzflow-heading-3-decoration: color-mix(in srgb, var(--quartzflow-green) 70%, var(--quartzflow-bg-primary));
+  --quartzflow-heading-4-decoration: color-mix(in srgb, var(--quartzflow-red) 70%, var(--quartzflow-bg-primary));
+}
+
 .quiet-outline .n-tree-node-content:is(.level-1, .level-2, .level-3, .level-4) .n-tree-node-content__text::before {
   content: "";
   display: inline-block;
@@ -2192,6 +2262,7 @@ body.theme-dark {
   height: 1em;
   border-radius: 2px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
 }
 
 .workspace-leaf-content[data-type="outline"] .tree-item:not(.tree-item-children .tree-item) > .tree-item-self::before { background: var(--quartzflow-heading-1-decoration); }
@@ -2199,23 +2270,24 @@ body.theme-dark {
 .workspace-leaf-content[data-type="outline"] .tree-item-children .tree-item-children .tree-item:not(.tree-item-children .tree-item-children .tree-item-children .tree-item) > .tree-item-self::before { background: var(--quartzflow-heading-3-decoration); }
 .workspace-leaf-content[data-type="outline"] .tree-item-children .tree-item-children .tree-item-children .tree-item:not(.tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item) > .tree-item-self::before { background: var(--quartzflow-heading-4-decoration); }
 
-/* ---- Row state: drive weights through the official --nav-item-weight*
-   tokens instead of fighting the core hover/active rules on specificity.
-   Core state machine: default = --nav-item-weight, hover (incl. hovering
-   an active row) = --nav-item-weight-hover, active = --nav-item-weight-active.
-   Scoping all three to the outline panel keeps the selected row bold for
-   the whole time it is active — hover can no longer downgrade it — while
-   color/background keep coming from the core's is-active rules. ---- */
+/* Keep wrapped row heights stable when hovering or changing the active
+   heading: native follow-cursor scrolling uses the virtual list's heights.
+   A small text stroke emphasizes the active label without changing its width. */
 .workspace-leaf-content[data-type="outline"] {
   --nav-item-weight: 400;
   --nav-item-weight-hover: 400;
-  --nav-item-weight-active: 600;
+  --nav-item-weight-active: 400;
+  --nav-item-color-active: var(--text-normal);
 }
 
 .workspace-leaf-content[data-type="outline"] .tree-item-self.is-active {
   color: var(--nav-item-color-active);
   background-color: var(--nav-item-background-active);
   box-shadow: none;
+}
+
+.workspace-leaf-content[data-type="outline"] .tree-item-self.is-active .tree-item-inner {
+  -webkit-text-stroke: 0.55px currentColor;
 }
 
 /* ============================================================
@@ -2227,8 +2299,8 @@ body.theme-dark {
    sidebar-interactions.css.
    ============================================================ */
 
-.tree-item-inner .collapse-icon,
-.collapse-indicator,
+.nav-files-container .tree-item-inner .collapse-icon,
+.nav-files-container .collapse-indicator,
 .nav-folder-children .collapse-icon {
   display: none !important;
 }
@@ -2251,23 +2323,28 @@ body.theme-dark {
 
 .nav-files-container,
 .nav-folder-title,
-.nav-file-title,
-.tree-item-self {
+.nav-file-title {
   font-family: var(--font-interface);
   font-weight: 600;
 }
 
-/* Override Obsidian's depth-based row width so hit areas reach the right edge. */
+/* Wrappers fill their parent; rows also account for native negative indent
+   margins, which an explicit 100% width would leave unfilled on the right. */
 .nav-files-container .nav-folder-children > .tree-item,
 .nav-files-container :where(.nav-file-title, .nav-folder-title) {
   box-sizing: border-box !important;
-  width: 100% !important;
   min-width: 0 !important;
-  max-width: 100% !important;
   margin-inline-end: 0 !important;
 }
 
+.nav-files-container .nav-folder-children > .tree-item {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
 .nav-files-container :where(.nav-file-title, .nav-folder-title) {
+  width: auto !important;
+  max-width: none !important;
   flex: 1 1 100% !important;
   align-self: stretch !important;
 }
@@ -2284,8 +2361,8 @@ body.theme-dark {
 .nav-files-container > div > .tree-item.nav-folder:nth-child(8n+9) { --quartzflow-folder-accent: #607d8b; }
 
 .nav-files-container > div > .tree-item.nav-folder {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
+  background: var(--background-primary-alt);
+  border: 1px solid var(--background-modifier-border);
   border-left: 2px solid var(--quartzflow-folder-accent, #95a5a6);
   border-radius: 6px;
   margin: 7px 4px;
@@ -2294,7 +2371,7 @@ body.theme-dark {
 }
 
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title {
-  color: var(--quartzflow-folder-accent, #5d6d7e);
+  color: color-mix(in srgb, var(--quartzflow-folder-accent, #5d6d7e) 70%, var(--text-normal));
   background: transparent;
   border: none;
   border-radius: 0;
@@ -2351,7 +2428,7 @@ body.theme-dark {
 }
 
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .tree-item-icon {
-  color: #a5d6a7;
+  color: color-mix(in srgb, var(--quartzflow-folder-accent, var(--text-muted)) 70%, var(--text-normal));
   opacity: 0.85;
 }
 
@@ -2361,23 +2438,17 @@ body.theme-dark {
   border-radius: 4px;
 }
 
-body.theme-dark .nav-files-container > div > .tree-item.nav-folder {
-  background: color-mix(in srgb, var(--quartzflow-folder-accent, #95a5a6) 12%, var(--quartzflow-bg-tertiary));
-  border-color: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-body.theme-dark .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title.is-active {
-  background: color-mix(in srgb, var(--quartzflow-folder-accent) 14%, transparent);
-}
-
-body.theme-dark .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .tree-item-icon {
-  color: #6fc985;
-  opacity: 0.8;
-}
-
 .nav-files-container .nav-folder-children .nav-folder-children {
   border-left: 1px solid color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-border)) 25%, transparent);
+}
+
+/* Keep the original bright folder palette on a clean light surface. */
+body.theme-light .nav-files-container > div > .tree-item.nav-folder {
+  background: var(--background-primary);
+}
+
+body.theme-light .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title {
+  color: var(--quartzflow-folder-accent, #5d6d7e);
 }
 
 /* ============================================================
@@ -2515,9 +2586,9 @@ body.is-grabbing .nav-files-container :where(.nav-file-title, .nav-folder-title)
   position: relative !important;
   display: flex !important;
   box-sizing: border-box !important;
-  width: 100% !important;
+  width: auto !important;
   min-width: 0 !important;
-  max-width: 100% !important;
+  max-width: none !important;
   border-radius: var(--quartzflow-radius-base) !important;
 }
 
@@ -2626,12 +2697,12 @@ body.theme-light {
 }
 
 body.theme-dark {
-  --h1-color: #e4e4e6;
-  --h2-color: #e4e4e6;
-  --h3-color: #e4e4e6;
-  --h4-color: #e4e4e6;
-  --h5-color: #e4e4e6;
-  --h6-color: #b8bcc3;
+  --h1-color: var(--quartzflow-dark-heading-color, #b8c2cf);
+  --h2-color: var(--quartzflow-dark-heading-color, #b8c2cf);
+  --h3-color: var(--quartzflow-dark-heading-color, #b8c2cf);
+  --h4-color: var(--quartzflow-dark-heading-color, #b8c2cf);
+  --h5-color: var(--quartzflow-dark-heading-color, #b8c2cf);
+  --h6-color: var(--text-muted);
 }
 
 .is-flashing {

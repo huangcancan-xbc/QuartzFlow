@@ -4,8 +4,14 @@
 .markdown-source-view .cm-hmd-internal-link,
 .markdown-source-view .cm-url {
   color: var(--link-color);
+  font-weight: var(--link-weight);
   text-decoration: none;
   padding-inline: 2px;
+}
+
+/* Bold text inside a link keeps the link's color in both modes. */
+.markdown-rendered a :is(strong, b) {
+  color: inherit;
 }
 
 .markdown-rendered a:hover,
@@ -16,14 +22,18 @@
   text-decoration: underline;
 }
 
-/* External links carry a trailing icon via background-image; restore the
-   right padding our generic `a { padding-inline: 2px }` rule eats away,
-   otherwise the arrow glyph overlaps the link text. */
+/* Reserve the icon width plus a half-em gap after the label. */
 .markdown-rendered a.external-link,
-.markdown-rendered .external-link {
-  padding-inline-end: 13px;
+.markdown-rendered .external-link,
+.markdown-source-view .external-link {
+  padding-inline-end: 1.25em;
   background-position: right center;
-  background-size: 11px;
+  background-size: 0.75em;
+}
+
+.markdown-rendered .external-link:dir(rtl),
+.markdown-source-view .external-link:dir(rtl) {
+  background-position: left center;
 }
 
 .markdown-rendered .tag,

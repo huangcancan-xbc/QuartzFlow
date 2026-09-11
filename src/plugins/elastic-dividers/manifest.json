@@ -1,0 +1,9 @@
+{
+  "id": "quartzflow-elastic-dividers",
+  "name": "QuartzFlow 弹性分隔条",
+  "version": "1.0.2",
+  "minAppVersion": "1.12.0",
+  "description": "让 QuartzFlow 侧栏分隔条随拖动方向弯曲，松手后弹性回位。",
+  "author": "MinBit",
+  "isDesktopOnly": true
+}

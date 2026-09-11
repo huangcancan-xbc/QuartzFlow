@@ -10,173 +10,202 @@ name: QuartzFlow
 id: quartzflow
 settings:
   - id: quartzflow-colors-heading
-    title: Colors
-    title.zh: 颜色
+    title: 颜色与背景
+    description: 设置主题强调色、笔记链接和明暗模式背景。
     type: heading
-    level: 2
+    level: 1
   - id: quartzflow-accent
-    title: Accent color
-    title.zh: 强调色
-    description: Used for active UI states and primary highlights.
-    description.zh: 用于激活状态元素和主要高亮的颜色。
+    title: 主题强调色
+    description: 用于主要按钮、启用状态和界面重点提示。
     type: variable-color
     default: '#ca9b52'
     format: hex
   - id: quartzflow-link
-    title: Link color
-    title.zh: 链接颜色
+    title: 链接颜色
+    description: 统一设置内部笔记链接与外部网页链接的颜色，链接文字自动加粗。
     type: variable-color
-    default: '#ca9b52'
+    default: '#ca9b51'
     format: hex
   - id: quartzflow-light-bg
-    title: Light background
-    title.zh: 浅色模式背景
+    title: 浅色模式背景
+    description: 设置浅色模式下正文和侧栏的基础背景色。
     type: variable-color
     default: '#ffffff'
     format: hex
   - id: quartzflow-dark-bg
-    title: Dark background
-    title.zh: 深色模式背景
+    title: 深色模式背景
+    description: 设置深色模式下正文和侧栏的基础背景色。
     type: variable-color
     default: '#000000'
     format: hex
-  - id: quartzflow-code-accent
-    title: Code accent color
-    title.zh: 代码强调色
-    type: variable-color
-    default: '#e96900'
-    format: hex
-  - id: quartzflow-blockquote-accent
-    title: Blockquote accent color
-    title.zh: 引用块强调色
-    description: Overrides the color used for the blockquote left border. Defaults to matching the main accent color.
-    description.zh: 单独设置引用块左侧竖线的颜色，默认跟随强调色。
-    type: variable-color
-    default: '#ca9b52'
-    format: hex
-  - id: quartzflow-highlight-color
-    title: Highlight background color
-    title.zh: 高亮背景色
-    description: Background color for ==highlighted== text and search match highlighting.
-    description.zh: 用于 ==高亮== 文本和搜索匹配高亮的背景色。
-    type: variable-color
-    default: '#ebffeb'
-    format: hex
+
   - id: quartzflow-typography-heading
-    title: Typography
-    title.zh: 排版
+    title: 字体与排版
+    description: 分别设置字体和正文阅读尺寸。
+    type: heading
+    level: 1
+  - id: quartzflow-fonts-heading
+    title: 字体选择
+    description: 可用英文逗号分隔多个字体名称，按顺序使用可用字体。
     type: heading
     level: 2
   - id: quartzflow-font-text
-    title: Text font
-    title.zh: 正文字体
+    title: 正文字体
+    description: 用于笔记正文；保留字体名称原文即可。
     type: variable-text
     default: 'Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif'
   - id: quartzflow-font-interface
-    title: Interface font
-    title.zh: 界面字体
+    title: 界面字体
+    description: 用于侧栏、菜单、标签页和设置界面。
     type: variable-text
     default: 'Source Sans Pro, Alibaba Sans, Open Sans, PingFang SC, Microsoft YaHei, sans-serif'
   - id: quartzflow-font-code
-    title: Code font
-    title.zh: 代码字体
+    title: 代码字体
+    description: 用于行内代码和代码块，建议使用等宽字体。
     type: variable-text
     default: 'Roboto Mono, Source Code Pro, Consolas, monospace'
+  - id: quartzflow-reading-heading
+    title: 正文阅读
+    description: 调整字号、行距和正文最大宽度。
+    type: heading
+    level: 2
   - id: quartzflow-text-size
-    title: Text size
-    title.zh: 字号大小
+    title: 正文字号
+    description: 单位为像素，默认值为 16。
     type: variable-number
     default: 16
     format: px
   - id: quartzflow-line-height
-    title: Line height
-    title.zh: 行高
+    title: 正文行高
+    description: 按字号的倍数设置，默认值为 1.6。
     type: variable-number
     default: 1.6
   - id: quartzflow-readable-width
-    title: Reading width
-    title.zh: 正文宽度
+    title: 正文最大宽度
+    description: 单位为像素，默认值为 1100；窗口较窄时随可用空间收缩。
     type: variable-number
     default: 1100
     format: px
+
+  - id: quartzflow-components-heading
+    title: 内容样式
+    description: 按标题、代码、引用、表格和图片分别调整。
+    type: heading
+    level: 1
   - id: quartzflow-headings-heading
-    title: Heading Decoration
-    title.zh: 标题装饰
+    title: 标题与高亮
     type: heading
     level: 2
+  - id: quartzflow-dark-heading-color
+    title: 暗色标题颜色
+    description: 单独调整深色模式下一至五级标题的文字颜色，默认使用柔和灰色。
+    type: variable-color
+    default: '#b8c2cf'
+    format: hex
   - id: quartzflow-no-heading-underline
-    title: Disable heading underlines
-    title.zh: 禁用标题下划线
+    title: 隐藏标题装饰线
+    description: 开启后隐藏一级至四级标题的彩色装饰线。
     type: class-toggle
     default: false
+  - id: quartzflow-highlight-color
+    title: 文本高亮背景
+    description: 用于正文高亮和搜索匹配背景，选色时请兼顾明暗模式下的文字可读性。
+    type: variable-color
+    default: '#ebffeb'
+    format: hex
   - id: quartzflow-code-heading
-    title: Code Blocks
-    title.zh: 代码块
+    title: 代码块
     type: heading
     level: 2
+  - id: quartzflow-code-accent
+    title: 代码文字颜色
+    description: 设置行内代码和代码块的基础文字颜色，语法高亮仍使用各自配色。
+    type: variable-color
+    default: '#e96900'
+    format: hex
   - id: quartzflow-no-code-dots
-    title: Disable macOS code block dots
-    title.zh: 禁用代码块 macOS 圆点
+    title: 隐藏代码块装饰圆点
+    description: 开启后隐藏阅读视图中代码块顶部的三色圆点，并收起顶部留白。
     type: class-toggle
     default: false
   - id: quartzflow-code-radius
-    title: Code block radius
-    title.zh: 代码块圆角
+    title: 代码块圆角
+    description: 单位为像素，默认值为 6，设为 0 可使用直角。
     type: variable-number
     default: 6
     format: px
-  - id: quartzflow-density-heading
-    title: Layout Density
-    title.zh: 布局密度
+  - id: quartzflow-blockquote-heading
+    title: 引用块
+    description: 调整普通引用块的竖线和背景样式。
     type: heading
     level: 2
-  - id: quartzflow-density
-    title: Sidebar density
-    title.zh: 侧边栏密度
-    type: class-select
-    allowEmpty: false
-    default: quartzflow-density-comfortable
-    options:
-      - label: Comfortable 舒适
-        value: quartzflow-density-comfortable
-      - label: Compact 紧凑
-        value: quartzflow-density-compact
-  - id: quartzflow-components-heading
-    title: Components
-    title.zh: 组件
-    type: heading
-    level: 2
-  - id: quartzflow-radius
-    title: Global radius
-    title.zh: 全局圆角
-    type: variable-number
-    default: 8
-    format: px
-  - id: quartzflow-shadow-strength
-    title: Global shadow strength
-    title.zh: 全局阴影强度
-    type: variable-number
-    default: 0.12
-  - id: quartzflow-table-style-strength
-    title: Table style strength
-    title.zh: 表格样式强度
-    type: variable-number
-    default: 1
+  - id: quartzflow-blockquote-accent
+    title: 引用竖线颜色
+    description: 单独设置引用块左侧竖线的颜色。
+    type: variable-color
+    default: '#ca9b52'
+    format: hex
   - id: quartzflow-blockquote-style
-    title: Blockquote style
-    title.zh: 引用块样式
+    title: 引用背景样式
+    description: 可保留背景填充，或使用仅带竖线的简洁样式。
     type: class-select
     allowEmpty: false
     default: quartzflow-blockquote-filled
     options:
-      - label: Filled 填充
+      - label: 背景填充
         value: quartzflow-blockquote-filled
-      - label: Minimal 极简
+      - label: 仅保留竖线
         value: quartzflow-blockquote-minimal
+  - id: quartzflow-table-heading
+    title: 表格
+    type: heading
+    level: 2
+  - id: quartzflow-table-style-strength
+    title: 表格底色强度
+    description: 调整表头和交替行的底色，建议填写 0 至 1；0 为透明，1 为完整底色。
+    type: variable-number
+    default: 1
+  - id: quartzflow-image-heading
+    title: 图片
+    type: heading
+    level: 2
   - id: quartzflow-image-radius
-    title: Image radius
-    title.zh: 图片圆角
+    title: 图片圆角
+    description: 单位为像素，默认值为 8，设为 0 可使用直角。
     type: variable-number
     default: 8
     format: px
+
+  - id: quartzflow-density-heading
+    title: 界面与布局
+    description: 调整侧栏与标签页密度，以及界面的基础圆角和通用阴影。
+    type: heading
+    level: 1
+  - id: quartzflow-density
+    title: 侧栏与标签页密度
+    description: 舒适模式留白更充足，紧凑模式可显示更多内容。
+    type: class-select
+    allowEmpty: false
+    default: quartzflow-density-comfortable
+    options:
+      - label: 舒适
+        value: quartzflow-density-comfortable
+      - label: 紧凑
+        value: quartzflow-density-compact
+  - id: quartzflow-radius
+    title: 界面基础圆角
+    description: 单位为像素，默认值为 8；代码块和图片可在各自分组中单独设置。
+    type: variable-number
+    default: 8
+    format: px
+  - id: quartzflow-shadow-strength
+    title: 通用阴影强度
+    description: 调整使用通用阴影的组件，建议填写 0 至 1；数值越大，阴影越深。
+    type: variable-number
+    default: 0.12
+  - id: quartzflow-elastic-dividers
+    title: 弹性分隔条
+    description: 配合“QuartzFlow 弹性分隔条”插件，随拖动方向弯曲并弹性回位；遵循系统的“减少动态效果”设置。
+    type: class-toggle
+    default: true
 */

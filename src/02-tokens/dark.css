@@ -5,17 +5,23 @@ body.theme-dark {
   --quartzflow-green: #42e85f;
   --quartzflow-red: #ff6f67;
   --quartzflow-gold: var(--quartzflow-accent, #e0b665);
-  --quartzflow-link-color: var(--quartzflow-link, #e0b665);
   --quartzflow-code-orange: var(--quartzflow-code-accent, #ff9a3d);
   --quartzflow-code-link: #66d9ff;
+  /* Richer hues with restrained luminance beneath the soft gray text. */
+  --quartzflow-heading-1-decoration: #005480;
+  --quartzflow-heading-2-decoration: #694900;
+  --quartzflow-heading-3-decoration: #0b5c20;
+  --quartzflow-heading-4-decoration: #883026;
   --quartzflow-heading-6-decoration: #888888;
+  --quartzflow-heading-shadow-alpha: var(--quartzflow-heading-shadow-strength, 0);
   --quartzflow-bg-primary: var(--quartzflow-dark-bg, #000000);
   --quartzflow-bg-primary-alt: #08090b;
   --quartzflow-bg-secondary: var(--quartzflow-bg-primary);
   --quartzflow-bg-secondary-alt: #15181d;
   --quartzflow-bg-tertiary: #1c2026;
-  --quartzflow-text-normal: #f2f2f2;
-  --quartzflow-text-muted: #b8bcc3;
+  --quartzflow-text-normal: #d7dadd;
+  --bold-color: #f0f1f3;
+  --quartzflow-text-muted: #a0a8b5;
   --quartzflow-text-faint: #858b94;
   --quartzflow-text-on-accent: #000000;
   --quartzflow-border: #2b3038;

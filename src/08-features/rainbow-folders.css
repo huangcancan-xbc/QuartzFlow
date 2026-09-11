@@ -4,8 +4,8 @@
    sidebar-interactions.css.
    ============================================================ */
 
-.tree-item-inner .collapse-icon,
-.collapse-indicator,
+.nav-files-container .tree-item-inner .collapse-icon,
+.nav-files-container .collapse-indicator,
 .nav-folder-children .collapse-icon {
   display: none !important;
 }
@@ -28,23 +28,28 @@
 
 .nav-files-container,
 .nav-folder-title,
-.nav-file-title,
-.tree-item-self {
+.nav-file-title {
   font-family: var(--font-interface);
   font-weight: 600;
 }
 
-/* Override Obsidian's depth-based row width so hit areas reach the right edge. */
+/* Wrappers fill their parent; rows also account for native negative indent
+   margins, which an explicit 100% width would leave unfilled on the right. */
 .nav-files-container .nav-folder-children > .tree-item,
 .nav-files-container :where(.nav-file-title, .nav-folder-title) {
   box-sizing: border-box !important;
-  width: 100% !important;
   min-width: 0 !important;
-  max-width: 100% !important;
   margin-inline-end: 0 !important;
 }
 
+.nav-files-container .nav-folder-children > .tree-item {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
 .nav-files-container :where(.nav-file-title, .nav-folder-title) {
+  width: auto !important;
+  max-width: none !important;
   flex: 1 1 100% !important;
   align-self: stretch !important;
 }
@@ -61,8 +66,8 @@
 .nav-files-container > div > .tree-item.nav-folder:nth-child(8n+9) { --quartzflow-folder-accent: #607d8b; }
 
 .nav-files-container > div > .tree-item.nav-folder {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
+  background: var(--background-primary-alt);
+  border: 1px solid var(--background-modifier-border);
   border-left: 2px solid var(--quartzflow-folder-accent, #95a5a6);
   border-radius: 6px;
   margin: 7px 4px;
@@ -71,7 +76,7 @@
 }
 
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title {
-  color: var(--quartzflow-folder-accent, #5d6d7e);
+  color: color-mix(in srgb, var(--quartzflow-folder-accent, #5d6d7e) 70%, var(--text-normal));
   background: transparent;
   border: none;
   border-radius: 0;
@@ -128,7 +133,7 @@
 }
 
 .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .tree-item-icon {
-  color: #a5d6a7;
+  color: color-mix(in srgb, var(--quartzflow-folder-accent, var(--text-muted)) 70%, var(--text-normal));
   opacity: 0.85;
 }
 
@@ -138,21 +143,15 @@
   border-radius: 4px;
 }
 
-body.theme-dark .nav-files-container > div > .tree-item.nav-folder {
-  background: color-mix(in srgb, var(--quartzflow-folder-accent, #95a5a6) 12%, var(--quartzflow-bg-tertiary));
-  border-color: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-body.theme-dark .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title.is-active {
-  background: color-mix(in srgb, var(--quartzflow-folder-accent) 14%, transparent);
-}
-
-body.theme-dark .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title + .nav-folder-children .tree-item-icon {
-  color: #6fc985;
-  opacity: 0.8;
-}
-
 .nav-files-container .nav-folder-children .nav-folder-children {
   border-left: 1px solid color-mix(in srgb, var(--quartzflow-folder-accent, var(--quartzflow-border)) 25%, transparent);
+}
+
+/* Keep the original bright folder palette on a clean light surface. */
+body.theme-light .nav-files-container > div > .tree-item.nav-folder {
+  background: var(--background-primary);
+}
+
+body.theme-light .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title {
+  color: var(--quartzflow-folder-accent, #5d6d7e);
 }

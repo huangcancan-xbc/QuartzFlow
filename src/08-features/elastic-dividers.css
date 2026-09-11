@@ -1,0 +1,27 @@
+/* The optional companion observes drag direction; native sizing stays untouched. */
+.quartzflow-elastic-line {
+  display: none;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body.quartzflow-elastic-dividers .workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-leaf-resize-handle {
+    --quartzflow-elastic-enabled: 1;
+  }
+
+  body.quartzflow-elastic-dividers .workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-leaf-resize-handle.quartzflow-elastic-active {
+    overflow: visible;
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  body.quartzflow-elastic-dividers .workspace-leaf-resize-handle.quartzflow-elastic-active > .quartzflow-elastic-line {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    stroke: var(--interactive-accent);
+  }
+}

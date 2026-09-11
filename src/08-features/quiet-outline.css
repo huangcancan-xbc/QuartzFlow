@@ -20,6 +20,14 @@
 }
 
 /* ---- Level pills on the title text (shadow + roomy gap) ---- */
+/* Small navigation markers can carry more color than text underlines. */
+body.theme-dark :is(.quiet-outline, .workspace-leaf-content[data-type="outline"]) {
+  --quartzflow-heading-1-decoration: color-mix(in srgb, var(--quartzflow-blue) 70%, var(--quartzflow-bg-primary));
+  --quartzflow-heading-2-decoration: color-mix(in srgb, var(--quartzflow-yellow) 70%, var(--quartzflow-bg-primary));
+  --quartzflow-heading-3-decoration: color-mix(in srgb, var(--quartzflow-green) 70%, var(--quartzflow-bg-primary));
+  --quartzflow-heading-4-decoration: color-mix(in srgb, var(--quartzflow-red) 70%, var(--quartzflow-bg-primary));
+}
+
 .quiet-outline .n-tree-node-content:is(.level-1, .level-2, .level-3, .level-4) .n-tree-node-content__text::before {
   content: "";
   display: inline-block;
@@ -80,6 +88,7 @@
   height: 1em;
   border-radius: 2px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
 }
 
 .workspace-leaf-content[data-type="outline"] .tree-item:not(.tree-item-children .tree-item) > .tree-item-self::before { background: var(--quartzflow-heading-1-decoration); }
@@ -87,21 +96,22 @@
 .workspace-leaf-content[data-type="outline"] .tree-item-children .tree-item-children .tree-item:not(.tree-item-children .tree-item-children .tree-item-children .tree-item) > .tree-item-self::before { background: var(--quartzflow-heading-3-decoration); }
 .workspace-leaf-content[data-type="outline"] .tree-item-children .tree-item-children .tree-item-children .tree-item:not(.tree-item-children .tree-item-children .tree-item-children .tree-item-children .tree-item) > .tree-item-self::before { background: var(--quartzflow-heading-4-decoration); }
 
-/* ---- Row state: drive weights through the official --nav-item-weight*
-   tokens instead of fighting the core hover/active rules on specificity.
-   Core state machine: default = --nav-item-weight, hover (incl. hovering
-   an active row) = --nav-item-weight-hover, active = --nav-item-weight-active.
-   Scoping all three to the outline panel keeps the selected row bold for
-   the whole time it is active — hover can no longer downgrade it — while
-   color/background keep coming from the core's is-active rules. ---- */
+/* Keep wrapped row heights stable when hovering or changing the active
+   heading: native follow-cursor scrolling uses the virtual list's heights.
+   A small text stroke emphasizes the active label without changing its width. */
 .workspace-leaf-content[data-type="outline"] {
   --nav-item-weight: 400;
   --nav-item-weight-hover: 400;
-  --nav-item-weight-active: 600;
+  --nav-item-weight-active: 400;
+  --nav-item-color-active: var(--text-normal);
 }
 
 .workspace-leaf-content[data-type="outline"] .tree-item-self.is-active {
   color: var(--nav-item-color-active);
   background-color: var(--nav-item-background-active);
   box-shadow: none;
+}
+
+.workspace-leaf-content[data-type="outline"] .tree-item-self.is-active .tree-item-inner {
+  -webkit-text-stroke: 0.55px currentColor;
 }

@@ -9,6 +9,7 @@ body {
   --font-text-size: var(--quartzflow-text-size, 16px);
   --line-height-normal: var(--quartzflow-line-height, 1.6);
   --line-height-tight: 1.35;
+  --heading-spacing: 1.25rem;
   --list-indent: 1.5em;
   --list-indent-editing: 0.5em;
   --list-indent-source: 0;
@@ -33,9 +34,10 @@ body {
   --interactive-accent: var(--quartzflow-gold);
   --interactive-accent-hover: color-mix(in srgb, var(--quartzflow-gold) 84%, var(--quartzflow-yellow));
   --link-color: var(--quartzflow-link-color);
+  --link-weight: 700;
   --link-color-hover: color-mix(in srgb, var(--quartzflow-link-color) 85%, var(--quartzflow-blue));
-  --link-external-color: var(--quartzflow-code-link);
-  --link-external-color-hover: color-mix(in srgb, var(--quartzflow-code-link) 85%, var(--quartzflow-yellow));
+  --link-external-color: var(--quartzflow-link-color);
+  --link-external-color-hover: var(--link-color-hover);
   --tag-color: var(--quartzflow-code-link);
   --tag-background: color-mix(in srgb, var(--quartzflow-code-link) 12%, transparent);
   --tag-background-hover: color-mix(in srgb, var(--quartzflow-code-link) 20%, transparent);

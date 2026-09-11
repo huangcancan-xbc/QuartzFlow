@@ -6,12 +6,14 @@ QuartzFlow is a modular CSS theme for Obsidian. Edit source modules under `src/`
 
 `build.mjs` concatenates these modules and embeds OFL-licensed fonts from `QuartzFlow/fonts/`. The installable package lives in `QuartzFlow/`. Its `theme.css` is generated and tracked for releases; never edit it directly. Store repository artwork in `assets/`.
 
+Optional companion plugin sources live in `src/plugins/`. Their JavaScript and plugin manifests are installed separately in the vault's `.obsidian/plugins/` directory; only CSS files are concatenated into the theme. Keep development checks under `scripts/`.
+
 ## Build, Test, and Development Commands
 
 - `npm run build` regenerates `QuartzFlow/theme.css`.
 - `npm run dev` watches `src/` and rebuilds on change.
 - `npm run audit` checks CSS structure, paths, font references, and release risks.
-- `npm run check` builds and runs the full static audit.
+- `npm run check` builds, runs the static audit, and checks elastic divider behavior.
 - `npm run deploy -- --vault="<vault-path>"` copies the built stylesheet into a test vault.
 
 Run `npm run check` and `git diff --check` before committing.
@@ -22,7 +24,7 @@ Use two-space indentation and kebab-case filenames/custom properties. Prefer exi
 
 ## Testing Guidelines
 
-There is no automated visual test suite. Manually verify light and dark modes in Obsidian 1.12 or newer. Check reading view, Live Preview, source mode, and every affected panel. Exercise hover, focus, active, drag, nested, and reduced-motion states where relevant. Include before/after screenshots for visual pull requests.
+`scripts/check-elastic-dividers.cjs` checks the optional plugin's motion, endpoint curvature, settings, and cleanup in a simulated environment. There is no automated visual test suite. Manually verify light and dark modes in Obsidian 1.12 or newer. Check reading view, Live Preview, source mode, and every affected panel. Exercise hover, focus, active, drag, nested, and reduced-motion states where relevant. Include before/after screenshots for visual pull requests.
 
 ## Commit, Pull Request & Release Guidelines
 

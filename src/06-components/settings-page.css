@@ -39,19 +39,11 @@
 
 /* ============================================================
    QuartzFlow STYLE SETTINGS CATEGORIES
-   Give this theme's own Style Settings section headings a
-   stronger visual identity (colored left bar + tinted background)
-   so they read as clear category dividers when scrolling the
-   Style Settings panel. Scoped to this theme's own heading ids
-   only, so other plugins' Style Settings sections are untouched.
+   Theme-owned headings share the category styling, including
+   the nested sections defined in 00-settings.css.
    ============================================================ */
 
-.style-settings-heading[data-id="quartzflow-colors-heading"],
-.style-settings-heading[data-id="quartzflow-typography-heading"],
-.style-settings-heading[data-id="quartzflow-headings-heading"],
-.style-settings-heading[data-id="quartzflow-code-heading"],
-.style-settings-heading[data-id="quartzflow-density-heading"],
-.style-settings-heading[data-id="quartzflow-components-heading"] {
+.style-settings-heading[data-id^="quartzflow-"][data-id$="-heading"] {
   margin-top: 18px;
   padding: 6px 10px 6px 12px;
   border-bottom: none;
@@ -60,22 +52,12 @@
   background-color: color-mix(in srgb, var(--quartzflow-gold) 8%, transparent);
 }
 
-.style-settings-heading[data-id="quartzflow-colors-heading"] .setting-item-name,
-.style-settings-heading[data-id="quartzflow-typography-heading"] .setting-item-name,
-.style-settings-heading[data-id="quartzflow-headings-heading"] .setting-item-name,
-.style-settings-heading[data-id="quartzflow-code-heading"] .setting-item-name,
-.style-settings-heading[data-id="quartzflow-density-heading"] .setting-item-name,
-.style-settings-heading[data-id="quartzflow-components-heading"] .setting-item-name {
+.style-settings-heading[data-id^="quartzflow-"][data-id$="-heading"] .setting-item-name {
   font-size: 1.05em;
   font-weight: 700;
   color: var(--quartzflow-gold);
 }
 
-.style-settings-heading[data-id="quartzflow-colors-heading"] .style-settings-collapse-indicator,
-.style-settings-heading[data-id="quartzflow-typography-heading"] .style-settings-collapse-indicator,
-.style-settings-heading[data-id="quartzflow-headings-heading"] .style-settings-collapse-indicator,
-.style-settings-heading[data-id="quartzflow-code-heading"] .style-settings-collapse-indicator,
-.style-settings-heading[data-id="quartzflow-density-heading"] .style-settings-collapse-indicator,
-.style-settings-heading[data-id="quartzflow-components-heading"] .style-settings-collapse-indicator {
+.style-settings-heading[data-id^="quartzflow-"][data-id$="-heading"] .style-settings-collapse-indicator {
   color: var(--quartzflow-gold);
 }

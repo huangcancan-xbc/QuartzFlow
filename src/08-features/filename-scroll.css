@@ -9,10 +9,8 @@
     transform: translate(0, 0);
   }
   100% {
-    /* 使用 min() 确保短文件名不移动（保持0），长文件名向左移动 */
-    /* 如果文件名宽度 < 180px: calc(-100% + 180px) > 0，min(正值, 0) = 0 (不移动) */
-    /* 如果文件名宽度 > 180px: calc(-100% + 180px) < 0，min(负值, 0) = 负值 (向左移动) */
-    transform: translate(min(calc(-100% + 180px), 0px), 0);
+    /* Only travel the overflow beyond the row's available content width. */
+    transform: translate(min(calc(100cqi - 100%), 0px), 0);
   }
 }
 
@@ -26,6 +24,7 @@
   overflow: hidden;
   white-space: nowrap;
   max-width: 100%;
+  container-type: inline-size;
 }
 
 /* File/folder content containers - must be able to exceed parent width */
@@ -40,22 +39,13 @@
 /* Delay the marquee so brief pointer passes stay still. */
 .nav-file-title:hover .nav-file-title-content:not(.is-being-renamed),
 .nav-folder-title:hover .nav-folder-title-content:not(.is-being-renamed) {
-  animation: filemove 1.5s 0.35s 1 normal ease-in-out;
+  animation: filemove 4s 0.35s 1 normal ease-in-out forwards;
 }
 
 /* Keep labels stable while choosing a drag target. */
 body.is-grabbing .nav-files-container :is(.nav-file-title-content, .nav-folder-title-content) {
   animation: none;
   transform: none;
-}
-
-/* Ensure the animation has space to work */
-.tree-item-self {
-  overflow: hidden;
-}
-
-.nav-folder-children .tree-item-self {
-  overflow: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {

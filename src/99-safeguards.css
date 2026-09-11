@@ -12,12 +12,12 @@ body.theme-light {
 }
 
 body.theme-dark {
-  --h1-color: #e4e4e6;
-  --h2-color: #e4e4e6;
-  --h3-color: #e4e4e6;
-  --h4-color: #e4e4e6;
-  --h5-color: #e4e4e6;
-  --h6-color: #b8bcc3;
+  --h1-color: var(--quartzflow-dark-heading-color, #b8c2cf);
+  --h2-color: var(--quartzflow-dark-heading-color, #b8c2cf);
+  --h3-color: var(--quartzflow-dark-heading-color, #b8c2cf);
+  --h4-color: var(--quartzflow-dark-heading-color, #b8c2cf);
+  --h5-color: var(--quartzflow-dark-heading-color, #b8c2cf);
+  --h6-color: var(--text-muted);
 }
 
 .is-flashing {
