@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" role="img" aria-labelledby="title desc">
+  <title id="title">QuartzFlow</title>
+  <desc id="desc">QuartzFlow 品牌标识：笔记形状的 Q、流动的蓝色尾笔与四色内容标记。An Obsidian theme.</desc>
+  <defs>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" fill="none" stroke="#d7dadd" stroke-opacity=".035"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="280" rx="18" fill="#101216"/>
+  <rect width="1200" height="280" rx="18" fill="url(#grid)"/>
+
+  <!-- The rounded note forms the Q; its open tail echoes a flowing divider. -->
+  <g transform="translate(306 73)">
+    <path d="M98 112H37C16 112 6 100 6 79V34C6 13 18 2 39 2H73C94 2 106 14 106 35V77"
+      fill="none" stroke="#e2e7eb" stroke-width="10" stroke-linecap="round"/>
+    <path d="M65 89C86 84 90 123 114 122C124 122 133 117 139 111"
+      fill="none" stroke="#23a9f2" stroke-width="10" stroke-linecap="round"/>
+    <path d="M31 31H77" stroke="#23a9f2" stroke-width="6" stroke-linecap="round"/>
+    <path d="M31 48H62" stroke="#ffbd2e" stroke-width="6" stroke-linecap="round"/>
+    <path d="M31 65H49" stroke="#27c93f" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="65" cy="65" r="3" fill="#ff5f56"/>
+  </g>
+
+  <g font-family="Segoe UI, Inter, Arial, sans-serif">
+    <text x="489" y="87" fill="#909ba8" font-size="12" font-weight="600" letter-spacing="4.3">AN OBSIDIAN THEME</text>
+    <text x="483" y="168" fill="#e2e7eb" font-size="82" font-weight="750" letter-spacing="-4">Quartz<tspan fill="#23a9f2">Flow</tspan></text>
+    <text x="489" y="209" fill="#a9b3bf" font-size="14" letter-spacing="2.3">CLEAR THOUGHTS. COLORFUL NOTES.</text>
+  </g>
+</svg>

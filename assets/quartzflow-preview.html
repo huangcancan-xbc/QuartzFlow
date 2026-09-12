@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QuartzFlow · 主题示例</title>
+  <!-- Presentation source for README artwork. Open locally; ?mode=dark selects dark.
+       The small shell below supplies native layout primitives, not a copy of Obsidian.
+       Document, folder, outline, icon and grid styling comes from the built theme. -->
+  <style>
+    * { box-sizing: border-box; }
+    html { font-size: 16px; }
+    body { margin: 0; }
+    p { margin: .7em 0; }
+    h1,h2,h3,h4 { margin: 0; }
+    blockquote p { margin: 0; }
+    pre { white-space: pre-wrap; }
+    strong { color: var(--bold-color, inherit); }
+    .nav-file-title,.nav-folder-title { display: flex; align-items: center; }
+    .tree-item-self { position: relative; display: flex; align-items: center; }
+    .tree-item-icon { position: absolute; width: 14px; height: 14px; left: 0; }
+    .tree-item-children { margin-inline-start: 0; padding-inline-start: 0; }
+  </style>
+  <link rel="stylesheet" href="../QuartzFlow/theme.css">
+  <style>
+    body {
+      --nav-item-children-padding-start: 5px;
+      --nav-item-children-margin-start: 5px;
+      --size-4-5: 20px;
+      --nav-item-background-active: var(--quartzflow-active-bg);
+      --quartzflow-font-text: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+      --quartzflow-font-interface: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+      --quartzflow-font-code: 'Roboto Mono', Consolas, 'Microsoft YaHei', monospace;
+      font-family: var(--font-interface);
+    }
+    .poster { width: 1600px; padding: 38px 40px 26px; background: #f3f3ef; color: #20272b; }
+    .brand { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
+    .brand-name { font: 750 68px/1 'Segoe UI', sans-serif; letter-spacing: -3.5px; }
+    .brand-name span { color: #1998d3; }
+    .brand-kicker { font: 600 11px/1.5 'Segoe UI', sans-serif; letter-spacing: 3px; margin-bottom: 10px; color: #687277; }
+    .brand-copy { text-align: right; }
+    .brand-copy b { font-size: 24px; font-weight: 600; }
+    .brand-copy p { font-size: 13px; letter-spacing: 1px; color: #777f83; margin: 12px 0 0; }
+    .palette { display: inline-flex; gap: 5px; margin-right: 10px; vertical-align: 1px; }
+    .palette i { height: 4px; width: 16px; background: var(--color); }
+    .app { overflow: hidden; border: 1px solid var(--quartzflow-border); border-radius: 12px;
+      background: var(--background-primary); box-shadow: 0 12px 32px #20304012, 0 2px 5px #20304008; }
+    .shell-top { height: 45px; display: grid; grid-template-columns: 282px 1fr 265px; border-bottom: 1px solid var(--quartzflow-border); }
+    .shell-left,.shell-right { display: flex; align-items: center; padding: 0 15px; gap: 17px; }
+    .shell-left { border-right: 1px solid var(--quartzflow-border); }
+    .shell-right { justify-content: flex-end; }
+    .shell-tabs { display: flex; align-items: end; padding-left: 10px; gap: 10px; }
+    .shell-tab { height: 36px; width: 249px; display: flex; align-items: center; gap: 9px; padding: 0 13px;
+      border: 1px solid var(--quartzflow-border); border-bottom: none; border-radius: 7px 7px 0 0; font-size: 13px; }
+    .shell-tab .close { margin-left: auto; width: 13px; }
+    .shell-tabs > .icon { margin: 0 0 9px 5px; }
+    .icon { width: 19px; height: 19px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.6;
+      stroke-linecap: round; stroke-linejoin: round; color: var(--text-muted); }
+    .selected-icon { background: var(--background-modifier-hover); border-radius: 5px; padding: 5px; width: 29px; height: 29px; }
+    .panes { display: grid; grid-template-columns: 42px 240px minmax(0, 1fr) 265px; height: 883px; }
+    .ribbon { display: flex; flex-direction: column; gap: 22px; padding: 20px 11px; border-right: 1px solid var(--quartzflow-border); }
+    .ribbon .bottom { margin-top: auto; }
+    .explorer { border-right: 1px solid var(--quartzflow-border); display: flex; flex-direction: column; min-width: 0; }
+    .panel-tools { display: flex; align-items: center; gap: 19px; height: 46px; padding: 0 18px; border-bottom: 1px solid var(--quartzflow-border-subtle); background: var(--background-primary); }
+    .nav-files-container { padding: 10px 9px; flex: 1; }
+    .nav-files-container > div > .tree-item.nav-folder { margin-block: 9px; }
+    .nav-files-container > div > .tree-item.nav-folder > .nav-folder-title { padding-block: 10px; }
+    .nav-files-container .nav-file-title { min-height: 31px; }
+    .vault { height: 41px; display: flex; align-items: center; gap: 9px; padding: 0 18px; font-size: 12px; color: var(--text-muted); border-top: 1px solid var(--quartzflow-border); }
+    .vault .icon:last-child { margin-left: auto; width: 14px; }
+    .document { min-width: 0; min-height: 0; display: flex; flex-direction: column; }
+    .doc-tools { height: 46px; flex: 0 0 46px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; font-size: 12px; }
+    .doc-tools .group { display: flex; align-items: center; gap: 13px; }
+    .doc-tools .breadcrumb { color: var(--text-faint); }
+    .doc-tools .breadcrumb span { color: var(--text-muted); }
+    .reading { flex: 1; min-height: 0; overflow: hidden; }
+    .article { padding: 22px 49px 20px; }
+    .article p { margin: .55em 0; }
+    .article blockquote p { margin: 0; }
+    .article-meta { font-size: 12px; color: var(--text-faint); margin-bottom: 8px; display: flex; gap: 18px; }
+    .article h1:first-of-type { margin-top: 0; }
+    .article p.lead { color: var(--text-muted); font-size: 15px; margin-top: 8px; }
+    .article h2 { margin-top: .85rem; }
+    .article h3,.article h4 { margin-top: .65rem; }
+    .article pre { margin-bottom: 12px; }
+    .article .internal-link { white-space: nowrap; }
+    .article .note-tail { display: flex; gap: 9px; font-size: 12px; margin-top: 10px; }
+    .right { border-left: 1px solid var(--quartzflow-border); display: flex; flex-direction: column; }
+    .right .panel-tools { justify-content: space-between; padding-inline: 19px; font-size: 12px; color: var(--text-muted); }
+    .right .panel-tools .icons { display: flex; gap: 15px; }
+    .outline { padding: 12px 12px 18px 30px; }
+    .outline .tree-item-self { height: 39px; padding-left: 5px; font-size: 13px; white-space: nowrap; }
+    .outline .tree-item-inner { overflow: hidden; text-overflow: ellipsis; }
+    .backlinks { flex: 1; border-top: 1px solid var(--quartzflow-border); }
+    .backlinks-body { padding: 5px 19px; }
+    .linked-note { padding: 14px 0; border-bottom: 1px solid var(--quartzflow-border-subtle); }
+    .linked-note b { display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 500; color: var(--text-normal); }
+    .linked-note b .icon { width: 14px; height: 14px; color: var(--quartzflow-gold); }
+    .linked-note p { color: var(--text-muted); font-size: 12px; line-height: 1.9; margin-bottom: 0; }
+    .linked-note em { font-style: normal; color: var(--quartzflow-gold); }
+    .status { height: 27px; display: flex; justify-content: flex-end; align-items: center; gap: 16px; padding-right: 15px; border-top: 1px solid var(--quartzflow-border); font-size: 10px; color: var(--text-faint); }
+    .status .icon { width: 12px; height: 12px; }
+    .legend { display: flex; justify-content: space-between; align-items: center; padding: 22px 2px 0; font-size: 12px; color: #626c73; }
+    .legend > div { display: flex; align-items: center; gap: 10px; }
+    .legend .dots { display: flex; gap: 4px; }
+    .legend .dots i { width: 6px; height: 6px; background: var(--color); border-radius: 50%; }
+    .legend .level i { border-radius: 2px; width: 4px; height: 12px; }
+    .legend .mode { font: 600 10px 'Segoe UI', sans-serif; letter-spacing: 2px; }
+    body.theme-dark .poster { background: #101216; color: #d7dadd; }
+    body.theme-dark .brand-copy p,body.theme-dark .legend { color: #969ea9; }
+    body.theme-dark .app { box-shadow: 0 14px 40px #0008; }
+  </style>
+</head>
+<body class="theme-light">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <symbol id="panel" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></symbol>
+    <symbol id="folder" viewBox="0 0 24 24"><path d="M3 7V5a1 1 0 0 1 1-1h5l3 3h8a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7Zm0 3h18"/></symbol>
+    <symbol id="search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="bookmark" viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z"/></symbol>
+    <symbol id="file" viewBox="0 0 24 24"><path d="M5 3h9l5 5v13H5zM14 3v6h5M8 13h8m-8 4h6"/></symbol>
+    <symbol id="edit" viewBox="0 0 24 24"><path d="m15 5 4 4M4 20l5-1L21 7l-4-4L5 15zM12 4H4v16h16v-8"/></symbol>
+    <symbol id="folder-plus" viewBox="0 0 24 24"><path d="M3 7V4h6l3 3h9v13H3zM9 14h6m-3-3v6"/></symbol>
+    <symbol id="sort" viewBox="0 0 24 24"><path d="M4 5v15m-3-3 3 3 3-3M10 5h11M10 10h8m-8 5h5m-5 5h2"/></symbol>
+    <symbol id="collapse" viewBox="0 0 24 24"><path d="m7 4 5 5 5-5M7 20l5-5 5 5M4 12h16"/></symbol>
+    <symbol id="chevron" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></symbol>
+    <symbol id="arrow" viewBox="0 0 24 24"><path d="M20 12H4m6-6-6 6 6 6"/></symbol>
+    <symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="more" viewBox="0 0 24 24"><circle cx="5" cy="12" r=".8"/><circle cx="12" cy="12" r=".8"/><circle cx="19" cy="12" r=".8"/></symbol>
+    <symbol id="book" viewBox="0 0 24 24"><path d="M12 5v16M12 5C8 2 4 3 2 4v15c3-1 6-1 10 2 4-3 7-3 10-2V4c-2-1-6-2-10 1Z"/></symbol>
+    <symbol id="list" viewBox="0 0 24 24"><path d="M9 5h12M9 12h12M9 19h12M3 5h1M3 12h1M3 19h1"/></symbol>
+    <symbol id="link" viewBox="0 0 24 24"><path d="m9 15 6-6m-6-3 2-2a5 5 0 0 1 7 7l-2 2m-7-2-3 3a5 5 0 0 0 7 7l2-2"/></symbol>
+    <symbol id="graph" viewBox="0 0 24 24"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="18" r="3"/><circle cx="19" cy="18" r="3"/><path d="m10.5 8-4 7m7-7 4 7M8 18h8"/></symbol>
+    <symbol id="canvas" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+    <symbol id="calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 2v6m10-6v6M3 11h18M7 15h3m4 0h3"/></symbol>
+    <symbol id="terminal" viewBox="0 0 24 24"><path d="m4 6 6 6-6 6m9 0h7"/></symbol>
+    <symbol id="settings" viewBox="0 0 24 24"><path d="m9 3-1 3-3 1-2 4 2 2v4l4 2 3-1 3 1 4-2v-4l2-2-2-4-3-1-1-3z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+  </defs></svg>
+  <main class="poster">
+    <header class="brand">
+      <div><div class="brand-kicker"><span class="palette"><i style="--color:#23a9f2"></i><i style="--color:#ffbd2e"></i><i style="--color:#27c93f"></i><i style="--color:#ff5f56"></i></span>A THEME FOR OBSIDIAN</div><div class="brand-name">Quartz<span>Flow</span></div></div>
+      <div class="brand-copy"><b>清晰写作，柔和流动。</b><p>让零散的灵感，成为有条理的作品。</p></div>
+    </header>
+    <section class="app" aria-label="QuartzFlow 阅读视图示例">
+      <div class="shell-top">
+        <div class="shell-left"><svg class="icon"><use href="#panel"/></svg><svg class="icon selected-icon"><use href="#folder"/></svg><svg class="icon"><use href="#search"/></svg><svg class="icon"><use href="#bookmark"/></svg></div>
+        <div class="shell-tabs"><div class="shell-tab"><svg class="icon"><use href="#file"/></svg>把灵感写成作品<svg class="icon close"><use href="#close"/></svg></div><svg class="icon"><use href="#plus"/></svg></div>
+        <div class="shell-right"><svg class="icon"><use href="#panel"/></svg><svg class="icon"><path d="M6 12h12"/></svg><svg class="icon"><rect x="6" y="6" width="12" height="12" rx="1"/></svg><svg class="icon"><use href="#close"/></svg></div>
+      </div>
+      <div class="panes">
+        <nav class="ribbon workspace-ribbon" aria-label="功能区"><svg class="icon"><use href="#canvas"/></svg><svg class="icon"><use href="#graph"/></svg><svg class="icon"><use href="#terminal"/></svg><svg class="icon"><use href="#calendar"/></svg><svg class="icon"><use href="#book"/></svg><svg class="icon bottom"><use href="#settings"/></svg></nav>
+        <aside class="explorer mod-left-split">
+          <div class="panel-tools"><svg class="icon"><use href="#edit"/></svg><svg class="icon"><use href="#folder-plus"/></svg><svg class="icon"><use href="#sort"/></svg><svg class="icon"><use href="#collapse"/></svg></div>
+          <div class="nav-files-container"><div id="files"><div aria-hidden="true"></div></div></div>
+          <div class="vault"><svg class="icon"><use href="#book"/></svg>我的知识花园<svg class="icon"><use href="#chevron"/></svg></div>
+        </aside>
+        <section class="document workspace-leaf-content" data-type="markdown">
+          <div class="doc-tools view-header"><div class="group"><svg class="icon"><use href="#arrow"/></svg><svg class="icon" style="transform:rotate(180deg);opacity:.4"><use href="#arrow"/></svg></div><div class="breadcrumb">写作 <span> / 把灵感写成作品</span></div><div class="group"><svg class="icon"><use href="#book"/></svg><svg class="icon"><use href="#more"/></svg></div></div>
+          <div class="reading markdown-reading-view"><article class="article markdown-rendered">
+            <div class="article-meta"><span>工作流笔记</span><span>记录 · 连接 · 输出</span></div>
+            <h1>把灵感写成作品</h1>
+            <p class="lead">一套轻盈的写作工作流：随手记录，认真连接，持续输出。</p>
+            <blockquote><p>好的笔记不只是保存信息，还应该帮助你完成下一次思考。</p></blockquote>
+            <h2>01 捕捉，不打断思考</h2>
+            <p>先把想法放进<strong>收件箱</strong>。记录当时的场景和疑问，暂时不为分类停下来。</p>
+            <h3>把问题写具体</h3>
+            <p>把「学习写作」换成「怎样让文章的开头更有吸引力？」——具体的问题更容易行动。</p>
+            <h4>给想法一个下一步</h4>
+            <p>选一篇喜欢的文章，拆解它的前三段，记入 <a class="internal-link">开头的三种写法</a>。</p>
+            <h2>02 用模板减少重复</h2>
+            <p>每次记录保留相同的线索，让未来的自己看得懂，也接得上。</p>
+            <pre><code># {{title}}
+观点：用自己的话，解释一个想法。
+证据：留下例子，以及它的来源。
+下一步：写下一个今天就能完成的行动。</code></pre>
+            <h2>03 让笔记走向作品</h2>
+            <p>每周回看一次 <a class="internal-link">写作周记</a>，把相关笔记整理成提纲；先完成初稿，再打磨表达。</p>
+            <div class="note-tail"><a class="tag">#写作</a><a class="tag">#知识管理</a><a class="tag">#工作流</a></div>
+          </article></div>
+        </section>
+        <aside class="right mod-right-split">
+          <section class="workspace-leaf-content" data-type="outline"><div class="panel-tools"><span>大纲</span><div class="icons"><svg class="icon"><use href="#search"/></svg><svg class="icon"><use href="#list"/></svg></div></div><div class="outline" id="outline"></div></section>
+          <section class="backlinks workspace-leaf-content" data-type="backlink"><div class="panel-tools"><span>反向链接 · 3</span><svg class="icon"><use href="#link"/></svg></div><div class="backlinks-body">
+            <div class="linked-note"><b><svg class="icon"><use href="#file"/></svg>写作周记</b><p>这周试着按「<em>把灵感写成作品</em>」的流程，从收件箱选出一个想法，写完第一稿。</p></div>
+            <div class="linked-note"><b><svg class="icon"><use href="#file"/></svg>开头的三种写法</b><p>从一个具体问题开始，而不是急着给出结论。参见：<em>把灵感写成作品</em>。</p></div>
+            <div class="linked-note"><b><svg class="icon"><use href="#file"/></svg>我的笔记模板</b><p>沿用「<em>把灵感写成作品</em>」的记录结构：观点、证据、下一步。让每次记录都能继续生长。</p></div>
+          </div></section>
+        </aside>
+      </div>
+      <div class="status"><svg class="icon"><use href="#check"/></svg><span>3 个反向链接</span><span>阅读视图</span><span>Markdown</span></div>
+    </section>
+    <footer class="legend"><div><span class="palette"><i style="--color:#e74c3c"></i><i style="--color:#f1c40f"></i><i style="--color:#2ecc71"></i></span>彩虹文件夹</div><div><span class="dots"><i style="--color:#ff5f56"></i><i style="--color:#ffbd2e"></i><i style="--color:#27c93f"></i></span>mac 风格代码块</div><div><span class="dots level"><i style="--color:#23a9f2"></i><i style="--color:#ffbd2e"></i><i style="--color:#27c93f"></i><i style="--color:#ff5f56"></i></span>彩色层级大纲</div><span class="mode">LIGHT / QUARTZFLOW</span></footer>
+  </main>
+  <script>
+    const dark = new URLSearchParams(location.search).get('mode') === 'dark';
+    document.body.className = dark ? 'theme-dark' : 'theme-light';
+    document.querySelector('.mode').textContent = `${dark ? 'DARK' : 'LIGHT'} / QUARTZFLOW`;
+    const folders = [
+      ['收件箱', ['一个值得写下的问题', '今天的灵感']],
+      ['项目', []], ['日志', ['写作周记', '本周回顾']], ['知识库', []],
+      ['灵感', []], ['写作', ['把灵感写成作品', '开头的三种写法', '文章选题清单']],
+      ['资源', ['我的笔记模板']], ['归档', []]
+    ];
+    for (const [name, notes] of folders) {
+      const folder = document.createElement('div');
+      folder.className = 'tree-item nav-folder';
+      const title = document.createElement('div');
+      title.className = 'nav-folder-title';
+      title.textContent = name;
+      folder.append(title);
+      if (notes.length) {
+        const children = document.createElement('div');
+        children.className = 'nav-folder-children';
+        for (const name of notes) {
+          const row = document.createElement('div');
+          row.className = `nav-file-title${name === '把灵感写成作品' ? ' is-active' : ''}`;
+          row.dataset.path = name + '.md';
+          const label = document.createElement('span');
+          label.className = 'nav-file-title-content';
+          label.textContent = name;
+          row.append(label);
+          children.append(row);
+        }
+        folder.append(children);
+      }
+      document.querySelector('#files').append(folder);
+    }
+    // Build the outline from the actual document so title, order and level cannot drift.
+    const stack = [{level: 0, container: document.querySelector('#outline')}];
+    for (const heading of document.querySelectorAll('.article h1,.article h2,.article h3,.article h4')) {
+      const level = Number(heading.tagName.slice(1));
+      while (stack.at(-1).level >= level) stack.pop();
+      const item = document.createElement('div');
+      item.className = 'tree-item';
+      const row = document.createElement('div');
+      row.className = `tree-item-self${heading.tagName === 'H3' ? ' is-active' : ''}`;
+      const label = document.createElement('div');
+      label.className = 'tree-item-inner';
+      label.textContent = heading.textContent;
+      row.append(label);
+      const children = document.createElement('div');
+      children.className = 'tree-item-children';
+      item.append(row, children);
+      stack.at(-1).container.append(item);
+      stack.push({level, container: children});
+    }
+    for (const children of document.querySelectorAll('#outline .tree-item-children')) {
+      if (!children.childElementCount) { children.remove(); continue; }
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('class', 'tree-item-icon icon');
+      const use = document.createElementNS(svg.namespaceURI, 'use');
+      use.setAttribute('href', '#chevron');
+      svg.append(use);
+      children.previousElementSibling.prepend(svg);
+    }
+    // A browser check for the export: catch clipped copy and drift between the three panes.
+    window.checkPreview = async () => {
+      await document.fonts.ready;
+      const require = (ok, message) => { if (!ok) throw new Error(message); };
+      const headings = [...document.querySelectorAll('.article h1,.article h2,.article h3,.article h4')];
+      const labels = [...document.querySelectorAll('#outline .tree-item-inner')];
+      require(headings.length === labels.length, 'Outline count does not match the note');
+      headings.forEach((heading, i) => require(heading.textContent === labels[i].textContent, 'Outline label mismatch'));
+      labels.forEach(label => require(label.scrollWidth <= label.clientWidth, 'Outline text is clipped'));
+      require(document.querySelector('.note-tail').getBoundingClientRect().bottom + 16 <= document.querySelector('.reading').getBoundingClientRect().bottom, 'Note is clipped or too close to the bottom');
+      require(document.querySelector('#files').getBoundingClientRect().bottom <= document.querySelector('.vault').getBoundingClientRect().top, 'File list overlaps vault controls');
+      require(document.querySelector('.nav-file-title.is-active').textContent === headings[0].textContent, 'Active note differs from the document');
+      return {headings: headings.length, folders: folders.length, mode: dark ? 'dark' : 'light'};
+    };
+    window.checkPreview();
+  </script>
+</body>
+</html>

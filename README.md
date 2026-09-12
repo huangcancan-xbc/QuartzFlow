@@ -1,11 +1,24 @@
 <p align="center">
-  <img src="./assets/quartzflow-banner.svg" alt="QuartzFlow — a colorful, content-first Obsidian theme" width="100%">
+  <img src="./assets/quartzflow-logo.svg" alt="QuartzFlow — 笔记形状的 Q 与流动的蓝色尾笔" width="100%">
 </p>
 
 <p align="center">
   <strong>清晰写作，柔和流动。</strong><br>
   一款从 Typora Escook 设计语言延伸而来的 Obsidian 明暗双模式主题。
 </p>
+
+<table>
+  <tr>
+    <th width="50%">亮色 · 清晰明快</th>
+    <th width="50%">暗色 · 柔和专注</th>
+  </tr>
+  <tr>
+    <td><a href="./assets/quartzflow-banner.png"><img src="./assets/quartzflow-banner.png" alt="QuartzFlow 亮色效果：彩虹文件夹、四色标题、mac 风格代码块与层级大纲" width="100%"></a></td>
+    <td><a href="./assets/quartzflow-banner-dark.png"><img src="./assets/quartzflow-banner-dark.png" alt="QuartzFlow 暗色效果：柔和正文、彩色标题底纹与清晰的大纲标记" width="100%"></a></td>
+  </tr>
+</table>
+
+<p align="center"><sub>使用本主题 CSS 渲染的示例布局 · 点击任一图片查看完整大图</sub></p>
 
 ## 特性
 
@@ -86,6 +99,8 @@ build.mjs             主题构建、监听与部署
 
 开发检查需要 Node.js，无需安装 npm 依赖。主题可独立使用；可选插件依赖 Obsidian 提供的插件 API。
 
+README 宣传图的源文件为 [`assets/quartzflow-preview.html`](./assets/quartzflow-preview.html)，直接引用构建后的主题 CSS。打开后可使用 `?mode=dark` 查看暗色版；页面自带 `checkPreview()`，检查大纲对应关系与文字裁切。导出图使用微软雅黑，未分发系统字体文件。
+
 ```bash
 npm run build         # 生成 QuartzFlow/theme.css
 npm run dev           # 监听 src/ 并持续构建
@@ -119,4 +134,4 @@ GitHub 源码仓库保留 `src/`、`scripts/`、`build.mjs` 和同步生成的 `
 
 ## 致谢与许可
 
-QuartzFlow 基于 [刘龙宾](https://github.com/liulongbin1314) 的 [Typora Escook Theme](https://github.com/liulongbin1314/typora-theme) 继续设计与移植，感谢原作者提供的视觉基础。
+QuartzFlow 基于 [liulongbin1314](https://github.com/liulongbin1314) 的 [Typora Escook Theme](https://github.com/liulongbin1314/typora-theme) 继续设计与移植，感谢原作者提供的视觉基础。
